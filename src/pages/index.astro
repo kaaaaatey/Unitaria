@@ -7,6 +7,7 @@ import FourPointStar from '../components/motifs/FourPointStar.astro';
 import StarRule from '../components/motifs/StarRule.astro';
 import Starfield from '../components/motifs/Starfield.astro';
 import Cta from '../components/Cta.astro';
+import NavBar from '../components/NavBar.astro';
 import Timeline from '../components/Timeline.astro';
 import academyHero from '../../assets/crops/academy-hero.jpg';
 import bPolaris from '../../assets/crops/banner-polaris.jpg';
@@ -24,9 +25,9 @@ const houseOrder = ['Polaris', 'Aurora', 'Lyra', 'Orion'];
 const banners = { Polaris: bPolaris, Aurora: bAurora, Lyra: bLyra, Orion: bOrion };
 const houseList = (await getCollection('houses')).sort((a, b) => houseOrder.indexOf(a.data.name) - houseOrder.indexOf(b.data.name));
 ---
-<Base title="Unitaria" description="The Golden Jubilee: the 50th Reconnection Day, 7 May 2077.">
+<Base nav={false} title="Unitaria" description="The Golden Jubilee: the 50th Reconnection Day, 7 May 2077.">
   <!-- Hero: the Golden Jubilee -->
-  <section class="night relative isolate flex min-h-dvh items-center overflow-hidden px-4 pb-20 pt-28 sm:px-8">
+  <section class="night relative isolate flex min-h-dvh items-center overflow-hidden px-4 py-20 sm:px-8">
     <div class="absolute inset-0 -z-10" data-parallax="0.25">
       <Image src={academyHero} alt="" widths={[800, 1312]} sizes="100vw" loading="eager"
         class="h-[120%] w-full object-cover object-top opacity-40" />
@@ -52,8 +53,10 @@ const houseList = (await getCollection('houses')).sort((a, b) => houseOrder.inde
     </div>
   </section>
 
+  <NavBar />
+
   <!-- Fifty years reconnected -->
-  <section id="reconnected" class="marble scroll-mt-16 px-4 py-24 sm:px-8 sm:py-32">
+  <section id="reconnected" class="marble lg:scroll-mt-14 px-4 py-24 sm:px-8 sm:py-32">
     <div class="mx-auto grid max-w-6xl gap-14 lg:grid-cols-[1.2fr_1fr] lg:items-center">
       <div>
         <p class="eyebrow text-gold-deep">{reconnected.eyebrow}</p>

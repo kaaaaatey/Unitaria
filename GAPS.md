@@ -89,7 +89,7 @@ Source checked: the live World Bible doc (revision 391, exported 3 October 2026)
 - ⚪ The Director's public biography: what the official story says he did in 2027–32.
 
 ### The Compass quiz (Sprint 3)
-- 🟠 Who writes the questions? (By the brief's rules, Katey generates; I can draft options only if asked.)
+- ✅ **The questions:** Claude's nine drafts from house canon, approved by Katey as they are (3 Oct 2026).
 - 🟠 Module 7 imagines a quiz sorting fans into **realms**; the brief asks for **houses**. Houses only, or a realm result too?
 
 ## 4. Spoiler boundary questions

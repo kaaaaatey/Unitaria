@@ -4,7 +4,7 @@ import StarRule from './motifs/StarRule.astro';
 interface Props { eyebrow?: string; title: string; lede?: string }
 const { eyebrow, title, lede } = Astro.props;
 ---
-<section class="night relative isolate overflow-hidden px-4 pb-20 pt-32 text-center sm:px-8 sm:pb-24 sm:pt-40">
+<section class="night relative isolate overflow-hidden px-4 pb-20 pt-16 text-center sm:px-8 sm:pb-24 sm:pt-24">
   <Starfield count={50} seed={title.length} />
   <slot name="art" />
   {eyebrow && <p class="eyebrow text-gold-light">{eyebrow}</p>}

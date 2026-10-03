@@ -1,11 +1,19 @@
 ---
 import CompassStar from './motifs/CompassStar.astro';
 import StarRule from './motifs/StarRule.astro';
+import { nav } from '../data/nav';
 ---
 <footer class="night px-4 pb-12 pt-20 text-center sm:px-8">
   <CompassStar size={56} class="mx-auto text-gold" />
   <p class="eyebrow mt-6 text-gold-light">Unitaria</p>
   <p class="mx-auto mt-3 max-w-md font-display text-xl italic text-starlight/80">One world. Ten realms. Fifty years reconnected.</p>
+  <nav aria-label="Footer" class="mx-auto mt-10 max-w-2xl">
+    <ul class="grid grid-cols-3 gap-1 sm:flex sm:flex-wrap sm:justify-center sm:gap-x-2">
+      {nav.filter((i) => i.live).map((i) => (
+        <li><a href={i.href} class="eyebrow flex min-h-11 items-center justify-center px-2 text-[0.6rem] leading-tight tracking-[0.14em] text-starlight/70 transition hover:text-gold-light sm:tracking-[0.2em]">{i.label}</a></li>
+      ))}
+    </ul>
+  </nav>
   <StarRule class="mx-auto mt-10 max-w-xs" />
   <p class="mt-8 text-xs tracking-wider text-starlight/50">© 2026 Unitaria. An original world. All rights reserved.</p>
 </footer>

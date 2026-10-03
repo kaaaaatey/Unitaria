@@ -1,0 +1,40 @@
+---
+// The main navigation bar. On phones the links sit in a three-by-three grid
+// (nothing scrolls sideways); from laptop width it's one row that sticks to the top.
+import CompassStar from './motifs/CompassStar.astro';
+import { nav } from '../data/nav';
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isCurrent = (href: string) => path === href || (href !== '/' && path.startsWith(href + '/'));
+---
+<nav aria-label="Main" class="night relative z-50 border-y border-gold/25 lg:sticky lg:top-0 lg:bg-midnight/90 lg:backdrop-blur-md">
+  <div class="mx-auto flex max-w-7xl items-center gap-8 px-3 py-3 sm:px-8 lg:py-0">
+    <a href="/" class="hidden shrink-0 items-center gap-3 lg:flex" aria-label="Unitaria, home">
+      <CompassStar size={24} class="text-gold" />
+      <span class="eyebrow text-[0.7rem] text-starlight">Unitaria</span>
+    </a>
+    <ul class="grid w-full grid-cols-3 gap-1 text-center lg:flex lg:justify-end lg:gap-0">
+      {nav.map((item) => (
+        <li class="min-w-0">
+          {item.live ? (
+            <a href={item.href} aria-current={isCurrent(item.href) ? 'page' : undefined}
+              class="nav-link eyebrow flex min-h-11 items-center justify-center rounded-full px-2 text-[0.6rem] leading-tight tracking-[0.14em] text-starlight/85 transition hover:text-gold-light aria-[current=page]:text-gold-light sm:text-[0.66rem] sm:tracking-[0.2em] lg:min-h-14 lg:rounded-none lg:px-3 xl:px-4">
+              {item.label}
+            </a>
+          ) : (
+            <span class="eyebrow flex min-h-11 items-center justify-center px-2 text-[0.6rem] leading-tight tracking-[0.14em] text-starlight/40 lg:min-h-14">{item.label}</span>
+          )}
+        </li>
+      ))}
+    </ul>
+  </div>
+</nav>
+<style>
+  .nav-link { position: relative; }
+  .nav-link[aria-current='page'] { background: rgb(198 161 91 / 0.12); }
+  @media (min-width: 64rem) {
+    .nav-link[aria-current='page'] { background: none; }
+    .nav-link[aria-current='page']::after {
+      content: ''; position: absolute; left: 0.75rem; right: 0.75rem; bottom: 0; height: 1px; background: var(--color-gold);
+    }
+  }
+</style>

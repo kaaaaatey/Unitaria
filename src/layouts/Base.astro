@@ -1,9 +1,10 @@
 ---
 import '../styles/global.css';
-import SiteHeader from '../components/SiteHeader.astro';
+import NavBar from '../components/NavBar.astro';
 import SiteFooter from '../components/SiteFooter.astro';
-interface Props { title: string; description?: string; lightHero?: boolean; image?: string }
-const { title, description = 'Unitaria: one world, three Continuents, ten realms.', lightHero = false, image } = Astro.props;
+// `nav={false}` lets a page place <NavBar /> itself (Home puts it under the hero).
+interface Props { title: string; description?: string; image?: string; nav?: boolean }
+const { title, description = 'Unitaria: one world, three Continuents, ten realms.', image, nav = true } = Astro.props;
 const ogImage = image ? new URL(image, Astro.site ?? Astro.url).href : undefined;
 const fullTitle = title === 'Unitaria' ? title : `${title} · Unitaria`;
 ---
@@ -24,8 +25,7 @@ const fullTitle = title === 'Unitaria' ? title : `${title} · Unitaria`;
   </head>
   <body class="antialiased">
     <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded focus:bg-gold focus:px-4 focus:py-2 focus:text-midnight">Skip to content</a>
-    <SiteHeader light={lightHero} />
-    <main id="main"><slot /></main>
+    <main id="main">{nav && <NavBar />}<slot /></main>
     <SiteFooter />
     <script>
       // Slow parallax for anything marked data-parallax="0.2" (fraction of scroll).

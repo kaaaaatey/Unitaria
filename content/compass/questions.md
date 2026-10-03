@@ -1,7 +1,7 @@
 ---
 intro: Touch the compass. Nine questions, and it will point to who you are.
-# DRAFT for Katey: every answer comes straight from a house's canon (events, seasons,
-# elements, causes, traits, pins, creatures). Rewrite freely; keep one answer per house.
+# Approved by Katey, 3 Oct 2026. Every answer comes straight from a house's canon (events,
+# seasons, elements, causes, traits, pins, creatures). Keep one answer per house.
 questions:
   - q: Which house event would you never miss?
     answers:
