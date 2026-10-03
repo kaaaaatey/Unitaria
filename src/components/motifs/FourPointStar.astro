@@ -1,0 +1,11 @@
+---
+// A slender four-point star, the small mark that crowns every house banner.
+interface Props { size?: number; class?: string; label?: string }
+const { size = 16, class: cls = '', label } = Astro.props;
+---
+<svg
+  viewBox="-10 -10 20 20" width={size} height={size} class={cls}
+  role={label ? 'img' : undefined} aria-label={label} aria-hidden={label ? undefined : 'true'}
+>
+  <path d="M0 -10 C0.9 -2.2 2.2 -0.9 10 0 C2.2 0.9 0.9 2.2 0 10 C-0.9 2.2 -2.2 0.9 -10 0 C-2.2 -0.9 -0.9 -2.2 0 -10Z" fill="currentColor" />
+</svg>

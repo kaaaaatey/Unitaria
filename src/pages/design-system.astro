@@ -1,0 +1,117 @@
+---
+// The style guide: every token and motif in one place, for Katey to approve.
+import Base from '../layouts/Base.astro';
+import Compass from '../components/motifs/Compass.astro';
+import CompassStar from '../components/motifs/CompassStar.astro';
+import FourPointStar from '../components/motifs/FourPointStar.astro';
+import StarRule from '../components/motifs/StarRule.astro';
+import Cta from '../components/Cta.astro';
+
+const core = [
+  { name: 'Marble', token: 'marble', hex: '#f7f4ef' },
+  { name: 'Marble deep', token: 'marble-deep', hex: '#ebe5dc' },
+  { name: 'Vein', token: 'vein', hex: '#d9d1c5' },
+  { name: 'Gold', token: 'gold', hex: '#c6a15b' },
+  { name: 'Gold light', token: 'gold-light', hex: '#e6cf9a' },
+  { name: 'Gold deep', token: 'gold-deep', hex: '#765822' },
+  { name: 'Midnight', token: 'midnight', hex: '#081727' },
+  { name: 'Midnight soft', token: 'midnight-soft', hex: '#13233a' },
+  { name: 'Ink', token: 'ink', hex: '#1a1d2b' },
+  { name: 'Starlight', token: 'starlight', hex: '#eef1f6' },
+];
+const houses = [
+  { house: 'Polaris', swatches: [['Midnight navy', '#091420'], ['Navy', '#0e1d33'], ['Frosted silver', '#c9d2de'], ['Icy blue', '#9fc3e6']] },
+  { house: 'Aurora', swatches: [['Night violet', '#2a2238'], ['Violet', '#7b5aa6'], ['Emerald', '#3fa98a'], ['Gold linework', '#d6b26e']] },
+  { house: 'Lyra', swatches: [['Marble cream', '#e6dfd7'], ['Pearl', '#f4efe8'], ['Rose gold', '#c4917a']] },
+  { house: 'Orion', swatches: [['Onyx', '#0b0b0b'], ['Gold', '#c6a15b']] },
+];
+---
+<Base title="Design system" description="Unitaria's colours, type and motifs.">
+  <section class="night px-4 pb-16 pt-32 text-center sm:px-8">
+    <p class="eyebrow text-gold-light">Sprint 1 · For approval</p>
+    <h1 class="display mt-5 text-[clamp(2.4rem,8vw,5rem)] tracking-[0.12em]">Design system</h1>
+    <p class="mx-auto mt-6 max-w-xl text-starlight/75">White marble, gold and midnight. Celestial fine line. Compass and four-point stars. Every value here is sampled from the concept art and can be tuned.</p>
+  </section>
+
+  <section class="marble px-4 py-20 sm:px-8">
+    <div class="mx-auto max-w-6xl space-y-20">
+      <div>
+        <p class="eyebrow text-gold-deep">Core palette</p>
+        <ul class="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-5">
+          {core.map((c) => (
+            <li>
+              <div class="aspect-[4/3] rounded-sm ring-1 ring-ink/10" style={`background:${c.hex}`}></div>
+              <p class="mt-2 text-sm font-medium">{c.name}</p>
+              <p class="text-xs text-ink/60">{c.hex} · {c.token}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div>
+        <p class="eyebrow text-gold-deep">House palettes</p>
+        <div class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {houses.map((h) => (
+            <div>
+              <p class="font-display text-2xl">{h.house}</p>
+              <div class="mt-3 flex h-24 overflow-hidden rounded-sm ring-1 ring-ink/10">
+                {h.swatches.map(([, hex]) => <span class="flex-1" style={`background:${hex}`}></span>)}
+              </div>
+              <ul class="mt-2 text-xs text-ink/60">
+                {h.swatches.map(([n, hex]) => <li>{n} · {hex}</li>)}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="grid gap-12 lg:grid-cols-2">
+        <div>
+          <p class="eyebrow text-gold-deep">Display serif · Cormorant Garamond</p>
+          <p class="display mt-6 text-5xl tracking-[0.12em]">Polaris</p>
+          <p class="mt-4 font-display text-4xl">The Great Reconnecting</p>
+          <p class="mt-4 font-display text-3xl italic">Quaerite et invenietis</p>
+        </div>
+        <div>
+          <p class="eyebrow text-gold-deep">Body sans · Jost Light</p>
+          <p class="mt-6 text-lg">Every sixteen-year-old in the world submits something to the Exhibition: their growth, their passion, their best idea.</p>
+          <p class="eyebrow mt-6">House of the North · 90°N</p>
+          <p class="mt-2 text-xs text-ink/60">Eyebrows use widely spaced capitals, as on the house banners.</p>
+        </div>
+      </div>
+
+      <div>
+        <p class="eyebrow text-gold-deep">Motifs</p>
+        <div class="mt-6 grid items-center gap-10 sm:grid-cols-3">
+          <div class="text-center text-gold-deep">
+            <CompassStar size={120} class="mx-auto" />
+            <p class="mt-4 text-sm text-ink">Academy compass star (draft logo)</p>
+          </div>
+          <div class="text-center text-gold-deep">
+            <FourPointStar size={56} class="mx-auto" />
+            <p class="mt-4 text-sm text-ink">Four-point banner star</p>
+          </div>
+          <div class="text-center">
+            <StarRule class="mx-auto max-w-xs" />
+            <p class="mt-4 text-sm">Star rule</p>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <p class="eyebrow text-gold-deep">Buttons</p>
+        <div class="mt-6 flex flex-wrap gap-4">
+          <a href="/" class="btn btn-gold">Primary</a>
+          <a href="/" class="btn btn-ghost">Secondary</a>
+          <Cta label="Unbuilt page" href="/" live={false} />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="night px-4 py-24 text-center sm:px-8">
+    <p class="eyebrow text-gold-light">Motion</p>
+    <Compass size="min(80vw, 420px)" class="mx-auto mt-10" />
+    <p class="mx-auto mt-10 max-w-lg text-starlight/70">The compass turns once every two minutes, its orbit rings counter-rotate, stars twinkle and the hero drifts in slow parallax. All of it stops for anyone whose device asks for reduced motion.</p>
+  </section>
+</Base>

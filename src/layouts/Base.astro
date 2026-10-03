@@ -1,0 +1,39 @@
+---
+import '../styles/global.css';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+interface Props { title: string; description?: string }
+const { title, description = 'Unitaria: one world, three Continuents, ten realms.' } = Astro.props;
+const fullTitle = title === 'Unitaria' ? title : `${title} · Unitaria`;
+---
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#081727" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body class="antialiased">
+    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded focus:bg-gold focus:px-4 focus:py-2 focus:text-midnight">Skip to content</a>
+    <SiteHeader />
+    <main id="main"><slot /></main>
+    <SiteFooter />
+    <script>
+      // Slow parallax for anything marked data-parallax="0.2" (fraction of scroll).
+      if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        const els = [...document.querySelectorAll<HTMLElement>('[data-parallax]')];
+        let ticking = false;
+        const update = () => {
+          for (const el of els) el.style.transform = `translate3d(0, ${window.scrollY * Number(el.dataset.parallax)}px, 0)`;
+          ticking = false;
+        };
+        window.addEventListener('scroll', () => { if (!ticking) { requestAnimationFrame(update); ticking = true; } }, { passive: true });
+      }
+    </script>
+  </body>
+</html>

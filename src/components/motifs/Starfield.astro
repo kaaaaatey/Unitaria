@@ -1,0 +1,16 @@
+---
+// A quiet field of twinkling stars. Positions are seeded, so every build matches.
+interface Props { count?: number; seed?: number; class?: string }
+const { count = 70, seed = 7, class: cls = '' } = Astro.props;
+let s = seed;
+const rand = () => ((s = (s * 16807) % 2147483647) / 2147483647);
+const stars = Array.from({ length: count }, () => ({
+  x: rand() * 100, y: rand() * 100, r: rand() < 0.12 ? 1.6 : 0.6 + rand() * 0.6, d: rand() * 5,
+}));
+---
+<div class={`pointer-events-none absolute inset-0 overflow-hidden ${cls}`} aria-hidden="true">
+  {stars.map((st) => (
+    <span class="absolute rounded-full bg-starlight animate-twinkle"
+      style={`left:${st.x}%;top:${st.y}%;width:${st.r * 2}px;height:${st.r * 2}px;animation-delay:-${st.d}s`}></span>
+  ))}
+</div>

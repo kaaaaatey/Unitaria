@@ -1,0 +1,10 @@
+---
+import FourPointStar from './FourPointStar.astro';
+interface Props { class?: string }
+const { class: cls = '' } = Astro.props;
+---
+<div class={`flex items-center gap-4 text-gold ${cls}`} aria-hidden="true">
+  <span class="gold-rule flex-1"></span>
+  <FourPointStar size={12} />
+  <span class="gold-rule flex-1"></span>
+</div>

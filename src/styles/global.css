@@ -1,0 +1,136 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/cormorant-garamond';
+@import '@fontsource-variable/cormorant-garamond/wght-italic.css';
+@import '@fontsource-variable/jost';
+
+/*
+  Unitaria design tokens.
+  Colours sampled from Katey's concept art (assets/concept-art); see /design-system.
+*/
+@theme {
+  --font-display: 'Cormorant Garamond Variable', 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Jost Variable', 'Jost', ui-sans-serif, system-ui, sans-serif;
+
+  /* Core: marble, gold and midnight */
+  --color-marble: #f7f4ef;
+  --color-marble-deep: #ebe5dc;
+  --color-vein: #d9d1c5;
+  --color-ink: #1a1d2b;
+  --color-gold: #c6a15b;
+  --color-gold-light: #e6cf9a;
+  --color-gold-deep: #765822;
+  --color-midnight: #081727;
+  --color-midnight-soft: #13233a;
+  --color-starlight: #eef1f6;
+
+  /* House palettes */
+  --color-polaris: #091420;
+  --color-polaris-navy: #0e1d33;
+  --color-polaris-silver: #c9d2de;
+  --color-polaris-ice: #9fc3e6;
+  --color-aurora: #2a2238;
+  --color-aurora-violet: #7b5aa6;
+  --color-aurora-emerald: #3fa98a;
+  --color-aurora-gold: #d6b26e;
+  --color-lyra: #e6dfd7;
+  --color-lyra-pearl: #f4efe8;
+  --color-lyra-rose: #c4917a;
+  --color-orion: #0b0b0b;
+  --color-orion-gold: #c6a15b;
+
+  --tracking-banner: 0.32em;
+  --tracking-wide-x: 0.2em;
+
+  --animate-spin-slow: spin 120s linear infinite;
+  --animate-spin-slower: spin 240s linear infinite reverse;
+  --animate-glow: glow 6s ease-in-out infinite;
+  --animate-twinkle: twinkle 5s ease-in-out infinite;
+
+  @keyframes glow {
+    0%, 100% { opacity: 0.55; }
+    50% { opacity: 1; }
+  }
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.25; }
+    50% { opacity: 0.9; }
+  }
+}
+
+@layer base {
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    background: var(--color-marble);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-weight: 330;
+    line-height: 1.7;
+  }
+  h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 400; line-height: 1.08; }
+  .font-display, h1, h2, h3, h4, dd { font-variant-numeric: lining-nums; }
+  ::selection { background: var(--color-gold-light); color: var(--color-midnight); }
+  :focus-visible { outline: 2px solid var(--color-gold); outline-offset: 3px; border-radius: 2px; }
+}
+
+@layer components {
+  /* Widely spaced capitals, as on the house banners */
+  .eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.72rem;
+    font-weight: 400;
+    letter-spacing: var(--tracking-banner);
+    text-transform: uppercase;
+  }
+  .display {
+    font-family: var(--font-display);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+  .prose-world p + p { margin-top: 1.1em; }
+  .prose-world p { max-width: 62ch; }
+  .prose-world strong { font-weight: 500; }
+  .prose-world em { font-family: var(--font-display); font-size: 1.12em; }
+
+  .marble {
+    background-color: var(--color-marble);
+    background-image:
+      radial-gradient(120% 70% at 0% 0%, rgb(255 255 255 / 0.95), transparent 60%),
+      radial-gradient(70% 60% at 100% 100%, rgb(217 209 197 / 0.4), transparent 70%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='900'%3E%3Cg fill='none' stroke='%23cfc6b8' stroke-width='0.7' opacity='0.45'%3E%3Cpath d='M-50 620 C 160 540 260 610 420 470 S 700 380 960 210'/%3E%3Cpath d='M-50 660 C 180 600 300 640 450 520 S 760 430 960 300' opacity='0.5'/%3E%3Cpath d='M120 -40 C 200 120 160 240 300 330 S 420 520 380 700' opacity='0.35'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: auto, auto, 900px 900px;
+  }
+  .night {
+    background-color: var(--color-midnight);
+    background-image:
+      radial-gradient(90% 70% at 50% 0%, rgb(30 52 86 / 0.7), transparent 70%),
+      radial-gradient(60% 40% at 85% 100%, rgb(123 90 166 / 0.18), transparent 70%);
+    color: var(--color-starlight);
+  }
+  .gold-rule {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+  }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem;
+    min-height: 3rem; padding: 0.85rem 1.6rem;
+    font-size: 0.72rem; letter-spacing: var(--tracking-banner); text-transform: uppercase; font-weight: 450;
+    border: 1px solid var(--color-gold); border-radius: 999px;
+    transition: background-color 0.4s, color 0.4s, box-shadow 0.4s;
+  }
+  .btn-gold { background: var(--color-gold); color: var(--color-midnight); }
+  .btn-gold:hover { background: var(--color-gold-light); box-shadow: 0 0 32px rgb(230 207 154 / 0.45); }
+  .btn-ghost { color: inherit; }
+  .btn-ghost:hover { background: rgb(198 161 91 / 0.12); }
+  .btn[aria-disabled='true'] { opacity: 0.55; cursor: default; }
+}
+
+/* Subtle motion only, and none at all for people who ask for less. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  [data-parallax] { transform: none !important; }
+}

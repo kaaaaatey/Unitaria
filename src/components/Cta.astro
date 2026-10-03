@@ -1,0 +1,12 @@
+---
+// A call to action. Links to pages that haven't shipped render as "opening soon".
+interface Props { label: string; href: string; live?: boolean; variant?: 'gold' | 'ghost' }
+const { label, href, live = true, variant = 'ghost' } = Astro.props;
+---
+{live ? (
+  <a href={href} class={`btn btn-${variant}`}>{label}</a>
+) : (
+  <span class={`btn btn-${variant}`} aria-disabled="true">
+    <span class="whitespace-nowrap">{label}</span><span class="whitespace-nowrap text-[0.6rem] opacity-70">· Soon</span>
+  </span>
+)}
