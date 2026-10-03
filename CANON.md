@@ -14,7 +14,7 @@ A summary of every decided fact the website can rely on. If it isn't here, it is
 
 ## Brief overrides (Katey, 3 Oct 2026)
 
-1. **The band has no brand name yet.** Never call it "LiFE" on the site. (The live Bible still says "LiFE band" in five places: see GAPS.md, clash 1.)
+1. **The band is the LiFE band.** Katey confirmed on 3 Oct 2026 that "they're called LiFE bands", which overrides the brief's earlier "no brand name". The site uses "LiFE band", and the update is still Recalibrate.
 2. **Recalibrate is the name of the update.** Written "Recalibrate" in the brief; the Bible also has a "REcalibrate" marketing styling (GAPS.md, clash 1).
 3. **The School of Life is under-16 learning; the Academy year happens at 16.**
 4. **The Secret never appears on public pages,** nor do Isola's testing, Trovata, the radiation or the Director's crimes.
@@ -238,7 +238,7 @@ The Academy's four rules for the whole world, at the compass's four cardinal poi
 
 **The Director is an Aurora,** and Aurora's founding Fellow.
 
-## The band (no brand name yet)
+## The LiFE band
 
 - Everyone wears one. It holds your digital wallet and points and pays for everything, vending machines included. Main functions: points collection and smartwatch features.
 - **No screen.** It projects its display into the air: translucent, softly glowing cards float above the open palm (tasks, places, routes, maps), orbiting a small golden compass. The digital world made physical.

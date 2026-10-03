@@ -12,7 +12,7 @@ Source checked: the live World Bible doc (revision 391, exported 3 October 2026)
 
 | # | Clash | Where | Status |
 | --- | --- | --- | --- |
-| 1 | **Band name and update styling.** The brief says the band has no brand name (not "LiFE") and the update is "Recalibrate". The live Bible still says "The bands are called LiFE bands", has a "Decided: the update is branded REcalibrate" line, a "LiFE beta" marketing hook, a visual brief titled "The LiFE band", and "the LiFE interface" in Still to design. The PDF snapshot has neither. The site follows the brief until the Bible is updated. | Module 3 (Economy), Module 12 (visual briefs) | 🔴 Sprint 3 (The Band) |
+| 1 | **Band name and update styling.** The brief says the band has no brand name (not "LiFE") and the update is "Recalibrate". The live Bible still says "The bands are called LiFE bands", has a "Decided: the update is branded REcalibrate" line, a "LiFE beta" marketing hook, a visual brief titled "The LiFE band", and "the LiFE interface" in Still to design. The PDF snapshot has neither. The site follows the brief until the Bible is updated. | Module 3 (Economy), Module 12 (visual briefs) | ✅ Name settled 3 Oct 2026: LiFE bands (Katey). Recalibrate styling still to confirm. |
 | 2 | **Is "Unitaria" the world's name?** It's the project's name, but the word never appears in the Bible. The single landmass has no name. The public site needs to know whether citizens call their world Unitaria. | Whole Bible | 🔴 Sprint 1 (Home) |
 | 3 | **Birthday points.** Module 12 says birthday points were scrapped; the duality ledger (Module 5) still lists "Birthday points just for existing". | Modules 5 and 12 | 🟠 Sprint 3 (Life in Unitaria) |
 | 4 | **Entry at 15 versus submission at 16.** "Every child enters at 15" and "at 15, every child must submit an entry to the wider network" (for Grand Academy selection), but also "every 16-year-old must submit something to the Exhibition". Are these two separate submissions (a selection entry at 15, an Exhibition project at 16), or one? | Module 3 | 🔴 Sprint 2 (The Academy) |
@@ -94,7 +94,7 @@ Source checked: the live World Bible doc (revision 391, exported 3 October 2026)
 
 ### The House Shop and Exhibition seats (added 3 Oct 2026)
 - 🟠 **Every points price is a draft.** Claude set them so the scale reads (pin 120 to light-up gown 1,800; Grand Final seat 6,000). Katey to confirm or replace them, and to say what a typical student earns in a year.
-- 🟠 **Band skins.** Katey asked for "LiFE skins"; the brief says the band has no brand name yet, so the site says "House band skin". Is the band now officially called LiFE?
+- ✅ **Band skins.** The bands are called LiFE bands (Katey, 3 Oct 2026), so the skin is a "House LiFE skin".
 - 🟠 **"Autumn 2077 collection"** uses UK English for Katey's "fall 2077". Is the collection's official name different?
 - 🟠 **Exhibition seat tiers** (Standard online free, Front-row stream, Season pass, Realm week seat, Realm week front row, Grand Final seat) are Claude's structure for Katey's ask. Confirm the tiers and whether point bidding for first picks is canon.
 - ⚪ The two islands that join the shore in the Settling are unnamed on the site, and the rebuild is headed "The rebuild" rather than a coined name.

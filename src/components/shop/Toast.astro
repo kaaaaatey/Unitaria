@@ -10,7 +10,7 @@
     const name = b.closest('li')?.querySelector('h3')?.textContent ?? 'It';
     toast.textContent = b.textContent?.includes('free')
       ? 'Standard access is already yours. Just tune in.'
-      : `${name} is waiting for you. Tap your band to confirm with points.`;
+      : `${name} is waiting for you. Tap your LiFE band to confirm with points.`;
     toast.style.opacity = '1';
     clearTimeout(t);
     t = window.setTimeout(() => { toast.style.opacity = '0'; }, 3200);

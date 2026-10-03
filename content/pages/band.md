@@ -1,6 +1,6 @@
 ---
-title: The Band
-description: No screen. Just light. The band that holds your whole world.
+title: The LiFE band
+description: No screen. Just light. The LiFE band holds your whole world.
 eyebrow: Introducing
 lede: No screen. Just light. Everything you need, floating above your open palm.
 sections:

@@ -3,7 +3,7 @@
 # The Academy collection is Katey's ask (3 Oct 2026). All points prices are DRAFTS for Katey,
 # pitched against canon anchors: everyday tasks pay 15–50 points; an Italian week costs 1,000.
 heading: The House Shop
-lede: Wear your house. Every piece is paid for in points, straight from your band.
+lede: Wear your house. Every piece is paid for in points, straight from your LiFE band.
 houses:
   Polaris:
     - { name: Midnight-blue scarf, points: 450, text: 'Knitted in midnight blue, edged in silver.' }
@@ -27,6 +27,6 @@ academy:
   items:
     - { name: House hoodie, points: 650, text: 'Heavyweight, in your house colours, with the compass star on the back.' }
     - { name: House notebook, points: 150, text: 'Lined, numbered and embossed with your house crest.' }
-    - { name: House band skin, points: 250, text: 'Dress your points profile in your house colours. Digital, and yours all year.', digital: true }
+    - { name: House LiFE skin, points: 250, text: 'Dress your points profile in your house colours. Digital, and yours all year.', digital: true }
 finePrint: Points expire every year, so spend them while they shine. Most points spent here flow back into your realm's community pot, to make Thanksmas brighter for everyone.
 ---

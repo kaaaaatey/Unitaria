@@ -209,7 +209,7 @@ const lights = [...dots.Amerope, ...dots.Afriopia, ...dots.Asioralia].filter((_,
         s.setProperty('--seam', String(settle));
         s.setProperty('--rails', String(rebuild));
         s.setProperty('--lights', String(rebuild));
-        s.setProperty('--names', String(emerged * (1 - mapped * 0.6)));
+        s.setProperty('--names', String(emerged * (1 - mapped * 0.25)));
         s.setProperty('--markers', String(mapped));
         root.classList.toggle('shaking', p > at('shake') - 0.5 && p < at('drift') - 0.3);
         root.classList.toggle('mapped', mapped > 0.5);
@@ -226,7 +226,7 @@ const lights = [...dots.Amerope, ...dots.Afriopia, ...dots.Asioralia].filter((_,
 
 <style>
   /* ---------- Static layout: finished map, then the story as text (no JS / reduced motion) ---------- */
-  .story { color: var(--color-ink); --isle: 0; --seam: 1; --rails: 1; --lights: 1; --names: 0.5; --markers: 1; }
+  .story { color: var(--color-ink); --isle: 0; --seam: 1; --rails: 1; --lights: 1; --names: 0.75; --markers: 1; }
   .story-stage { position: relative; height: min(70vh, 640px); overflow: hidden; }
   .story-sea {
     position: absolute; inset: 0;
@@ -256,7 +256,7 @@ const lights = [...dots.Amerope, ...dots.Afriopia, ...dots.Asioralia].filter((_,
   .isle-b { transform: translate(calc(var(--isle) * 90px), calc(var(--isle) * 70px)); }
   .rails line { stroke: #d9b36a; stroke-width: 2; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: calc(1 - var(--rails)); filter: drop-shadow(0 0 4px rgb(230 207 154 / 0.9)); }
   .lights circle { fill: #fff6dc; filter: drop-shadow(0 0 3px #f3dda3); animation: twinkle 4s ease-in-out infinite; animation-delay: calc(var(--n) * -0.45s); }
-  .continuent-names text { font: 500 13px var(--font-sans); letter-spacing: 0.4em; fill: var(--color-gold-deep); opacity: var(--names); }
+  .continuent-names text { font: 600 13px var(--font-sans); letter-spacing: 0.4em; fill: var(--color-gold-deep); opacity: var(--names); paint-order: stroke; stroke: #fff; stroke-width: 5px; stroke-linejoin: round; }
   .ripples circle { fill: none; stroke: #6f9cc4; stroke-width: 1.5; opacity: 0; transform-box: fill-box; transform-origin: center; }
   .story.shaking .ripples circle { animation: ripple 2.7s ease-out infinite; }
   .story.shaking .land { animation: quake 0.35s linear infinite; }
@@ -289,8 +289,10 @@ const lights = [...dots.Amerope, ...dots.Afriopia, ...dots.Asioralia].filter((_,
   @keyframes ping { 0% { transform: scale(0.6); opacity: 0.9; } 100% { transform: scale(1.6); opacity: 0; } }
   .marker-label {
     position: absolute; left: 0; top: 16px; transform: translateX(-50%); white-space: nowrap; pointer-events: none;
-    font: 500 clamp(0.6rem, 1.4vw, 1.15rem)/1 var(--font-display); color: var(--color-ink);
-    text-shadow: 0 1px 0 #fff, 0 0 12px #fff;
+    font: 500 clamp(0.62rem, 1.15vw, 0.95rem)/1 var(--font-display); color: var(--color-ink); letter-spacing: 0.01em;
+    padding: 0.32em 0.7em 0.38em; border-radius: 999px;
+    background: rgb(255 255 255 / 0.82); border: 1px solid rgb(198 161 91 / 0.35);
+    box-shadow: 0 4px 14px -6px rgb(30 40 60 / 0.35); backdrop-filter: blur(8px);
   }
   .realm-card {
     position: absolute; z-index: 5; left: 18px; top: -24px; width: min(18rem, 78vw); padding: 1.1rem 1.25rem; text-align: left;
