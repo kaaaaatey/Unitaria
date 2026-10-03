@@ -14,6 +14,7 @@ hero:
 intro:
   - "Picture the garden squares of Chelsea and Mayfair crossed with the lights of Times Square. Neuropa is grand without being loud: old-money simplicity, finished in luxury, with most homes choosing quiet improvements over showy ones. It is home to the Academy and the Exhibitions, and smaller Academies dot the realm, each wearing the Academy's colours."
   - "Here, intellect is the most valued thing a person can offer. You can see the realm's two great callings side by side: the bright screens of storytelling beside the hushed, grand halls of learning."
+placesHeading: "The heart of Unitaria"
 places:
   - name: "The Walk of Innovation"
     tagline: "Gardens and public lectures"

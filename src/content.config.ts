@@ -22,6 +22,7 @@ const realms = defineCollection({
     // Optional photography for a realm profile: one wide establishing shot, an intro, and its signature places.
     hero: z.object({ image: image(), alt: z.string() }).optional(),
     intro: z.array(z.string()).optional(),
+    placesHeading: z.string().optional(),
     places: z.array(z.object({ name: z.string(), tagline: z.string().optional(), text: z.string(), image: image(), alt: z.string() })).optional(),
   }),
 });

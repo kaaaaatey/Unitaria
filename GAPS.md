@@ -13,7 +13,7 @@ Source checked: the live World Bible doc (revision 391, exported 3 October 2026)
 | # | Clash | Where | Status |
 | --- | --- | --- | --- |
 | 1 | **Band name and update styling.** The brief says the band has no brand name (not "LiFE") and the update is "Recalibrate". The live Bible still says "The bands are called LiFE bands", has a "Decided: the update is branded REcalibrate" line, a "LiFE beta" marketing hook, a visual brief titled "The LiFE band", and "the LiFE interface" in Still to design. The PDF snapshot has neither. The site follows the brief until the Bible is updated. | Module 3 (Economy), Module 12 (visual briefs) | ✅ Name settled 3 Oct 2026: LiFE bands (Katey). Recalibrate styling still to confirm. |
-| 2 | **Is "Unitaria" the world's name?** It's the project's name, but the word never appears in the Bible. The single landmass has no name. The public site needs to know whether citizens call their world Unitaria. | Whole Bible | 🔴 Sprint 1 (Home) |
+| 2 | **Is "Unitaria" the world's name?** It's the project's name, but the word never appears in the Bible. The single landmass has no name. The public site needs to know whether citizens call their world Unitaria. | Whole Bible | 🟠 Leaning yes: Katey used it in-world twice on 3 Oct 2026 ("celebrate innovation across all of Unitaria"; Neuropa as "the heart of Unitaria", now on the site). Confirm before using it more widely. |
 | 3 | **Birthday points.** Module 12 says birthday points were scrapped; the duality ledger (Module 5) still lists "Birthday points just for existing". | Modules 5 and 12 | 🟠 Sprint 3 (Life in Unitaria) |
 | 4 | **Entry at 15 versus submission at 16.** "Every child enters at 15" and "at 15, every child must submit an entry to the wider network" (for Grand Academy selection), but also "every 16-year-old must submit something to the Exhibition". Are these two separate submissions (a selection entry at 15, an Exhibition project at 16), or one? | Module 3 | 🔴 Sprint 2 (The Academy) |
 | 5 | **Polaris and Aurora "mascots".** Module 3 says mascots are Aris, Aura, Lyr, Ori and that campus animals (Euclid, Ziggy) are separate. But the Polaris and Aurora house entries list Euclid and Ziggy under "Mascot". CANON.md treats them as campus animals; the Bible entries should be relabelled. | Module 7 | 🟠 Sprint 2 (Houses) |
@@ -98,6 +98,10 @@ Source checked: the live World Bible doc (revision 391, exported 3 October 2026)
 - 🟠 **"Autumn 2077 collection"** uses UK English for Katey's "fall 2077". Is the collection's official name different?
 - 🟠 **Exhibition seat tiers** (Standard online free, Front-row stream, Season pass, Realm week seat, Realm week front row, Grand Final seat) are Claude's structure for Katey's ask. Confirm the tiers and whether point bidding for first picks is canon.
 - ⚪ The two islands that join the shore in the Settling are unnamed on the site, and the rebuild is headed "The rebuild" rather than a coined name.
+
+### Story changes (3 Oct 2026)
+- ✅ Student submissions to the Exhibition are off the public site for now (Katey: they don't align with the full story). Removed from Home, the Academy page and the design system. CANON.md still records the Bible's submission idea.
+- 🟠 The Reconnection story on Home now tells the official account in full sentences (quakes, tsunamis, the cable blackout, the Drift, new land, losses of about 80%, the Restoration Corp, weapons dismantled, the Seven). It says "weapons of war", not "nuclear weapons", and leaves out the infections.
 
 ## 4. Spoiler boundary questions
 

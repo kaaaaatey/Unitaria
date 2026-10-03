@@ -10,4 +10,4 @@ timeline:
   - { when: 'Late July', title: 'Placement Day', text: 'Every sixteen-year-old receives an offer: a path of training in a realm hub. Accept it, or ask to be rehomed. Every path is a choice.' }
 cta: { label: 'Inside the Academy', href: '/academy', live: true }
 ---
-Every sixteen-year-old in the world submits something to the Exhibition: their growth, their passion, their best idea. Because the youngest minds are the most innovative, and every one of them deserves to be seen.
+Every spring, the whole world turns to the Academy. Eleven weeks of pomp, music and marvels, one realm at a time, broadcast across all three Continuents.
