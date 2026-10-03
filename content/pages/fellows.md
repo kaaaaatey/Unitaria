@@ -1,5 +1,5 @@
 ---
-title: Fellows
+title: The Fellows
 description: The Director, the Seven and the Fellows of the Academy.
 eyebrow: Fellows of the Academy
 lede: The people who carried the world through, and the legends who keep it moving.

@@ -6,7 +6,7 @@ import PageHero from '../../components/PageHero.astro';
 import { banners, houseOrder } from '../../data/banners';
 const houses = (await getCollection('houses')).sort((a, b) => houseOrder.indexOf(a.data.name) - houseOrder.indexOf(b.data.name));
 ---
-<Base title="Houses" description="Polaris, Aurora, Lyra and Orion: the Academy's four rules for the world.">
+<Base title="The Houses" description="Polaris, Aurora, Lyra and Orion: the Academy's four rules for the world.">
   <PageHero eyebrow="The four houses" title="Four rules for the world" lede="At the Compass Ceremony, the golden compass points every student to one of four houses, set at its four cardinal points. Your realm is where you're from. Your house is who you are." />
   <section class="night px-4 pb-24 sm:px-8">
     <ul class="mx-auto grid max-w-6xl grid-cols-4 gap-2 sm:gap-4 lg:gap-6">

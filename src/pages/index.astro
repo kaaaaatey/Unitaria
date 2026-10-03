@@ -44,7 +44,7 @@ const houseList = (await getCollection('houses')).sort((a, b) => houseOrder.inde
     </div>
     <figure class="hero-photo relative mx-auto mt-10 max-w-[1600px] sm:mt-14" data-hero-photo>
       <Image src={academyExterior} widths={[800, 1312]} sizes="(min-width: 1600px) 1600px, 100vw" loading="eager" fetchpriority="high"
-        alt="The Academy in Neuropa: a white marble and gold palace with a glass dome, slender towers, waterfalls and a long reflecting pool, above the sea at golden hour."
+        alt="The Academy in Neuropa: a white marble and gold palace with a glass dome, slender towers, waterfalls and a long reflecting pool, above the lake at golden hour."
         class="aspect-[4/3] w-full rounded-[1.75rem] object-cover object-[50%_40%] shadow-[0_40px_100px_-40px_rgb(26_29_43/0.5)] sm:aspect-[1312/500] sm:rounded-[2.25rem]" />
       <div class="hero-card glass-light relative -mt-12 sm:mx-auto sm:-mt-24 max-w-2xl px-6 py-7 text-left sm:px-10 sm:py-9">
         <div class="prose-world text-ink/80 sm:text-lg"><jubilee.Content /></div>
@@ -67,8 +67,8 @@ const houseList = (await getCollection('houses')).sort((a, b) => houseOrder.inde
     <div class="mx-auto max-w-6xl">
       <div class="text-center">
         <p class="eyebrow text-gold-deep">The Academy, Neuropa</p>
-        <h2 class="mt-4 text-[clamp(2.2rem,6vw,4.2rem)]">Marble, gold and the open sea</h2>
-        <p class="mx-auto mt-5 max-w-2xl text-ink/75 sm:text-lg">White marble and gold on clifftops above the sea, beneath a vast glass-and-gold dome. Step inside the seat of the world.</p>
+        <h2 class="mt-4 text-[clamp(2.2rem,6vw,4.2rem)]">Marble, gold and still water</h2>
+        <p class="mx-auto mt-5 max-w-2xl text-ink/75 sm:text-lg">White marble and gold on clifftops above the great lake, beneath a vast glass-and-gold dome. Step inside the seat of the world.</p>
       </div>
       <ul class="mt-14 grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-6">
         {gallery.map((g) => (

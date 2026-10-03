@@ -10,7 +10,7 @@ profile: true
 # Photography: Katey's Neuropa concept art (3 Oct 2026), cropped in assets/crops/neuropa-*.jpg.
 hero:
   image: ../../assets/crops/neuropa-overview.jpg
-  alt: "Neuropa at golden hour: domed marble palaces on a lagoon, garden islands and bridges, the city stretching to the sea."
+  alt: "Neuropa at golden hour: domed marble palaces on a lagoon, garden islands and bridges, the city stretching to the water's edge."
 intro:
   - "Picture the garden squares of Chelsea and Mayfair crossed with the lights of Times Square. Neuropa is grand without being loud: old-money simplicity, finished in luxury, with most homes choosing quiet improvements over showy ones. It is home to the Academy and the Exhibitions, and smaller Academies dot the realm, each wearing the Academy's colours."
   - "Here, intellect is the most valued thing a person can offer. You can see the realm's two great callings side by side: the bright screens of storytelling beside the hushed, grand halls of learning."

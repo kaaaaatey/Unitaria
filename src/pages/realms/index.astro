@@ -7,7 +7,7 @@ import FourPointStar from '../../components/motifs/FourPointStar.astro';
 const realms = (await getCollection('realms')).sort((a, b) => a.data.order - b.data.order);
 const groups = ['Amerope', 'Afriopia', 'Asioralia'].map((c) => ({ name: c, realms: realms.filter((r) => r.data.continuent === c) }));
 ---
-<Base title="Realms" description="The ten realms of Unitaria, and the North each one lives by.">
+<Base title="The Realms" description="The ten realms of Unitaria, and the North each one lives by.">
   <PageHero eyebrow="Ten realms" title="Every realm has its North" lede="Each realm was formed where cultures came together, and each lives by its own ethos. Two great callings pull against each other in every realm, and those callings are what its young people compete in at the Exhibition." />
 
   <div class="marble px-4 py-20 sm:px-8 sm:py-24">

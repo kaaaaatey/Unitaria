@@ -2,11 +2,11 @@
 export const nav = [
   { label: 'Home', href: '/', live: true },
   { label: 'The World', href: '/world', live: true },
-  { label: 'Realms', href: '/realms', live: true },
+  { label: 'The Realms', href: '/realms', live: true },
   { label: 'The Academy', href: '/academy', live: true },
-  { label: 'Houses', href: '/houses', live: true },
-  { label: 'LiFE band', href: '/band', live: true },
+  { label: 'The Houses', href: '/houses', live: true },
+  { label: 'The LiFE Band', href: '/band', live: true },
   { label: 'Life in Unitaria', href: '/life', live: true },
-  { label: 'Fellows', href: '/fellows', live: true },
+  { label: 'The Fellows', href: '/fellows', live: true },
   { label: 'The Compass', href: '/compass', live: true },
 ];
