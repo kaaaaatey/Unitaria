@@ -1,0 +1,54 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import FourPointStar from '../../components/motifs/FourPointStar.astro';
+
+const realms = (await getCollection('realms')).sort((a, b) => a.data.order - b.data.order);
+const groups = ['Amerope', 'Afriopia', 'Asioralia'].map((c) => ({ name: c, realms: realms.filter((r) => r.data.continuent === c) }));
+---
+<Base title="Realms" description="The ten realms of Unitaria, and the North each one lives by.">
+  <PageHero eyebrow="Ten realms" title="Every realm has its North" lede="Each realm was formed where cultures came together, and each lives by its own ethos. Two great callings pull against each other in every realm, and those callings are what its young people compete in at the Exhibition." />
+
+  <div class="marble px-4 py-20 sm:px-8 sm:py-24">
+    {groups.map((g) => (
+      <section class="mx-auto max-w-6xl [&+&]:mt-20" aria-labelledby={`c-${g.name}`}>
+        <h2 id={`c-${g.name}`} class="eyebrow text-gold-deep">{g.name}</h2>
+        <ul class="mt-6 grid gap-6 sm:grid-cols-2">
+          {g.realms.map(({ data: r }) => {
+            const slug = r.name.toLowerCase();
+            return (
+              <li id={slug} class="scroll-mt-24">
+                <article class="flex h-full flex-col rounded-sm border border-gold/40 bg-marble/80 p-6 sm:p-8">
+                  <div class="flex items-baseline justify-between gap-4">
+                    <h3 class="text-4xl">{r.name}</h3>
+                    <span class="font-display text-xl text-gold-deep" aria-label={`Realm ${r.order}`}>{String(r.order).padStart(2, '0')}</span>
+                  </div>
+                  <p class="mt-2 text-sm text-ink/60">{r.fused}</p>
+                  <p class="mt-4">{r.terrain}.</p>
+                  <dl class="mt-6 grid gap-4 text-sm">
+                    <div>
+                      <dt class="eyebrow text-[0.62rem] text-gold-deep">Exhibition callings</dt>
+                      <dd class="mt-1">{r.duality[0]} <span class="text-gold-deep">and</span> {r.duality[1]}</dd>
+                    </div>
+                    <div>
+                      <dt class="eyebrow text-[0.62rem] text-gold-deep">North</dt>
+                      <dd class="mt-1"><span class="font-medium">{r.north.value}.</span> <em class="font-display text-lg">{r.north.motto}</em>, “{r.north.translation}”</dd>
+                    </div>
+                  </dl>
+                  <div class="mt-auto pt-6">
+                    {r.profile ? (
+                      <a href={`/realms/${slug}`} class="btn btn-ghost">Visit {r.name}</a>
+                    ) : (
+                      <p class="flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-ink/50"><FourPointStar size={10} /> Full profile soon</p>
+                    )}
+                  </div>
+                </article>
+              </li>
+            );
+          })}
+        </ul>
+      </section>
+    ))}
+  </div>
+</Base>

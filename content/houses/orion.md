@@ -1,14 +1,55 @@
 ---
-name: Orion
-direction: West
-bearing: 90°W
-rule: Courage
-creed: We dare, so the world may dream.
-motto: Ad augusta per angusta
-mottoTranslation: To great heights, through narrow paths.
-element: Earth
-season: Autumn
-mascot: { name: Ori, creature: snow leopard }
-colours: [Onyx, Gold]
+name: "Orion"
+direction: "West"
+bearing: "90°W"
+rule: "Courage"
+creed: "We dare, so the world may dream."
+motto: "Ad augusta per angusta"
+mottoTranslation: "To great heights, through narrow paths."
+element: "Earth"
+season: "Autumn"
+colours: ["Onyx", "Gold"]
+theme: 
+  bg: "#0b0b0b"
+  fg: "#f4efe8"
+  accent: "#c6a15b"
+crest: "A faceted, geometric snow leopard’s head in fine gold line inside a circle, beneath the three stars of Orion’s belt."
+creature: "The snow leopard, the bold climber of the world’s most dangerous mountains, native to the Himalayas, now Himalindia."
+mascot: 
+  name: "Ori"
+  creature: "snow leopard"
+  description: "All big paws and an enormous fluffy tail."
+relic: "The climbing rope from the first Orion Fellow’s first rescue, hung in the common room."
+flower: "Edelweiss"
+gemstone: "Onyx"
+pin: "Three gold stars in a row: Orion’s belt"
+best: "Brave, bold, decisive and protective: first to act, steady under pressure, natural leaders."
+worst: "Reckless, arrogant, impatient, hungry for glory, unable to admit fear."
+stereotype: "Glory-hunters, cold, only out for themselves. Admired, and quietly feared."
+founder: "The first Orion Fellow, who led rescue teams during the Shake."
+head: "A former Restoration Corp commander, stern but beloved."
+alumni: "Leaders, explorers, Restoration Corp commanders and Persovia’s space pioneers."
+wing: "The West Tower, facing the sunset."
+commonRoom: "The Summit, at the top of the tower, with a climbing wall and panoramic views."
+signatureSpace: "The training grounds."
+hall: "The west end, beneath the great sunset window."
+welcome: 
+  name: "The Climb"
+  text: "New members climb the West Tower’s outer stair at night to ring the bell at the top."
+oath: "Ad augusta per angusta. We dare, so the world may dream."
 chant: "Bold, daring and fearless are we, / Orion pushes further than the eye can see!"
+celebration: 
+  name: "The Hunter’s Moon"
+  text: "An autumn festival of feats and challenges."
+secret: "A hidden wall of names at the top of the tower, for the Orions who dared too far and never came back."
+pointsFrom: "Challenges, leadership, rescues, sport and risky innovation."
+event: 
+  name: "The Ascent"
+  text: "A race up the outside of the Academy’s tower."
+rivals: "Lyra (bold against gentle) and Polaris (doers against thinkers)."
+cause: "Rescue work and exploring frontiers, from Restoration Corp missions to Persovia’s space programme."
+nickname: "Trailblazers"
+merch: "Onyx and gold scarves, Ori plushies, belt-star pins."
+youKnow: "You say yes before hearing the question, you always volunteer first, and you’ve definitely climbed something you shouldn’t have."
+mood: "Autumn dusk, mountain heights, strength and nerve."
 ---

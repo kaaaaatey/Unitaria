@@ -7,6 +7,7 @@ import FourPointStar from '../components/motifs/FourPointStar.astro';
 import StarRule from '../components/motifs/StarRule.astro';
 import Starfield from '../components/motifs/Starfield.astro';
 import Cta from '../components/Cta.astro';
+import Timeline from '../components/Timeline.astro';
 import academyHero from '../../assets/crops/academy-hero.jpg';
 import bPolaris from '../../assets/crops/banner-polaris.jpg';
 import bAurora from '../../assets/crops/banner-aurora.jpg';
@@ -94,19 +95,7 @@ const houseList = (await getCollection('houses')).sort((a, b) => houseOrder.inde
         <h2 class="mt-4 text-[clamp(2.2rem,6vw,4rem)]">{season.heading}</h2>
         <div class="prose-world mx-auto mt-6 text-lg [&_p]:mx-auto"><season.Content /></div>
       </div>
-      <ol class="relative mx-auto mt-16 max-w-3xl">
-        <span class="absolute bottom-3 left-[11px] top-3 w-px bg-gradient-to-b from-gold/0 via-gold to-gold/0 sm:left-1/2" aria-hidden="true"></span>
-        {season.timeline?.map((t, i) => (
-          <li class={`relative pb-12 pl-12 last:pb-0 sm:w-1/2 sm:pl-0 ${i % 2 ? 'sm:ml-auto sm:pl-12' : 'sm:pr-12 sm:text-right'}`}>
-            <span class={`absolute top-1 grid h-6 w-6 place-items-center rounded-full bg-marble text-gold-deep ring-1 ring-gold left-0 ${i % 2 ? 'sm:-left-3' : 'sm:left-auto sm:-right-3'}`}>
-              <FourPointStar size={12} />
-            </span>
-            <p class="eyebrow text-gold-deep">{t.when}</p>
-            <h3 class="mt-2 text-3xl">{t.title}</h3>
-            <p class="mt-2 text-ink/80">{t.text}</p>
-          </li>
-        ))}
-      </ol>
+      <div class="mt-16">{season.timeline && <Timeline items={season.timeline} />}</div>
       {season.cta && <div class="mt-16 text-center"><Cta {...season.cta} /></div>}
     </div>
   </section>
@@ -138,7 +127,7 @@ const houseList = (await getCollection('houses')).sort((a, b) => houseOrder.inde
     <ul class="mx-auto mt-14 flex max-w-6xl snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-6 sm:px-8 lg:grid lg:grid-cols-4 lg:overflow-visible">
       {houseList.map(({ data: h }) => (
         <li class="w-[68vw] max-w-[300px] shrink-0 snap-center lg:w-auto lg:max-w-none">
-          <figure class="group">
+          <a href={`/houses/${h.name.toLowerCase()}`} class="group block"><figure>
             <Image src={banners[h.name]} widths={[300, 447]} sizes="(min-width: 1024px) 25vw, 68vw"
               alt={`${h.name}, House of the ${h.direction}: ${h.rule}. "${h.creed}" ${h.element}. ${h.motto}. ${h.bearing}.`}
               class="aspect-[447/1197] w-full rounded-sm shadow-2xl shadow-black/50 ring-1 ring-gold/20 transition duration-700 group-hover:-translate-y-2 group-hover:shadow-[0_20px_60px_rgb(198_161_91/0.25)]" />
@@ -146,7 +135,7 @@ const houseList = (await getCollection('houses')).sort((a, b) => houseOrder.inde
               <span class="eyebrow block text-gold-light">{h.name}</span>
               <span class="mt-1 block font-display text-lg italic text-starlight/70">{h.motto}</span>
             </figcaption>
-          </figure>
+          </figure></a>
         </li>
       ))}
     </ul>

@@ -1,0 +1,36 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+
+export async function getStaticPaths() {
+  const realms = await getCollection('realms', (r) => r.data.profile);
+  return realms.map((entry) => ({ params: { slug: entry.data.name.toLowerCase() }, props: { entry } }));
+}
+const { entry } = Astro.props;
+const r = entry.data;
+const { Content } = await render(entry);
+---
+<Base title={r.name} description={`The Realm of ${r.name}: ${r.terrain}.`}>
+  <PageHero eyebrow={`${r.continuent} · Realm ${r.order} of 10`} title={r.name} lede={`${r.north.value}. ${r.north.motto}: “${r.north.translation}”`}>
+    <p class="mx-auto mt-4 max-w-xl text-sm text-starlight/60">Formed from {r.fused}.</p>
+  </PageHero>
+  <section class="marble px-4 py-20 sm:px-8 sm:py-24">
+    <div class="mx-auto mb-14 grid max-w-3xl gap-px overflow-hidden rounded-sm border border-gold/40 bg-gold/40 sm:grid-cols-2">
+      {r.duality.map((d, i) => (
+        <div class="bg-marble p-6 text-center">
+          <p class="eyebrow text-[0.62rem] text-gold-deep">Calling {i === 0 ? 'one' : 'two'}</p>
+          <p class="mt-2 font-display text-2xl">{d}</p>
+        </div>
+      ))}
+    </div>
+    <article class="prose-world mx-auto max-w-3xl text-lg
+      [&_h2]:mb-6 [&_h2]:mt-16 [&_h2]:text-[clamp(2rem,5vw,3rem)] [&_h2:first-child]:mt-0
+      [&_ul]:mt-4 [&_ul+p]:mt-6 [&_ul]:space-y-3 [&_ul]:pl-0 [&_li]:list-none [&_li]:border-l [&_li]:border-gold/50 [&_li]:pl-4
+      [&_table]:mt-8 [&_table]:w-full [&_table]:text-base [&_th]:border-b [&_th]:border-gold/60 [&_th]:pb-2 [&_th]:text-left [&_th]:font-display [&_th]:text-xl [&_th]:font-normal
+      [&_td]:border-b [&_td]:border-vein [&_td]:py-2 [&_td:last-child]:text-right [&_td:last-child]:tabular-nums [&_th:last-child]:text-right">
+      <Content />
+    </article>
+    <p class="mt-16 text-center"><a href="/realms" class="btn btn-ghost">All ten realms</a></p>
+  </section>
+</Base>

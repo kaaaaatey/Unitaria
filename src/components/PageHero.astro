@@ -1,0 +1,15 @@
+---
+import Starfield from './motifs/Starfield.astro';
+import StarRule from './motifs/StarRule.astro';
+interface Props { eyebrow?: string; title: string; lede?: string }
+const { eyebrow, title, lede } = Astro.props;
+---
+<section class="night relative isolate overflow-hidden px-4 pb-20 pt-32 text-center sm:px-8 sm:pb-24 sm:pt-40">
+  <Starfield count={50} seed={title.length} />
+  <slot name="art" />
+  {eyebrow && <p class="eyebrow text-gold-light">{eyebrow}</p>}
+  <h1 class="display mx-auto mt-5 max-w-4xl text-[clamp(2.4rem,8vw,5.2rem)] leading-[1] tracking-[0.1em] text-balance">{title}</h1>
+  <StarRule class="mx-auto mt-8 max-w-56" />
+  {lede && <p class="mx-auto mt-8 max-w-2xl text-lg text-starlight/80">{lede}</p>}
+  <slot />
+</section>

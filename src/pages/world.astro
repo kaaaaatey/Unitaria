@@ -1,0 +1,52 @@
+---
+import { getCollection, getEntry, render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import WorldChart from '../components/WorldChart.astro';
+import Timeline from '../components/Timeline.astro';
+import Cta from '../components/Cta.astro';
+import { worldTimeline } from '../data/world';
+
+const page = (await getEntry('pages', 'world'))!;
+const { Content } = await render(page);
+const realms = (await getCollection('realms')).sort((a, b) => a.data.order - b.data.order);
+const continuents = ['Amerope', 'Afriopia', 'Asioralia'].map((c) => ({
+  name: c, realms: realms.filter((r) => r.data.continuent === c),
+}));
+---
+<Base title={page.data.title} description={page.data.description}>
+  <PageHero eyebrow="Fifty years reconnected" title="One world" lede="One landmass. Three Continuents. Ten realms. Every culture on every doorstep." />
+
+  <section class="marble px-4 py-20 sm:px-8 sm:py-28">
+    <div class="prose-world mx-auto max-w-3xl text-lg [&_h2]:mb-6 [&_h2]:mt-14 [&_h2]:text-[clamp(2rem,5vw,3rem)] [&_h2:first-child]:mt-0 [&_li]:mt-2 [&_ul]:mt-4 [&_ul]:space-y-1">
+      <Content />
+    </div>
+  </section>
+
+  <section class="night px-4 py-20 sm:px-8 sm:py-28">
+    <div class="text-center">
+      <p class="eyebrow text-gold-light">The map</p>
+      <h2 class="display mt-4 text-[clamp(2rem,6vw,3.5rem)] tracking-[0.1em]">Three Continuents</h2>
+    </div>
+    <div class="mt-12"><WorldChart /></div>
+    <div class="mx-auto mt-16 grid max-w-5xl gap-10 sm:grid-cols-3">
+      {continuents.map((c) => (
+        <div class="text-center">
+          <p class="eyebrow text-gold-light">{c.name}</p>
+          <ul class="mt-4 space-y-1 font-display text-xl">
+            {c.realms.map((r) => <li>{r.data.name}</li>)}
+          </ul>
+        </div>
+      ))}
+    </div>
+    <div class="mt-14 text-center"><Cta label="Visit the realms" href="/realms" variant="gold" /></div>
+  </section>
+
+  <section class="marble px-4 py-20 sm:px-8 sm:py-28">
+    <div class="text-center">
+      <p class="eyebrow text-gold-deep">Fifty years</p>
+      <h2 class="mt-4 text-[clamp(2rem,5vw,3.5rem)]">From the Shake to the Jubilee</h2>
+    </div>
+    <div class="mt-14"><Timeline items={worldTimeline} /></div>
+  </section>
+</Base>

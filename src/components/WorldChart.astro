@@ -1,0 +1,50 @@
+---
+// A schematic chart of the realms, drawn like a star map. Not a geographic map:
+// positions only suggest west-to-east order. Real map art is still a gap (GAPS.md).
+import { getCollection } from 'astro:content';
+const realms = await getCollection('realms');
+const pos: Record<string, [number, number]> = {
+  Scandinada: [200, 90], Neuropa: [250, 200], Cariberia: [170, 320], Andongo: [320, 430],
+  Mediterrania: [480, 230], Safarabia: [560, 400],
+  Persovia: [650, 130], Himalindia: [720, 290], Shangokyo: [850, 190], Indostralia: [830, 430],
+};
+const links = [
+  ['Scandinada', 'Neuropa'], ['Neuropa', 'Cariberia'], ['Cariberia', 'Andongo'], ['Neuropa', 'Mediterrania'],
+  ['Andongo', 'Safarabia'], ['Mediterrania', 'Safarabia'], ['Mediterrania', 'Persovia'], ['Persovia', 'Himalindia'],
+  ['Persovia', 'Shangokyo'], ['Himalindia', 'Shangokyo'], ['Himalindia', 'Indostralia'], ['Safarabia', 'Himalindia'],
+];
+const continuents = [
+  { name: 'AMEROPE', cx: 235, cy: 265, rx: 175, ry: 230 },
+  { name: 'AFRIOPIA', cx: 520, cy: 315, rx: 110, ry: 175 },
+  { name: 'ASIORALIA', cx: 760, cy: 280, rx: 185, ry: 230 },
+];
+---
+<figure class="mx-auto max-w-5xl">
+  <div class="overflow-x-auto">
+    <svg viewBox="0 0 1000 560" class="min-w-[640px] text-gold" aria-labelledby="chart-title chart-desc">
+      <title id="chart-title">The ten realms of the three Continuents</title>
+      <desc id="chart-desc">A schematic star chart. Amerope in the west holds Scandinada, Neuropa, Cariberia and Andongo. Afriopia in the middle holds Mediterrania and Safarabia. Asioralia in the east holds Persovia, Himalindia, Shangokyo and Indostralia. Gold lines show monorail links.</desc>
+      {continuents.map((c) => (
+        <g>
+          <ellipse cx={c.cx} cy={c.cy} rx={c.rx} ry={c.ry} fill="currentColor" fill-opacity="0.04" stroke="currentColor" stroke-opacity="0.35" stroke-dasharray="2 6" />
+          <text x={c.cx} y={c.cy - c.ry + 26} text-anchor="middle" font-size="13" letter-spacing="6" fill="currentColor" fill-opacity="0.8" style="font-family: var(--font-sans)">{c.name}</text>
+        </g>
+      ))}
+      {links.map(([a, b]) => (
+        <line x1={pos[a][0]} y1={pos[a][1]} x2={pos[b][0]} y2={pos[b][1]} stroke="currentColor" stroke-opacity="0.45" stroke-width="1" />
+      ))}
+      {realms.map(({ data: r }) => {
+        const [x, y] = pos[r.name];
+        const href = r.profile ? `/realms/${r.name.toLowerCase()}` : '/realms#' + r.name.toLowerCase();
+        return (
+          <a href={href} class="group" aria-label={r.name}>
+            <circle cx={x} cy={y} r="18" fill="currentColor" fill-opacity="0.08" class="transition group-hover:fill-opacity-25" />
+            <path transform={`translate(${x} ${y}) scale(0.9)`} d="M0 -10 C0.9 -2.2 2.2 -0.9 10 0 C2.2 0.9 0.9 2.2 0 10 C-0.9 2.2 -2.2 0.9 -10 0 C-2.2 -0.9 -0.9 -2.2 0 -10Z" fill="currentColor" />
+            <text x={x} y={y + 38} text-anchor="middle" font-size="20" fill="var(--color-starlight)" style="font-family: var(--font-display)">{r.name}</text>
+          </a>
+        );
+      })}
+    </svg>
+  </div>
+  <figcaption class="mt-4 text-center text-sm text-starlight/60">A schematic chart, not to scale. Tap a realm to visit it.</figcaption>
+</figure>

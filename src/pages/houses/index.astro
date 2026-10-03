@@ -1,0 +1,28 @@
+---
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import { banners, houseOrder } from '../../data/banners';
+const houses = (await getCollection('houses')).sort((a, b) => houseOrder.indexOf(a.data.name) - houseOrder.indexOf(b.data.name));
+---
+<Base title="Houses" description="Polaris, Aurora, Lyra and Orion: the Academy's four rules for the world.">
+  <PageHero eyebrow="The four houses" title="Four rules for the world" lede="At the Compass Ceremony, the golden compass points every student to one of four houses, set at its four cardinal points. Your realm is where you're from. Your house is who you are." />
+  <section class="night px-4 pb-24 sm:px-8">
+    <ul class="mx-auto grid max-w-6xl grid-cols-2 gap-4 sm:gap-6 lg:grid-cols-4">
+      {houses.map(({ data: h }) => (
+        <li>
+          <a href={`/houses/${h.name.toLowerCase()}`} class="group block">
+            <Image src={banners[h.name]} widths={[300, 447]} sizes="(min-width: 1024px) 25vw, 50vw"
+              alt={`${h.name}, House of the ${h.direction}. ${h.rule}: "${h.creed}"`}
+              class="aspect-[447/1197] w-full rounded-sm shadow-2xl shadow-black/50 ring-1 ring-gold/20 transition duration-700 group-hover:-translate-y-2 group-hover:shadow-[0_20px_60px_rgb(198_161_91/0.3)]" />
+            <span class="mt-4 block text-center">
+              <span class="eyebrow block text-gold-light">{h.name} · {h.bearing}</span>
+              <span class="mt-1 block font-display text-lg italic text-starlight/75">{h.nickname}</span>
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+</Base>

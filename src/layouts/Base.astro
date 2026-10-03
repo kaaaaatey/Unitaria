@@ -2,8 +2,8 @@
 import '../styles/global.css';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
-interface Props { title: string; description?: string }
-const { title, description = 'Unitaria: one world, three Continuents, ten realms.' } = Astro.props;
+interface Props { title: string; description?: string; lightHero?: boolean }
+const { title, description = 'Unitaria: one world, three Continuents, ten realms.', lightHero = false } = Astro.props;
 const fullTitle = title === 'Unitaria' ? title : `${title} · Unitaria`;
 ---
 <!doctype html>
@@ -20,7 +20,7 @@ const fullTitle = title === 'Unitaria' ? title : `${title} · Unitaria`;
   </head>
   <body class="antialiased">
     <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded focus:bg-gold focus:px-4 focus:py-2 focus:text-midnight">Skip to content</a>
-    <SiteHeader />
+    <SiteHeader light={lightHero} />
     <main id="main"><slot /></main>
     <SiteFooter />
     <script>

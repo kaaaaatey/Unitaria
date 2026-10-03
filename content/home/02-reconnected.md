@@ -7,7 +7,7 @@ stats:
   - { value: '3', label: 'Continuents' }
   - { value: '10', label: 'Realms' }
   - { value: '50', label: 'Years' }
-cta: { label: 'Explore the world', href: '/world', live: false }
+cta: { label: 'Explore the world', href: '/world', live: true }
 ---
 On 7 May 2027, an undersea catastrophe beyond any human control shook the Earth. Over hours came the Shake. Over months came the Drift. Over years came the Settling.
 

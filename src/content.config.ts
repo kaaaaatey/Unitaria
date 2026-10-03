@@ -16,11 +16,13 @@ const realms = defineCollection({
     fused: z.string(),
     terrain: z.string(),
     duality: z.tuple([z.string(), z.string()]),
+    dualityTagline: z.string().optional(),
     north: z.object({ value: z.string(), motto: z.string(), translation: z.string() }),
     profile: z.boolean().default(false), // true once a full realm profile is decided
   }),
 });
 
+const named = z.object({ name: z.string(), text: z.string() });
 const houses = defineCollection({
   loader: glob({ pattern: '**/*.{md,mdx}', base: './content/houses' }),
   schema: z.object({
@@ -33,9 +35,39 @@ const houses = defineCollection({
     mottoTranslation: z.string(),
     element: z.string(),
     season: z.string(),
-    mascot: z.object({ name: z.string(), creature: z.string() }),
     colours: z.array(z.string()),
-    chant: z.string().optional(),
+    theme: z.object({ bg: z.string(), fg: z.string(), accent: z.string() }), // lookbook page colours
+    mood: z.string().optional(),
+    crest: z.string(),
+    creature: z.string(),
+    mascot: z.object({ name: z.string(), creature: z.string(), description: z.string().optional() }),
+    campusAnimals: z.string().optional(),
+    relic: z.string().optional(),
+    flower: z.string(),
+    gemstone: z.string(),
+    pin: z.string(),
+    best: z.string(),
+    worst: z.string(),
+    stereotype: z.string(),
+    founder: z.string(),
+    head: z.string(),
+    alumni: z.string(),
+    wing: z.string(),
+    commonRoom: z.string(),
+    signatureSpace: z.string(),
+    hall: z.string(),
+    welcome: named,
+    oath: z.string(),
+    chant: z.string(),
+    celebration: named,
+    secret: z.string(),
+    pointsFrom: z.string(),
+    event: named,
+    rivals: z.string(),
+    cause: z.string(),
+    nickname: z.string(),
+    merch: z.string(),
+    youKnow: z.string(),
   }),
 });
 
