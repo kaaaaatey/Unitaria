@@ -35,7 +35,7 @@ const groups = [
 ---
 <Base title={h.name} description={`${h.name}, House of the ${h.direction}. ${h.rule}: "${h.creed}"`}>
   <div style={`--h-bg:${h.theme.bg};--h-fg:${h.theme.fg};--h-accent:${h.theme.accent}`}>
-    <section class="relative overflow-hidden px-4 pb-20 pt-16 sm:px-8 sm:pt-24" style="background:var(--h-bg);color:var(--h-fg)">
+    <section class="relative overflow-hidden px-4 pb-20 pt-16 sm:px-8 sm:pt-24 lg:pt-36" style="background:var(--h-bg);color:var(--h-fg)">
       <div class="mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-[1fr_minmax(0,340px)]">
         <div class="text-center md:text-left">
           <p class="eyebrow" style="color:var(--h-accent)">House of the {h.direction} · {h.bearing}</p>
@@ -51,7 +51,7 @@ const groups = [
         </div>
         <Image src={banners[h.name]} widths={[340, 447]} sizes="340px" loading="eager"
           alt={`The ${h.name} banner: ${h.crest}`}
-          class="mx-auto aspect-[447/1197] w-[min(70vw,340px)] rounded-sm shadow-2xl shadow-black/40" />
+          data-tilt class="mx-auto aspect-[447/1197] w-[min(70vw,340px)] rounded-xl shadow-2xl shadow-black/40" />
       </div>
     </section>
 
@@ -68,7 +68,7 @@ const groups = [
         <h2 class="eyebrow text-center text-gold-deep">Rituals</h2>
         <ul class="mt-8 grid gap-6 md:grid-cols-3">
           {[['Welcome', h.welcome], ['Celebration', h.celebration], ['Secret tradition', { name: 'Only members know', text: h.secret }]].map(([label, r]: any) => (
-            <li class="rounded-sm border border-gold/40 bg-marble p-6">
+            <li class="glass-light p-7">
               <p class="eyebrow text-[0.62rem] text-gold-deep">{label}</p>
               <h3 class="mt-2 text-2xl">{r.name}</h3>
               <p class="mt-2">{r.text}</p>

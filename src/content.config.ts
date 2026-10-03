@@ -120,6 +120,7 @@ const home = defineCollection({
     subheading: z.string().optional(),
     stats: z.array(z.object({ value: z.string(), label: z.string() })).optional(),
     timeline: z.array(z.object({ when: z.string(), title: z.string(), text: z.string() })).optional(),
+    steps: z.array(z.object({ id: z.string(), when: z.string(), title: z.string(), text: z.string() })).optional(),
     cta: z.object({ label: z.string(), href: z.string(), live: z.boolean().default(false) }).optional(),
   }),
 });

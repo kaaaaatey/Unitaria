@@ -22,14 +22,18 @@ const fullTitle = title === 'Unitaria' ? title : `${title} · Unitaria`;
     {ogImage && <meta property="og:image" content={ogImage} />}
     <meta name="twitter:card" content={ogImage ? 'summary_large_image' : 'summary'} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <script is:inline>document.documentElement.classList.add('js');</script>
   </head>
   <body class="antialiased">
     <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded focus:bg-gold focus:px-4 focus:py-2 focus:text-midnight">Skip to content</a>
     <main id="main">{nav && <NavBar />}<slot /></main>
     <SiteFooter />
     <script>
+      const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
+
       // Slow parallax for anything marked data-parallax="0.2" (fraction of scroll).
-      if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      if (!still) {
         const els = [...document.querySelectorAll<HTMLElement>('[data-parallax]')];
         let ticking = false;
         const update = () => {
@@ -37,6 +41,50 @@ const fullTitle = title === 'Unitaria' ? title : `${title} · Unitaria`;
           ticking = false;
         };
         window.addEventListener('scroll', () => { if (!ticking) { requestAnimationFrame(update); ticking = true; } }, { passive: true });
+      }
+
+      // Scroll reveals: tag readable blocks in each section, stagger siblings, rise in as they arrive.
+      const blocks = 'h1, h2, h3, p, li, dl, figure, table, blockquote, .btn, .glass, .glass-light, [data-reveal-me]';
+      const tagged: HTMLElement[] = [];
+      document.querySelectorAll<HTMLElement>(`main section :is(${blocks})`).forEach((el) => {
+        if (el.closest('nav, [data-no-reveal], [hidden]') || el.parentElement?.closest('[data-reveal]')) return;
+        if (getComputedStyle(el).position === 'absolute') return;
+        const siblings = [...(el.parentElement?.children ?? [])].filter((c) => c.hasAttribute('data-reveal'));
+        el.dataset.reveal = '';
+        el.style.setProperty('--i', String(Math.min(siblings.length, 8)));
+        tagged.push(el);
+      });
+      const io = new IntersectionObserver((entries) => {
+        for (const e of entries) if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+      }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+      tagged.forEach((el) => io.observe(el));
+
+      // A soft light that follows the pointer across glass panels.
+      if (fine) {
+        document.addEventListener('pointermove', (e) => {
+          const g = (e.target as Element)?.closest?.<HTMLElement>('.glass, .glass-light');
+          if (!g) return;
+          const r = g.getBoundingClientRect();
+          g.style.setProperty('--mx', `${e.clientX - r.left}px`);
+          g.style.setProperty('--my', `${e.clientY - r.top}px`);
+        }, { passive: true });
+      }
+
+      // Gentle 3D tilt for showpiece images (house banners).
+      if (fine && !still) {
+        document.querySelectorAll<HTMLElement>('[data-tilt]').forEach((el) => {
+          el.style.transition = 'transform 0.8s cubic-bezier(0.22, 1, 0.36, 1)';
+          el.addEventListener('pointermove', (e) => {
+            const r = el.getBoundingClientRect();
+            const x = (e.clientX - r.left) / r.width - 0.5, y = (e.clientY - r.top) / r.height - 0.5;
+            el.style.transition = 'transform 0.15s ease-out';
+            el.style.transform = `perspective(900px) rotateY(${x * 10}deg) rotateX(${-y * 8}deg) translateY(-6px)`;
+          });
+          el.addEventListener('pointerleave', () => {
+            el.style.transition = 'transform 0.8s cubic-bezier(0.22, 1, 0.36, 1)';
+            el.style.transform = '';
+          });
+        });
       }
     </script>
   </body>

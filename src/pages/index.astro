@@ -2,14 +2,19 @@
 import { getCollection, render } from 'astro:content';
 import { Image } from 'astro:assets';
 import Base from '../layouts/Base.astro';
-import Compass from '../components/motifs/Compass.astro';
 import FourPointStar from '../components/motifs/FourPointStar.astro';
-import StarRule from '../components/motifs/StarRule.astro';
 import Starfield from '../components/motifs/Starfield.astro';
 import Cta from '../components/Cta.astro';
 import NavBar from '../components/NavBar.astro';
 import Timeline from '../components/Timeline.astro';
-import academyHero from '../../assets/crops/academy-hero.jpg';
+import academyExterior from '../../assets/crops/academy-exterior.jpg';
+import greatHall from '../../assets/crops/academy-great-hall.jpg';
+import roundTable from '../../assets/crops/academy-round-table.jpg';
+import library from '../../assets/crops/academy-library.jpg';
+import galleryHall from '../../assets/crops/academy-gallery-hall.jpg';
+import seaView from '../../assets/crops/academy-sea-view.jpg';
+import ReconnectStory from '../components/ReconnectStory.astro';
+import CompassStar from '../components/motifs/CompassStar.astro';
 import bPolaris from '../../assets/crops/banner-polaris.jpg';
 import bAurora from '../../assets/crops/banner-aurora.jpg';
 import bLyra from '../../assets/crops/banner-lyra.jpg';
@@ -21,71 +26,89 @@ const byId = Object.fromEntries(
 );
 const { jubilee, reconnected, noise, season, seven, houses } = byId;
 
+// Captions from CANON.md (the building). Spans make a magazine-style grid on wide screens.
+const gallery = [
+  { img: greatHall, title: 'The Great Hall', text: 'Soaring arches, house banners and a towering column of light.', span: 'col-span-2 lg:col-span-4 lg:row-span-2', sizes: '(min-width: 1024px) 760px, 100vw', alt: 'The Great Hall: soaring white arches, tall banners and a glass column of light, with students crossing a polished marble floor.' },
+  { img: roundTable, title: 'The round table', text: 'Beneath the star-map dome, flanked by marble statues.', span: 'col-span-2 lg:col-span-2', sizes: '(min-width: 1024px) 380px, 100vw', alt: 'A round table beneath a glass dome etched with a star map, flanked by marble statues, with arches open to the sea.' },
+  { img: seaView, title: 'Arches onto the sea', text: 'A distant city of spires across the water.', span: 'col-span-2 lg:col-span-2', sizes: '(min-width: 1024px) 380px, 100vw', alt: 'Tall arched windows opening onto a calm sea at sunset, with a distant city of spires and hovercraft in the sky.' },
+  { img: library, title: 'The Grand Library', text: 'Ladders, glowing golden globes and long reading tables.', span: 'col-span-1 lg:col-span-3', sizes: '(min-width: 1024px) 570px, 50vw', alt: 'The Grand Library: wooden stacks with ladders, a glowing golden globe and long reading tables.' },
+  { img: galleryHall, title: 'The long gallery', text: 'Golden armillary spheres, and light at every turn.', span: 'col-span-1 lg:col-span-3', sizes: '(min-width: 1024px) 570px, 50vw', alt: 'A long marble gallery with golden armillary spheres, trees in planters and arches of light.' },
+];
+
 const houseOrder = ['Polaris', 'Aurora', 'Lyra', 'Orion'];
 const banners = { Polaris: bPolaris, Aurora: bAurora, Lyra: bLyra, Orion: bOrion };
 const houseList = (await getCollection('houses')).sort((a, b) => houseOrder.indexOf(a.data.name) - houseOrder.indexOf(b.data.name));
 ---
 <Base nav={false} title="Unitaria" description="The Golden Jubilee: the 50th Reconnection Day, 7 May 2077.">
-  <!-- Hero: the Golden Jubilee -->
-  <section class="night relative isolate flex min-h-dvh items-center overflow-hidden px-4 py-20 sm:px-8">
-    <div class="absolute inset-0 -z-10" data-parallax="0.25">
-      <Image src={academyHero} alt="" widths={[800, 1312]} sizes="100vw" loading="eager"
-        class="h-[120%] w-full object-cover object-top opacity-40" />
-      <div class="absolute inset-0 bg-gradient-to-b from-midnight/40 via-midnight/70 to-midnight"></div>
-    </div>
-    <Starfield />
-    <div class="mx-auto flex max-w-4xl flex-col items-center text-center">
-      <p class="eyebrow text-gold-light">{jubilee.eyebrow}</p>
-      <Compass size="min(62vw, 300px)" class="mt-8" />
-      <h1 class="display mt-8 text-[clamp(2.6rem,9vw,6.5rem)] leading-[0.95] tracking-[0.12em] text-starlight">
+  <!-- Hero: the Golden Jubilee. Bright, like the opening spread of a travel brochure. -->
+  <section class="hero-sky relative isolate overflow-hidden px-4 pb-10 pt-14 text-center sm:px-8 sm:pt-20">
+    <div class="mx-auto flex max-w-5xl flex-col items-center">
+      <CompassStar size={44} class="text-gold drop-shadow-[0_4px_14px_rgb(198_161_91/0.55)]" />
+      <p class="eyebrow mt-6 text-gold-deep">{jubilee.eyebrow}</p>
+      <h1 class="display text-metal-deep mt-5 text-[clamp(3rem,11vw,8.5rem)] leading-[0.92] tracking-[0.1em]">
         {jubilee.heading}
       </h1>
-      <p class="eyebrow mt-6 text-gold-light">
+      <p class="eyebrow mt-6 text-ink/70">
         {jubilee.subheading?.split(' · ').map((part, i) => (
           <span class="block whitespace-nowrap sm:inline">{i > 0 && <span class="hidden sm:inline"> · </span>}{part}</span>
         ))}
       </p>
-      <div class="prose-world mx-auto mt-8 text-lg text-starlight/80 [&_p]:mx-auto"><jubilee.Content /></div>
-      <div class="mt-10 flex flex-wrap justify-center gap-4">
-        <a href="#reconnected" class="btn btn-gold">Enter the Jubilee</a>
-        {jubilee.cta && <Cta {...jubilee.cta} />}
-      </div>
     </div>
+    <figure class="hero-photo relative mx-auto mt-10 max-w-[1600px] sm:mt-14" data-hero-photo>
+      <Image src={academyExterior} widths={[800, 1312]} sizes="(min-width: 1600px) 1600px, 100vw" loading="eager" fetchpriority="high"
+        alt="The Academy in Neuropa: a white marble and gold palace with a glass dome, slender towers, waterfalls and a long reflecting pool, above the sea at golden hour."
+        class="aspect-[4/3] w-full rounded-[1.75rem] object-cover object-[50%_40%] shadow-[0_40px_100px_-40px_rgb(26_29_43/0.5)] sm:aspect-[1312/500] sm:rounded-[2.25rem]" />
+      <div class="hero-card glass-light mx-3 -mt-16 sm:mx-auto max-w-2xl px-6 py-7 text-left sm:-mt-24 sm:px-10 sm:py-9">
+        <div class="prose-world text-ink/80 sm:text-lg"><jubilee.Content /></div>
+        <div class="mt-7 flex flex-wrap gap-3">
+          <a href="#reconnected" class="btn btn-gold">Enter the Jubilee</a>
+          {jubilee.cta && <Cta {...jubilee.cta} />}
+        </div>
+      </div>
+    </figure>
   </section>
 
   <NavBar />
 
-  <!-- Fifty years reconnected -->
-  <section id="reconnected" class="marble lg:scroll-mt-14 px-4 py-24 sm:px-8 sm:py-32">
-    <div class="mx-auto grid max-w-6xl gap-14 lg:grid-cols-[1.2fr_1fr] lg:items-center">
-      <div>
-        <p class="eyebrow text-gold-deep">{reconnected.eyebrow}</p>
-        <h2 class="mt-4 text-[clamp(2.2rem,6vw,4rem)]">{reconnected.heading}</h2>
-        <StarRule class="mt-8 max-w-56" />
-        <div class="prose-world mt-8 text-lg"><reconnected.Content /></div>
-        {reconnected.cta && <div class="mt-10"><Cta {...reconnected.cta} /></div>}
+  <!-- Fifty years reconnected: the story, told as you scroll -->
+  <ReconnectStory steps={reconnected.steps} stats={reconnected.stats} cta={reconnected.cta} />
+
+  <!-- Inside the Academy: the brochure spread -->
+  <section class="marble px-4 py-24 sm:px-8 sm:py-32">
+    <div class="mx-auto max-w-6xl">
+      <div class="text-center">
+        <p class="eyebrow text-gold-deep">The Academy, Neuropa</p>
+        <h2 class="mt-4 text-[clamp(2.2rem,6vw,4.2rem)]">Marble, gold and the open sea</h2>
+        <p class="mx-auto mt-5 max-w-2xl text-ink/75 sm:text-lg">White marble and gold on clifftops above the sea, beneath a vast glass-and-gold dome. Step inside the seat of the world.</p>
       </div>
-      <dl class="grid grid-cols-2 gap-px overflow-hidden rounded-sm border border-gold/40 bg-gold/40">
-        {reconnected.stats?.map((s) => (
-          <div class="flex flex-col items-center justify-center bg-marble px-4 py-10 text-center">
-            <dd class="font-display text-[clamp(3rem,10vw,5rem)] leading-none text-gold-deep">{s.value}</dd>
-            <dt class="eyebrow order-last mt-3 text-ink/70">{s.label}</dt>
-          </div>
+      <ul class="mt-14 grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-6">
+        {gallery.map((g) => (
+          <li class={g.span}>
+            <figure class="group relative h-full overflow-hidden rounded-[1.5rem] shadow-[0_30px_70px_-40px_rgb(26_29_43/0.5)]">
+              <Image src={g.img} widths={[480, 800]} sizes={g.sizes} alt={g.alt}
+                class="h-full min-h-48 w-full object-cover transition duration-[1.6s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.06]" />
+              <figcaption class="glass-light absolute inset-x-3 bottom-3 !rounded-2xl px-4 py-3 sm:inset-x-4 sm:bottom-4">
+                <span class="block font-display text-lg leading-tight text-ink sm:text-2xl">{g.title}</span>
+                <span class="mt-0.5 hidden text-sm text-ink/70 sm:block">{g.text}</span>
+              </figcaption>
+            </figure>
+          </li>
         ))}
-      </dl>
+      </ul>
+      <div class="mt-12 text-center"><Cta label="Inside the Academy" href="/academy" /></div>
     </div>
   </section>
 
   <!-- Five minutes of noise -->
-  <section class="night relative isolate overflow-hidden px-4 py-28 text-center sm:px-8 sm:py-36">
+  <section class="relative isolate overflow-hidden bg-[#fbf8f2] px-4 py-28 text-center sm:px-8 sm:py-36">
     <div class="absolute inset-0 -z-10 grid place-items-center" aria-hidden="true">
       {[0, 1, 2, 3].map((i) => (
         <span class="noise-ring absolute aspect-square w-[min(90vw,640px)] rounded-full border border-gold/40" style={`animation-delay:${i * 1.5}s`}></span>
       ))}
     </div>
-    <p class="eyebrow text-gold-light">{noise.eyebrow}</p>
-    <h2 class="display mt-5 text-[clamp(2.2rem,7vw,4.5rem)] tracking-[0.1em]">{noise.heading}</h2>
-    <div class="prose-world mx-auto mt-10 max-w-2xl text-lg text-starlight/80 [&_p]:mx-auto [&_p:first-child]:font-display [&_p:first-child]:text-3xl [&_p:first-child]:italic [&_p:first-child]:text-gold-light">
+    <p class="eyebrow text-gold-deep">{noise.eyebrow}</p>
+    <h2 class="display text-metal-deep mt-5 text-[clamp(2.2rem,7vw,4.8rem)] tracking-[0.1em]">{noise.heading}</h2>
+    <div class="prose-world mx-auto mt-10 max-w-2xl text-lg text-ink/80 [&_p]:mx-auto [&_p:first-child]:font-display [&_p:first-child]:text-3xl [&_p:first-child]:italic [&_p:first-child]:text-gold-deep">
       <noise.Content />
     </div>
   </section>
@@ -124,16 +147,16 @@ const houseList = (await getCollection('houses')).sort((a, b) => houseOrder.inde
     <Starfield count={50} seed={42} />
     <div class="px-4 text-center sm:px-8">
       <p class="eyebrow text-gold-light">{houses.eyebrow}</p>
-      <h2 class="display mt-5 text-[clamp(2.2rem,7vw,4.5rem)] tracking-[0.1em]">{houses.heading}</h2>
+      <h2 class="display text-metal mt-5 text-[clamp(2.2rem,7vw,4.8rem)] tracking-[0.1em]">{houses.heading}</h2>
       <div class="prose-world mx-auto mt-6 max-w-2xl text-lg text-starlight/80 [&_p]:mx-auto"><houses.Content /></div>
     </div>
     <ul class="mx-auto mt-14 grid max-w-6xl grid-cols-4 gap-2 px-4 sm:gap-4 sm:px-8 lg:gap-6">
       {houseList.map(({ data: h }) => (
         <li class="min-w-0">
-          <a href={`/houses/${h.name.toLowerCase()}`} class="group block"><figure>
+          <a href={`/houses/${h.name.toLowerCase()}`} class="group block" data-tilt><figure>
             <Image src={banners[h.name]} widths={[300, 447]} sizes="(min-width: 1152px) 280px, 25vw"
               alt={`${h.name}, House of the ${h.direction}: ${h.rule}. "${h.creed}" ${h.element}. ${h.motto}. ${h.bearing}.`}
-              class="aspect-[447/1197] w-full rounded-sm shadow-2xl shadow-black/50 ring-1 ring-gold/20 transition duration-700 group-hover:-translate-y-2 group-hover:shadow-[0_20px_60px_rgb(198_161_91/0.25)]" />
+              class="aspect-[447/1197] w-full rounded-lg shadow-2xl shadow-black/50 ring-1 ring-gold/20 transition duration-700 group-hover:-translate-y-2 group-hover:shadow-[0_20px_60px_rgb(198_161_91/0.25)]" />
             <figcaption class="mt-3 text-center sm:mt-5">
               <span class="eyebrow block text-[0.55rem] tracking-[0.12em] text-gold-light sm:text-xs sm:tracking-[0.3em]">{h.name}</span>
               <span class="mt-1 hidden font-display text-lg italic text-starlight/70 sm:block">{h.motto}</span>

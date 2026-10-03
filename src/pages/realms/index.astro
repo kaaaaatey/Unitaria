@@ -19,7 +19,7 @@ const groups = ['Amerope', 'Afriopia', 'Asioralia'].map((c) => ({ name: c, realm
             const slug = r.name.toLowerCase();
             return (
               <li id={slug} class="scroll-mt-24">
-                <article class="flex h-full flex-col rounded-sm border border-gold/40 bg-marble/80 p-6 sm:p-8">
+                <article class="glass-light glass-lift flex h-full flex-col p-6 sm:p-8">
                   <div class="flex items-baseline justify-between gap-4">
                     <h3 class="text-4xl">{r.name}</h3>
                     <span class="font-display text-xl text-gold-deep" aria-label={`Realm ${r.order}`}>{String(r.order).padStart(2, '0')}</span>

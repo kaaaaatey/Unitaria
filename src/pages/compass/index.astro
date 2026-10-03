@@ -16,7 +16,7 @@ const questions = quiz.questions.map((q, i) => ({ ...q, answers: q.answers.map((
 <Base title="The Compass" description="Touch the compass. Nine questions, and it will point to your house: Polaris, Aurora, Lyra or Orion.">
   <PageHero eyebrow="The Compass" title="What's your house?" lede={quiz.intro} />
 
-  <section class="night relative px-4 pb-24 sm:px-8" data-quiz>
+  <section class="night relative px-4 pb-24 sm:px-8" data-quiz data-no-reveal>
     <div class="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:gap-16">
       <div class="relative mx-auto" style="width:min(72vw, 440px)">
         <Compass size="100%" />
@@ -42,7 +42,7 @@ const questions = quiz.questions.map((q, i) => ({ ...q, answers: q.answers.map((
                 {q.answers.map((a) => (
                   <li>
                     <button type="button" data-house={a.house} aria-pressed="false"
-                      class="w-full rounded-2xl border border-gold/30 px-5 py-4 text-left text-lg text-starlight/90 transition hover:border-gold hover:bg-gold/10 aria-pressed:border-gold aria-pressed:bg-gold/15">{a.text}</button>
+                      class="glass glass-lift w-full !rounded-2xl px-5 py-4 text-left text-lg text-starlight/90 hover:border-gold/60 aria-pressed:border-gold aria-pressed:bg-gold/15">{a.text}</button>
                   </li>
                 ))}
               </ul>

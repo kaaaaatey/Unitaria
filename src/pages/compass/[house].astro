@@ -20,7 +20,7 @@ const og = await getImage({ src: banners[name], width: 447 });
 ---
 <Base title={`The compass points to ${h.name}`} image={og.src}
   description={`${h.name}, House of the ${h.direction}. ${h.rule}: “${h.creed}” What's your house?`}>
-  <section class="night relative isolate overflow-hidden px-4 pb-24 pt-16 sm:px-8 sm:pt-24">
+  <section class="night aurora relative isolate overflow-hidden px-4 pb-24 pt-16 sm:px-8 sm:pt-24 lg:pt-36">
     <Starfield count={50} seed={h.name.length} />
     <div class="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2">
       <div class="relative mx-auto" style="width:min(70vw, 420px)">

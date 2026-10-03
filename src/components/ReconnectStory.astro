@@ -1,0 +1,342 @@
+---
+// "Fifty years reconnected": the Great Reconnecting told as you scroll.
+// A dot-matrix world drifts together (the Shake, the Drift, the Settling), the rebuild lights it up,
+// and it ends as an interactive map of the ten realms.
+// Positions follow the schematic in WorldChart.astro: not a geographic map (real map art is a gap).
+// Without JavaScript, or with reduced motion, it shows the finished map and the story as plain text.
+import { getCollection } from 'astro:content';
+import Cta from './Cta.astro';
+
+interface Step { id: string; when: string; title: string; text: string }
+interface Props {
+  steps: Step[];
+  stats?: { value: string; label: string }[];
+  cta?: { label: string; href: string; live?: boolean };
+}
+const { steps, stats = [], cta } = Astro.props;
+// Copy is plain text with **bold** only.
+const md = (t: string) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+
+const realms = (await getCollection('realms')).sort((a, b) => a.data.order - b.data.order);
+const pos: Record<string, [number, number]> = {
+  Scandinada: [200, 90], Neuropa: [250, 200], Cariberia: [170, 320], Andongo: [320, 430],
+  Mediterrania: [480, 230], Safarabia: [560, 400],
+  Persovia: [650, 130], Himalindia: [720, 290], Shangokyo: [850, 190], Indostralia: [830, 430],
+};
+const links = [
+  ['Scandinada', 'Neuropa'], ['Neuropa', 'Cariberia'], ['Cariberia', 'Andongo'], ['Neuropa', 'Mediterrania'],
+  ['Andongo', 'Safarabia'], ['Mediterrania', 'Safarabia'], ['Mediterrania', 'Persovia'], ['Persovia', 'Himalindia'],
+  ['Persovia', 'Shangokyo'], ['Himalindia', 'Shangokyo'], ['Himalindia', 'Indostralia'], ['Safarabia', 'Himalindia'],
+];
+
+// The landmass: three Continuents as soft-edged lobes, filled with a dot grid.
+const lobes = [
+  { key: 'Amerope', cx: 235, cy: 265, rx: 175, ry: 230, seed: 1.3 },
+  { key: 'Afriopia', cx: 520, cy: 315, rx: 112, ry: 178, seed: 2.9 },
+  { key: 'Asioralia', cx: 760, cy: 280, rx: 185, ry: 232, seed: 4.1 },
+];
+const islands = [
+  { key: 'isle-a', cx: 92, cy: 120, rx: 34, ry: 26, seed: 6.2 },
+  { key: 'isle-b', cx: 912, cy: 478, rx: 40, ry: 28, seed: 7.7 },
+];
+const edge = (l: { cx: number; cy: number; rx: number; ry: number; seed: number }, x: number, y: number) => {
+  const dx = (x - l.cx) / l.rx, dy = (y - l.cy) / l.ry;
+  const a = Math.atan2(dy, dx);
+  const wobble = 1 + 0.09 * Math.sin(a * 3 + l.seed) + 0.05 * Math.sin(a * 7 + l.seed * 2);
+  return Math.hypot(dx, dy) / wobble;
+};
+const G = 13;
+const dots: Record<string, [number, number][]> = { Amerope: [], Afriopia: [], Asioralia: [], seam: [], 'isle-a': [], 'isle-b': [] };
+for (let y = 10; y < 560; y += G) {
+  for (let x = 10 + ((y / G) % 2) * (G / 2); x < 1000; x += G) {
+    const d = lobes.map((l) => edge(l, x, y));
+    const best = d.indexOf(Math.min(...d));
+    if (d[best] < 1) dots[lobes[best].key].push([x, y]);
+    else if (d[best] < 1.14 && x > 380 && x < 640) dots.seam.push([x, y]); // new land rising at the seams
+    else for (const i of islands) if (edge(i, x, y) < 1) dots[i.key].push([x, y]);
+  }
+}
+const dotPath = (pts: [number, number][], r = 2.1) =>
+  pts.map(([x, y]) => `M${x - r} ${y}a${r} ${r} 0 1 0 ${r * 2} 0a${r} ${r} 0 1 0 ${-r * 2} 0`).join('');
+// A few lights for the rebuild, picked evenly through the land.
+const lights = [...dots.Amerope, ...dots.Afriopia, ...dots.Asioralia].filter((_, i) => i % 23 === 7);
+---
+<section id="reconnected" class="story relative bg-[#f4f7f9]" data-story data-no-reveal aria-labelledby="story-title">
+  <div class="story-stage">
+    <div class="story-sea" aria-hidden="true"></div>
+    <div class="story-map"><div class="map-box">
+      <svg viewBox="0 0 1000 560" class="h-full w-full overflow-visible" role="img" aria-labelledby="story-map-title">
+        <title id="story-map-title">The world becoming one landmass: three Continuents and ten realms</title>
+        <g class="ripples" aria-hidden="true">
+          {[0, 1, 2].map((i) => <circle cx="470" cy="300" r="40" style={`animation-delay:${i * 0.9}s`} />)}
+        </g>
+        <g class="land">
+          {lobes.map((l) => <path class={`lobe lobe-${l.key}`} data-lobe={l.key} d={dotPath(dots[l.key])} />)}
+          <path class="seam" d={dotPath(dots.seam)} />
+          {islands.map((i) => <path class={`isle ${i.key}`} d={dotPath(dots[i.key])} />)}
+        </g>
+        <g class="rails" aria-hidden="true">
+          {links.map(([a, b]) => (
+            <line x1={pos[a][0]} y1={pos[a][1]} x2={pos[b][0]} y2={pos[b][1]} pathLength="1" />
+          ))}
+        </g>
+        <g class="lights" aria-hidden="true" style="opacity:var(--lights)">
+          {lights.map(([x, y], i) => <circle cx={x} cy={y} r="2.6" style={`--n:${i % 9}`} />)}
+        </g>
+        <g class="continuent-names" aria-hidden="true">
+          {lobes.map((l) => (
+            <text x={l.cx} y={l.cy - l.ry - 14} text-anchor="middle">{l.key.toUpperCase()}</text>
+          ))}
+        </g>
+      </svg>
+
+      <!-- The realms: real buttons laid over the map, each opening a glass card -->
+      <ul class="markers">
+        {realms.map(({ data: r }, i) => {
+          const [x, y] = pos[r.name];
+          const slug = r.name.toLowerCase();
+          return (
+            <li class="marker" style={`left:${x / 10}%;top:${(y / 560) * 100}%;--n:${i}`} data-x={x}>
+              <button type="button" class="marker-dot" aria-expanded="false" aria-controls={`realm-card-${slug}`}>
+                <span class="sr-only">{r.name}, show details</span>
+              </button>
+              <span class="marker-label" aria-hidden="true">{r.name}</span>
+              <div id={`realm-card-${slug}`} class="realm-card glass-light" hidden>
+                <p class="eyebrow text-[0.6rem] text-gold-deep">{r.continuent} · Realm {String(r.order).padStart(2, '0')}</p>
+                <p class="mt-1 font-display text-3xl text-ink">{r.name}</p>
+                <p class="mt-2 text-sm text-ink/70">{r.fused}</p>
+                <p class="mt-2 text-sm text-ink">{r.terrain}.</p>
+                <p class="mt-3 text-sm text-ink/80"><span class="eyebrow text-[0.58rem] text-gold-deep">North</span> {r.north.value}. <em class="font-display text-base">{r.north.motto}</em></p>
+                <a class="mt-4 inline-block text-sm font-medium text-gold-deep underline decoration-gold/50 underline-offset-4 hover:decoration-gold-deep"
+                  href={r.profile ? `/realms/${slug}` : `/realms#${slug}`}>{r.profile ? `Visit ${r.name}` : 'See all realms'} →</a>
+              </div>
+            </li>
+          );
+        })}
+      </ul>
+    </div></div>
+  </div>
+
+  <ol class="story-steps">
+    {steps.map((s, i) => (
+      <li class="story-step" data-step={s.id}>
+        <div class="story-card">
+          <p class="eyebrow text-gold-deep">{s.when}</p>
+          {i === 0
+            ? <h2 id="story-title" class="mt-4 text-[clamp(2.4rem,6vw,4.4rem)] leading-[1.02] text-ink">{s.title}</h2>
+            : <h3 class="mt-3 text-[clamp(2rem,5vw,3.4rem)] leading-[1.05] text-ink">{s.title}</h3>}
+          <p class="mt-5 text-ink/80 sm:text-lg" set:html={md(s.text)} />
+          {s.id === 'emerged' && stats.length > 0 && (
+            <dl class="mt-8 grid grid-cols-4 gap-2">
+              {stats.map((st) => (
+                <div class="glass-light flex flex-col items-center !rounded-2xl px-1 py-4 text-center">
+                  <dd class="font-display text-[clamp(2rem,6vw,3rem)] leading-none text-gold-deep">{st.value}</dd>
+                  <dt class="eyebrow order-last mt-2 text-[0.52rem] tracking-[0.16em] text-ink/70 sm:text-[0.58rem]">{st.label}</dt>
+                </div>
+              ))}
+            </dl>
+          )}
+          {s.id === 'map' && cta && <div class="mt-8"><Cta {...cta} variant="gold" /></div>}
+        </div>
+      </li>
+    ))}
+  </ol>
+</section>
+
+<script>
+  const root = document.querySelector<HTMLElement>('[data-story]');
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (root) {
+    const steps = [...root.querySelectorAll<HTMLElement>('.story-step')];
+    const ids = steps.map((s) => s.dataset.step);
+    const at = (id: string) => ids.indexOf(id);
+
+    // Realm cards: one open at a time; Escape or a click elsewhere closes it.
+    const markers = [...root.querySelectorAll<HTMLElement>('.marker')];
+    const close = () => (root.classList.remove('card-open'), markers).forEach((m) => {
+      m.classList.remove('open');
+      m.querySelector('button')?.setAttribute('aria-expanded', 'false');
+      m.querySelector<HTMLElement>('.realm-card')!.hidden = true;
+    });
+    markers.forEach((m) => m.querySelector('button')!.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const wasOpen = m.classList.contains('open');
+      close();
+      if (wasOpen) return;
+      m.classList.add('open');
+      root.classList.add('card-open');
+      m.querySelector('button')!.setAttribute('aria-expanded', 'true');
+      const card = m.querySelector<HTMLElement>('.realm-card')!;
+      card.hidden = false;
+      card.classList.toggle('flip', Number(m.dataset.x) > 600); // open towards the middle
+    }));
+    document.addEventListener('click', (e) => { if (!(e.target as Element).closest('.realm-card')) close(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+
+    if (!still) {
+      root.classList.add('is-live');
+      // Scroll progress through each step (0 → 1), smoothed so the map glides rather than jumps.
+      let target = 0, shown = 0, raf = 0;
+      const measure = () => {
+        // Phones read the story in the lower half of the screen, under the map; laptops beside it.
+        const wide = matchMedia('(min-width: 64rem)').matches;
+        const mid = innerHeight * (wide ? 0.55 : 0.8);
+        let p = 0;
+        steps.forEach((s, i) => {
+          const card = s.querySelector('.story-card')!.getBoundingClientRect();
+          if (card.top < mid) p = i + Math.min(1, (mid - card.top) / s.offsetHeight);
+        });
+        target = Math.max(0, p - 0.3);
+        if (!raf) raf = requestAnimationFrame(tick);
+      };
+      const ease = (t: number) => t * t * (3 - 2 * t);
+      const span = (p: number, a: number, b: number) => ease(Math.min(1, Math.max(0, (p - a) / (b - a))));
+      const tick = () => {
+        shown += (target - shown) * 0.12;
+        if (Math.abs(target - shown) < 0.001) shown = target;
+        const p = shown;
+        const drift = span(p, at('drift') - 0.4, at('drift') + 0.4);
+        const settle = span(p, at('settling') - 0.4, at('settling') + 0.4);
+        const rebuild = span(p, at('rebuild') - 0.4, at('rebuild') + 0.3);
+        const emerged = span(p, at('emerged') - 0.4, at('emerged') + 0.2);
+        const mapped = span(p, at('map') - 0.6, at('map') - 0.15);
+        const apart = 1 - drift;
+        const s = root.style;
+        s.setProperty('--am-x', `${-110 * apart}px`); s.setProperty('--am-y', `${-20 * apart}px`); s.setProperty('--am-r', `${-6 * apart}deg`);
+        s.setProperty('--af-x', `${10 * apart}px`); s.setProperty('--af-y', `${60 * apart}px`); s.setProperty('--af-r', `${4 * apart}deg`);
+        s.setProperty('--as-x', `${110 * apart}px`); s.setProperty('--as-y', `${-30 * apart}px`); s.setProperty('--as-r', `${7 * apart}deg`);
+        s.setProperty('--isle', String(1 - settle));
+        s.setProperty('--seam', String(settle));
+        s.setProperty('--rails', String(rebuild));
+        s.setProperty('--lights', String(rebuild));
+        s.setProperty('--names', String(emerged * (1 - mapped * 0.6)));
+        s.setProperty('--markers', String(mapped));
+        root.classList.toggle('shaking', p > at('shake') - 0.5 && p < at('drift') - 0.3);
+        root.classList.toggle('mapped', mapped > 0.5);
+        steps.forEach((st, i) => st.classList.toggle('active', Math.round(p) === i));
+        if (mapped < 0.5) close();
+        raf = shown === target ? 0 : requestAnimationFrame(tick);
+      };
+      addEventListener('scroll', measure, { passive: true });
+      addEventListener('resize', measure);
+      measure();
+    }
+  }
+</script>
+
+<style>
+  /* ---------- Static layout: finished map, then the story as text (no JS / reduced motion) ---------- */
+  .story { color: var(--color-ink); --isle: 0; --seam: 1; --rails: 1; --lights: 1; --names: 0.5; --markers: 1; }
+  .story-stage { position: relative; height: min(70vh, 640px); overflow: hidden; }
+  .story-sea {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(70% 60% at 50% 45%, rgb(255 255 255 / 0.95), transparent 70%),
+      radial-gradient(60% 50% at 15% 10%, rgb(159 195 230 / 0.35), transparent 70%),
+      radial-gradient(60% 60% at 90% 90%, rgb(63 169 138 / 0.12), transparent 70%),
+      linear-gradient(180deg, #eef4f8, #f7f4ef);
+  }
+  .story-map { position: absolute; inset: 6% 3% 4%; container-type: size; }
+  /* The map keeps its 1000:560 shape and sits centred, so markers line up with the drawing */
+  .map-box { position: absolute; inset: 0; margin: auto; width: min(100cqw, 178.57cqh); aspect-ratio: 1000 / 560; height: auto; }
+  .map-box svg { position: absolute; inset: 0; }
+  .story-steps { position: relative; max-width: 40rem; margin: 0 auto; padding: 2rem 1rem 6rem; display: grid; gap: 3rem; }
+  .story-card { padding: 0; }
+
+  /* Land */
+  .lobe, .seam, .isle { fill: #b48c45; transition: none; }
+  .lobe-Amerope { fill: #a9843f; }
+  .lobe-Asioralia { fill: #b8914b; }
+  .seam { fill: #c9a565; opacity: var(--seam); }
+  .lobe { transform-box: fill-box; transform-origin: center; }
+  .lobe-Amerope { transform: translate(var(--am-x, 0), var(--am-y, 0)) rotate(var(--am-r, 0)); }
+  .lobe-Afriopia { transform: translate(var(--af-x, 0), var(--af-y, 0)) rotate(var(--af-r, 0)); }
+  .lobe-Asioralia { transform: translate(var(--as-x, 0), var(--as-y, 0)) rotate(var(--as-r, 0)); }
+  .isle-a { transform: translate(calc(var(--isle) * -90px), calc(var(--isle) * -70px)); }
+  .isle-b { transform: translate(calc(var(--isle) * 90px), calc(var(--isle) * 70px)); }
+  .rails line { stroke: #d9b36a; stroke-width: 2; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: calc(1 - var(--rails)); filter: drop-shadow(0 0 4px rgb(230 207 154 / 0.9)); }
+  .lights circle { fill: #fff6dc; filter: drop-shadow(0 0 3px #f3dda3); animation: twinkle 4s ease-in-out infinite; animation-delay: calc(var(--n) * -0.45s); }
+  .continuent-names text { font: 500 13px var(--font-sans); letter-spacing: 0.4em; fill: var(--color-gold-deep); opacity: var(--names); }
+  .ripples circle { fill: none; stroke: #6f9cc4; stroke-width: 1.5; opacity: 0; transform-box: fill-box; transform-origin: center; }
+  .story.shaking .ripples circle { animation: ripple 2.7s ease-out infinite; }
+  .story.shaking .land { animation: quake 0.35s linear infinite; }
+  @keyframes ripple { 0% { opacity: 0.8; transform: scale(0.3); } 100% { opacity: 0; transform: scale(6); } }
+  @keyframes quake {
+    0%, 100% { transform: translate(0, 0); } 25% { transform: translate(-2px, 1px); }
+    50% { transform: translate(2px, -1px); } 75% { transform: translate(-1px, -2px); }
+  }
+
+  /* Realm markers */
+  .markers { position: absolute; inset: 0; }
+  .marker { position: absolute; width: 0; height: 0; opacity: var(--markers); }
+  .story.is-live:not(.mapped) .marker { transform: scale(calc(0.4 + var(--markers) * 0.6)); }
+  .story:not(.mapped).is-live .marker { pointer-events: none; }
+  .marker-dot {
+    position: absolute; left: -22px; top: -22px; width: 44px; height: 44px; border-radius: 999px; cursor: pointer;
+    display: grid; place-items: center;
+  }
+  .marker-dot::before {
+    content: ''; width: 14px; height: 14px; border-radius: 999px;
+    background: radial-gradient(circle at 35% 30%, #fff8e6, var(--color-gold) 60%, #8a6a2f);
+    box-shadow: 0 0 0 4px rgb(255 255 255 / 0.85), 0 6px 18px -4px rgb(118 88 34 / 0.7);
+    transition: transform 0.4s var(--ease-lux);
+  }
+  .marker-dot::after {
+    content: ''; position: absolute; inset: 8px; border-radius: 999px; border: 1px solid var(--color-gold);
+    animation: ping 2.6s var(--ease-lux) infinite; animation-delay: calc(var(--n) * 0.25s);
+  }
+  .marker-dot:hover::before, .marker.open .marker-dot::before { transform: scale(1.3); }
+  @keyframes ping { 0% { transform: scale(0.6); opacity: 0.9; } 100% { transform: scale(1.6); opacity: 0; } }
+  .marker-label {
+    position: absolute; left: 0; top: 16px; transform: translateX(-50%); white-space: nowrap; pointer-events: none;
+    font: 500 clamp(0.6rem, 1.4vw, 1.15rem)/1 var(--font-display); color: var(--color-ink);
+    text-shadow: 0 1px 0 #fff, 0 0 12px #fff;
+  }
+  .realm-card {
+    position: absolute; z-index: 5; left: 18px; top: -24px; width: min(18rem, 78vw); padding: 1.1rem 1.25rem; text-align: left;
+    background: linear-gradient(160deg, rgb(255 255 255 / 0.96), rgb(255 255 255 / 0.86));
+    animation: card-in 0.5s var(--ease-lux);
+  }
+  .realm-card.flip { left: auto; right: 18px; }
+  .marker.open { z-index: 10; }
+  .story-steps { z-index: 2; }
+  .story.card-open .story-stage { z-index: 3; }
+  @keyframes card-in { from { opacity: 0; transform: translateY(8px) scale(0.97); } }
+
+  /* ---------- Live: a pinned stage, with the story scrolling past ---------- */
+  .story.is-live { --isle: 1; --seam: 0; --rails: 0; --lights: 0; --names: 0; --markers: 0; }
+  .story.is-live .story-stage { position: sticky; top: 0; height: 100vh; height: 100svh; }
+  .story.is-live .story-map { inset: 30% 2% 4%; }
+  .story.is-live .story-steps { margin-top: -100vh; margin-top: -100svh; padding: 0 1rem; gap: 0; max-width: none; pointer-events: none; }
+  .story.is-live .story-step { min-height: 95vh; display: flex; align-items: flex-start; padding-top: 6.5rem; pointer-events: none; }
+  .story.is-live .story-step:first-child { padding-top: 7.5rem; }
+  .story.is-live .story-step:last-child { min-height: 110vh; }
+  .story.is-live .story-card {
+    pointer-events: auto; max-width: 34rem; margin: 0 auto;
+    opacity: 0.12; transform: translateY(16px); filter: blur(4px);
+    transition: opacity 0.8s var(--ease-lux), transform 0.8s var(--ease-lux), filter 0.8s var(--ease-lux);
+  }
+  .story.is-live .story-step.active .story-card { opacity: 1; transform: none; filter: none; }
+  .story.is-live .story-step:last-child .story-card { margin-bottom: 0; }
+
+  @media (min-width: 64rem) {
+    .story-stage { height: 80vh; }
+    .story-map { inset: 8% 4% 6% 4%; }
+    .story.is-live .story-map { inset: 12% 3% 8% 40%; }
+    .story.is-live .story-steps { padding: 0 3rem; grid-template-columns: 1fr; }
+    .story.is-live .story-step { align-items: center; padding-top: 0; }
+    .story.is-live .story-step:first-child { padding-top: 0; }
+    .story.is-live .story-card { margin: 0; max-width: min(28rem, 33vw); }
+    .story-steps { grid-template-columns: repeat(2, 1fr); max-width: 72rem; }
+  }
+  /* Phones: the map holds the top of the screen; the story rises through the bottom half on frosted cards */
+  @media (max-width: 63.99rem) {
+    .story.is-live .story-map { inset: 7% 2% 52% 2%; }
+    .story.is-live .story-card { background: rgb(255 255 255 / 0.78); backdrop-filter: blur(14px); border-radius: 1.5rem; padding: 1.25rem 1.25rem 1.5rem; box-shadow: 0 20px 50px -30px rgb(26 29 43 / 0.35); }
+    .story.is-live .story-step { min-height: 90svh; padding-top: 50svh; }
+    .story.is-live .story-step:first-child { padding-top: 50svh; }
+    .story.is-live .story-step:last-child { min-height: 100svh; }
+    /* Realm details open as a sheet across the bottom of the screen */
+    .realm-card, .realm-card.flip { position: fixed; left: 1rem; right: 1rem; top: auto; bottom: 1rem; width: auto; z-index: 60; background: rgb(255 255 255 / 0.94); }
+  }
+</style>
