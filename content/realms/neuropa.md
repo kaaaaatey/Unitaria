@@ -10,15 +10,15 @@ profile: true
 # Photography: Katey's Neuropa concept art (3 Oct 2026), cropped in assets/crops/neuropa-*.jpg.
 hero:
   image: ../../assets/crops/neuropa-overview.jpg
-  alt: "Neuropa at golden hour: domed marble palaces on a lagoon, garden islands and bridges, the city stretching to the water's edge."
+  alt: "Neuropa at golden hour: domed marble palaces on the lake, garden islands and bridges, the city stretching to the water's edge."
 intro:
-  - "Picture the garden squares of Chelsea and Mayfair crossed with the lights of Times Square. Neuropa is grand without being loud: old-money simplicity, finished in luxury, with most homes choosing quiet improvements over showy ones. It is home to the Academy and the Exhibitions, and smaller Academies dot the realm, each wearing the Academy's colours."
+  - "Picture the garden squares of Chelsea and Mayfair crossed with the lights of Times Square. Neuropa is grand without being loud: old-money simplicity, finished in luxury, with most homes choosing quiet improvements over showy ones. It is our capital and the heart of Unitaria: home to the Academy and the Exhibitions, with smaller Academies dotting the realm, each wearing the Academy's colours."
   - "Here, intellect is the most valued thing a person can offer. You can see the realm's two great callings side by side: the bright screens of storytelling beside the hushed, grand halls of learning."
 placesHeading: "The heart of Unitaria"
 places:
   - name: "The Walk of Innovation"
     tagline: "Gardens and public lectures"
-    text: "Gardens of giant public telescopes and beautiful lights, with plaques honouring the people who shaped the old world, speakers' podiums, and Academy lessons for anyone walking past."
+    text: "Gardens of giant public telescopes and beautiful lights, with plaques honouring Neuropa's own Fellows and the old-world innovators who shaped it, speakers' podiums, and Academy lessons for anyone walking past."
     image: ../../assets/crops/neuropa-walk-of-innovation.jpg
     alt: "Golden arches and giant brass telescopes in a garden at sunset, with portrait plaques and people strolling."
   - name: "The Broadcast Quarter"
@@ -64,15 +64,15 @@ places:
 ---
 ## Culture
 
-**Fashion.** Smart casual and quiet luxury: Ivy League and Oxbridge knits, crisp shirts, good coats, soft Italian tailoring, linen and sprezzatura. Paris, Chelsea and New York, fused. Muted, comfortable and beautifully cut.
+**Fashion.** Smart casual and quiet luxury: Ivy League and Oxbridge knits, crisp shirts and good coats. Paris, Chelsea and New York, fused. Muted, comfortable and beautifully cut. And because quiet luxury's true masters were always Italian, Neuropa wears Mediterrania's calling: its soft tailoring, linen and sprezzatura, the art of looking effortlessly elegant, are borrowed with love from our neighbours in fashion and design.
 
 **Food.** Neuropa eats everything, as every cultural capital does: all the great classic meals, with an "every culture in one room" fusion twist.
 
 **Sound.** A constant, soft chatter: the calm white noise of a busy, contented city.
 
-**Music.** Hopeful, ceremonial fanfare, like the soaring themes of a great sporting broadcast.
+**Music.** Hopeful, uplifting fanfare, like the soaring themes of a great sporting broadcast. Ceremonial, never militaristic: music for celebrating together, not for marching.
 
-**Spirit.** Neuropa speaks in positivity and hope. It is the home of all realms and its own home too: the seat of the Academy, the Director and the Seven, and alma mater to the world.
+**Spirit.** Neuropa speaks in positivity and hope. As our capital and the heart of Unitaria, it is the joyful mecca of the whole world, never fake and never childish. It is the home of all realms and its own home too: the seat of the Academy, the Director and the Seven, and the alma mater of all. Everything here resonates hope, passion, autonomy and wonder.
 
 **Language.** Neuropa's language is meant to include everyone, so slang isn't really a thing here.
 
@@ -82,13 +82,25 @@ Three kinds of Neuropa legend:
 
 - **The Storyteller:** a documentary, novel, broadcast or performance that moves the world.
 - **The Scholar:** a discovery or theory that changes how we understand something.
-- **The Communicator,** the rarest of all: someone who masters both, making knowledge beautiful and truth moving.
+- **The Communicator,** the rarest of all: someone who masters both, making knowledge beautiful and truth moving. It is Neuropa's highest ideal, and exactly what the Director is.
 
 Legends are broadcast across the Broadcast Quarter, give a lecture on the Walk of Innovation, join the Grand Library's collection, and become Fellows of the Academy.
 
+## Week ten: the last word before the final
+
+In the 2077 season, Neuropa drew week ten, the week right before the Grand Final. A late slot is usually seen as a disadvantage: there is less time for the world to get to know a realm's students and root for them. But it has a gift of its own, because the last realm on stage is the freshest in every voter's mind.
+
+We like what it says, too. When the Director drew the order live at Thanksmas, the capital's own realm landed the hardest slot, and Neuropa took it with a smile. That is what fairness looks like.
+
+## The Walk of Innovation
+
+The Walk honours Neuropa's own: its Fellows of the Academy, and the old-world innovators from the places that formed it, from the old US Northeast and Midwest to the UK, Ireland, France, the Benelux countries and Germany. Scholars stand beside storytellers, and the figures who shaped popular culture stand beside the scientists.
+
+Only Neuropa has a "Walk of". Every other realm honours its own old-world innovators in its own way, and we can't wait for you to discover them.
+
 ## A morning on the task board
 
-Each morning your band projects a row of glowing cards, colour-coded **gold** for learning, **green** for community and **violet** for media, with countdown timers, flames on the hottest tasks and a family tracker ("3 of 4 bands active").
+Each morning your band projects a row of glowing cards that rise like a ticket queue opening. They are colour-coded **gold** for learning, **green** for community and **violet** for media, with countdown timers, flames on the hottest tasks, greyed-out cards for the ones already sold out, "+ pledged" badges on jobs your neighbours have boosted with their pledges, and a family tracker ("3 of 4 bands active").
 
 | Kids' board, 7–8am | Points |
 | --- | --- |
@@ -111,3 +123,11 @@ Each morning your band projects a row of glowing cards, colour-coded **gold** fo
 | Walk of Innovation light and telescope upkeep | 70 |
 | Square of the Seven memorial care | 60 |
 | Community pledge build: new learning hall wing (boosted by pledges) | 200 |
+
+### Everyday neighbourhood tasks
+
+Not every task is a race. Most days your band simply allocates you something useful close to home, worth 15 to 50 points. These are the small kindnesses that keep the crescents shining and the city running:
+
+Lawn mowing, sign and plaque cleaning, hedge and topiary trimming, window washing, street sweeping, bin rounds, cooking in the community kitchen, meal deliveries to elders, grocery runs, laundry help, dog walking, childminding, bike repairs, fence painting, park bench repair, planting and composting, station cleaning, returning library books and parcel deliveries.
+
+And our favourite: a fifteen-minute wellbeing check-in with a neighbour, worth 20 points.

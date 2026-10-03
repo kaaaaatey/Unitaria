@@ -103,6 +103,20 @@ Source checked: the live World Bible doc (revision 391, exported 3 October 2026)
 - ✅ Student submissions to the Exhibition are off the public site for now (Katey: they don't align with the full story). Removed from Home, the Academy page and the design system. CANON.md still records the Bible's submission idea.
 - 🟠 The Reconnection story on Home now tells the official account in full sentences (quakes, tsunamis, the cable blackout, the Drift, new land, losses of about 80%, the Restoration Corp, weapons dismantled, the Seven). It says "weapons of war", not "nuclear weapons", and leaves out the infections.
 
+### Whole-Bible build (3 Oct 2026)
+The site now draws on the whole World Bible. These points need Katey's ruling; the full list of sixteen calls, with defaults, is in the plan doc "Realising the World Bible: site plan".
+- The children's trust: the Bible's update (line 224) says there is no children's trust, but line 1780 still has a friend's family putting his 40% into his trust. The site follows the update, so children's points go to the Academy, and only the adult starter trust at 21 remains.
+- The Director is called an only child in one place and given an older brother elsewhere. The site mentions neither.
+- The Director as "first teacher" of the Seven is on the site as written in the Bible.
+- The Bible says Neuropa "may be larger" than other realms. The site says it "is thought to be the largest".
+- The Twin Palaces in Cariberia are inspired by real venues. The site leaves out those venue names to keep to the no-real-brands rule.
+- Andongo is described as the driver of healthcare, where the Bible says "likely".
+- The restored relics are described as real stone salvaged from the old world.
+- The Aurora verdict "Wonder can become a beautiful distraction" is used as written.
+- The Grand Final line still says entrants are judged on their band profiles, which may need a look now that submissions are off.
+- The countdown times on the sample task board are made up for the demo.
+- The World Bible's Academy description still says "above the sea"; the site now says "above the great lake".
+
 ## 4. Spoiler boundary questions
 
 - ✅ **Isola and Realignment on public pages.** Decided by Katey, 3 Oct 2026: they stay out of the public site for now.

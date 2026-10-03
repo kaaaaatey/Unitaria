@@ -14,7 +14,7 @@ theme:
   fg: "#eef1f6"
   accent: "#c9d2de"
 crest: "A radiant silver North Star at the centre of a compass ring, rising out of an open book."
-creature: "The husky: the lead sled dog who finds the trail through blizzards when no one else can see."
+creature: "The husky: the lead sled dog who finds the trail through blizzards when no one else can see, like the brave sled teams of Alaska's 1925 serum run."
 mascot: 
   name: "Aris"
   creature: "husky"
@@ -52,4 +52,14 @@ nickname: "Wayfinders"
 merch: "Midnight-blue scarves, silver star pins, husky plushies, observation logbooks."
 youKnow: "You’ve read the footnotes, you own more notebooks than shoes, and you’ve corrected someone’s facts at dinner."
 mood: "Clear winter night, starlight, quiet focus, frost on glass."
+essence: "Polaris is named for the North Star: true north, the one fixed point travellers have steered by for as long as there have been travellers. It is the house of Knowledge, of questions asked carefully and answers checked twice."
+verdict: "Pride in knowledge is their gift and their flaw."
+seasonWhy: "Winter, because winter brings the clearest skies for stargazing."
+mottoSource: "The Latin of Matthew 7:7."
+palette:
+  - { name: "Deep midnight navy", swatch: "#0e1d33" }
+  - { name: "Frosted silver", swatch: "#c9d2de" }
+  - { name: "Icy blue glints", swatch: "#9fc3e6" }
+flowerMeaning: "The flower of memory."
+gown: "Midnight-blue trim and a small silver star pin."
 ---

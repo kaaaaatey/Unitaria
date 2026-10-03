@@ -6,11 +6,14 @@ import Starfield from '../components/motifs/Starfield.astro';
 import CompassStar from '../components/motifs/CompassStar.astro';
 import Cta from '../components/Cta.astro';
 import bandArt from '../../assets/crops/band-hero.png';
+import { boardCards } from '../data/bandBoard';
 
 const page = (await getEntry('pages', 'band'))!;
 const d = page.data;
 const s = Object.fromEntries((d.sections ?? []).map((x) => [x.id, x]));
 const cardColour: Record<string, string> = { gold: '#c6a15b', green: '#3fa98a', violet: '#7b5aa6' };
+const paras = (t?: string) => (t ?? '').trim().split(/\n\s*\n/);
+const mmss = (n: number) => `${String(Math.floor(n / 60)).padStart(2, '0')}:${String(n % 60).padStart(2, '0')}`;
 ---
 <Base title={d.title} description={d.description}>
   <!-- Hero -->
@@ -31,7 +34,9 @@ const cardColour: Record<string, string> = { gold: '#c6a15b', green: '#3fa98a', 
   <section class="marble px-4 py-24 text-center sm:px-8 sm:py-32">
     <p class="eyebrow text-gold-deep">{s.projection.eyebrow}</p>
     <h2 class="mx-auto mt-5 max-w-3xl text-[clamp(2.4rem,7vw,4.6rem)] text-balance">{s.projection.heading}</h2>
-    <p class="mx-auto mt-8 max-w-2xl text-lg text-ink/80">{s.projection.text}</p>
+    <div class="mx-auto mt-8 max-w-2xl space-y-5 text-lg text-ink/80">
+      {paras(s.projection.text).map((p) => <p>{p}</p>)}
+    </div>
   </section>
 
   <!-- Everything -->
@@ -57,7 +62,9 @@ const cardColour: Record<string, string> = { gold: '#c6a15b', green: '#3fa98a', 
     <div class="mx-auto max-w-5xl text-center">
       <p class="eyebrow text-gold-light">{s.drops.eyebrow}</p>
       <h2 class="mx-auto mt-5 max-w-3xl text-[clamp(2.2rem,6vw,4rem)] text-balance">{s.drops.heading}</h2>
-      <p class="mx-auto mt-8 max-w-2xl text-lg text-starlight/80">{s.drops.text}</p>
+      <div class="mx-auto mt-8 max-w-2xl space-y-5 text-lg text-starlight/80">
+        {paras(s.drops.text).map((p) => <p>{p}</p>)}
+      </div>
       <ul class="mt-14 grid gap-6 text-left sm:grid-cols-3">
         {s.drops.items?.map((it) => (
           <li class="glass p-7">
@@ -87,15 +94,78 @@ const cardColour: Record<string, string> = { gold: '#c6a15b', green: '#3fa98a', 
     </div>
   </section>
 
+  <!-- Read the board -->
+  <section class="bg-marble-deep px-4 py-24 sm:px-8 sm:py-28">
+    <div class="mx-auto max-w-6xl">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="eyebrow text-gold-deep">{s.board.eyebrow}</p>
+        <h2 class="mt-5 text-[clamp(2.2rem,6vw,4rem)] text-balance">{s.board.heading}</h2>
+        <p class="mt-6 text-lg text-ink/80">{s.board.text}</p>
+      </div>
+      <div class="mt-14 grid items-start gap-10 lg:grid-cols-[1.1fr_1fr]">
+        <!-- Sample board -->
+        <div class="night relative isolate overflow-hidden rounded-3xl p-5 sm:p-7" aria-label="A sample task board">
+          <div class="flex items-center justify-between gap-3 text-sm text-starlight/70">
+            <span class="eyebrow text-gold-light">Today's drop</span>
+            <span class="rounded-full bg-white/10 px-3 py-1 tabular-nums">3 of 4 bands active</span>
+          </div>
+          <ul class="mt-5 grid gap-3">
+            {boardCards.map((c) => (
+              <li class={`glass relative flex items-center gap-4 p-4 ${c.state === 'soldout' ? 'opacity-45 grayscale' : ''}`}>
+                <span class="h-10 w-1.5 shrink-0 rounded-full" style={`background:${cardColour[c.colour]}`}></span>
+                <div class="min-w-0 flex-1">
+                  <p class="font-display text-lg leading-snug">{c.title}</p>
+                  <div class="mt-1 flex flex-wrap items-center gap-2 text-xs text-starlight/70">
+                    {c.state === 'soldout'
+                      ? <span class="uppercase tracking-[0.2em]">Sold out</span>
+                      : <span class="tabular-nums" data-countdown={c.seconds}>{mmss(c.seconds)} left</span>}
+                    {c.state === 'hot' && <span class="inline-flex items-center gap-1 text-gold-light"><svg viewBox="0 0 16 16" width="12" height="12" fill="currentColor" aria-hidden="true"><path d="M8 1c.6 2.6 4 4.4 4 8a4 4 0 0 1-8 0c0-1.7.9-2.9 1.8-3.8.2 1.2.8 2 1.6 2.3C7 5.6 7.2 3 8 1Z"/></svg>Hot</span>}
+                    {c.state === 'pledged' && <span class="rounded-full bg-[#3fa98a]/25 px-2 py-0.5 text-[#9be3c9]">+ pledged</span>}
+                  </div>
+                </div>
+                <p class="shrink-0 font-display text-2xl text-gold-light tabular-nums">{c.points}<span class="ml-1 text-xs text-starlight/60">pts</span></p>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <!-- Legend -->
+        <ul class="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
+          {s.board.items?.map((it) => (
+            <li class="glass-light p-6">
+              <h3 class="text-xl">{it.title}</h3>
+              <p class="mt-1 text-ink/80">{it.text}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
   <!-- Recalibrate -->
   <section class="night relative isolate overflow-hidden px-4 py-28 text-center sm:px-8 sm:py-36">
     <div class="absolute left-1/2 top-1/2 -z-10 aspect-square w-[min(80vw,520px)] -translate-x-1/2 -translate-y-1/2 rounded-full recal-glow" aria-hidden="true"></div>
     <p class="eyebrow text-gold-light">{s.recalibrate.eyebrow}</p>
     <h2 class="mt-5 font-display text-[clamp(3rem,11vw,7rem)] font-light leading-none">{s.recalibrate.heading}</h2>
-    <p class="mx-auto mt-8 max-w-2xl text-lg text-starlight/80">{s.recalibrate.text}</p>
+    <div class="mx-auto mt-8 max-w-2xl space-y-5 text-lg text-starlight/80">
+      {paras(s.recalibrate.text).map((p, i) => <p class={i === 0 ? 'font-display text-2xl italic text-gold-light' : ''}>{p}</p>)}
+    </div>
     <div class="mt-10"><Cta label="Join the beta" href="#" live={false} variant="gold" /></div>
   </section>
 </Base>
+
+<script>
+  // Gentle live countdowns on the sample board.
+  const timers = document.querySelectorAll<HTMLElement>('[data-countdown]');
+  const fmt = (n: number) => `${String(Math.floor(n / 60)).padStart(2, '0')}:${String(n % 60).padStart(2, '0')}`;
+  setInterval(() => {
+    timers.forEach((el) => {
+      let n = Number(el.dataset.countdown) - 1;
+      if (n < 0) n = 3599;
+      el.dataset.countdown = String(n);
+      el.textContent = `${fmt(n)} left`;
+    });
+  }, 1000);
+</script>
 
 <style>
   .recal-glow {

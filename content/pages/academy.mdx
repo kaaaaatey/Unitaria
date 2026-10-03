@@ -11,21 +11,33 @@ import AcademyGallery from '../../src/components/AcademyGallery.astro';
 
 The Academy is the world's great town hall, where the Director and the ten realm representatives sit at the round table. It is also the world's favourite broadcast, simply called *The Academy*. The name is a promise: all of us, forever growing, learning and evolving.
 
-It stands in white marble and gold on clifftops above the great lake, crowned by a vast glass-and-gold dome. Slender towers, sweeping balconies, cypress and topiary, waterfalls and long reflecting pools lead up grand stairways. Inside, the Great Hall rises in soaring arches hung with the four house banners around a towering column of light. The round table sits beneath a star-map dome, the Grand Library glows with golden globes, and arched windows open onto the sea.
+It stands in white marble and gold on clifftops above the great lake, crowned by a vast glass-and-gold dome. Slender towers, sweeping balconies, cypress and topiary, waterfalls and long reflecting pools lead up grand stairways, while sleek white hovercraft drift overhead and out across the water. Inside, the Great Hall rises in soaring arches hung with the four house banners around a towering column of light, and students cross it in black and white robes embroidered with the gold compass. The Grand Library glows with golden globes, and arched windows open onto the lake and a distant city of spires.
 
 <AcademyGallery />
+
+## The round table
+
+Beneath the star-map dome, flanked by marble statues, sits the round table. We chose a round one on purpose. Like the table of Arthur's knights, it has no head and no foot: every realm's representative sits at it as an equal, with the Director among them.
+
+Even his title is a promise. A Director is a guide, not a ruler: someone who helps us find the way, never someone who tells us where we must go.
 
 ## The compass
 
 <div class="not-prose my-10 flex justify-center text-gold-deep"><CompassStar size={120} label="The Academy's gold eight-pointed compass star" /></div>
 
-The Academy's symbol is a gold, eight-pointed compass star, for guidance. You'll find it on banners, on robes and engraved on bands: the Academy's promise to point every one of us towards our truest direction.
+The Academy's symbol is a gold, eight-pointed compass star, for guidance. It stands for true north: the steady point that helps every one of us find our truest direction.
+
+It is also a small thread back to the world before. The maps of the old world carried compass roses in their corners, and ours carries one at its heart. You'll find it on banners, on robes, engraved on bands and, inevitably, as many a proud fan's first tattoo.
 
 ## Growing up
 
 **The School of Life, before sixteen.** Childhood is the classroom. Points tasks teach every young person to grow into a capable adult, and there is no single test: a whole childhood of helping, learning and doing shows what each child is naturally good at.
 
 **The Academy year, at sixteen.** Every sixteen-year-old spends one guaranteed year at an Academy, a little like sixth form. Academies stand in every realm, and every one mixes students from all ten, so every teenager spends a year away from home with people from everywhere. The whole year is broadcast, so communities can watch their own children grow, and cheer them on with points.
+
+The year has one purpose: to shape the best citizens for every community. It is also the year you find out where you truly belong. Some students discover that home suits them perfectly. Others discover, among friends from all ten realms, that their heart belongs to a different realm altogether.
+
+The numbers are wonderful. Every year, roughly eighteen million young people turn sixteen and begin their Academy year together, nearly two million in every realm.
 
 No child knows their leaderboard score until they turn sixteen. Like waiting for a letter, you never know whether this might be your year.
 
@@ -37,19 +49,58 @@ From every realm, **four** are chosen for the **Grand Academy** in Neuropa: **fo
 
 <div class="not-prose my-10 flex justify-center"><Compass size="min(80vw, 360px)" class="text-gold-deep" /></div>
 
-The Academy year opens with the Compass Ceremony. One by one, each student touches the great golden compass. It spins, and points to one of four houses, each holding one of the Academy's four rules for the world: **Polaris** for Knowledge, **Aurora** for Wonder, **Lyra** for Harmony and **Orion** for Courage.
+The Academy year opens with the Compass Ceremony. One by one, each student touches the great golden compass. It spins, and points to one of four houses, each holding one of the Academy's four rules: **Polaris** for Knowledge, **Aurora** for Wonder, **Lyra** for Harmony and **Orion** for Courage.
 
 At the Grand Academy, the forty are sorted into four houses of ten, with one student from every realm in each. They rise or fall together. Your realm is where you're from. Your house is who you are.
 
-## The Exhibition season
+## Why every house holds all ten realms
 
-The Academy year ends with the Exhibition: a World's Fair in marble pavilions, broadcast across all three Continuents, with music, pomp and a speech from the Director.
+Collaboration and community are at the heart of our world, so no house belongs to any one realm. Each holds one student from every realm, which means every house blends all ten realms' specialities: storytellers beside scientists, healers beside explorers. The greatest breakthroughs so often come from mixing disciplines, and a house is where that mixing begins.
+
+Every house earns points together, and its tally is shown live on the broadcast, so the whole world can follow the race between the four from the first week to the last.
+
+## The Exhibition
+
+The Academy year ends with the Exhibition, a World's Fair in marble pavilions, broadcast across all three Continuents with music, pomp and a speech from the Director. Neuropa, the home of media and storytelling, produces the broadcast.
+
+It is less a single day than a whole season, and the most glamorous one of the year. Think of a debut into society crossed with choosing your university path: the moment a generation steps out in front of the world and finds the road ahead. There are galas and gowns, friendly rivalries between houses and realms, and eleven weeks of everyone at home choosing favourites.
+
+<div class="not-prose my-10 grid gap-5 sm:grid-cols-3">
+  <div class="glass-light p-6">
+    <p class="eyebrow text-[0.62rem] text-gold-deep">The galas</p>
+    <p class="mt-2">Gowns, music and glittering evenings, all season long.</p>
+  </div>
+  <div class="glass-light p-6">
+    <p class="eyebrow text-[0.62rem] text-gold-deep">The rivalries</p>
+    <p class="mt-2">House against house and realm against realm, every point tallied live for the world to see.</p>
+  </div>
+  <div class="glass-light p-6">
+    <p class="eyebrow text-[0.62rem] text-gold-deep">The broadcast</p>
+    <p class="mt-2">Produced in Neuropa and watched in every home across all three Continuents.</p>
+  </div>
+</div>
+
+### How it began
+
+The Exhibition was born of the Director's lifelong love of the World's Fairs of the 1800s, like London's Great Exhibition of 1851 in its glass Crystal Palace. Long before the Great Reconnecting, he said the world needed more of them.
+
+<Timeline items={[
+  { when: '2037', title: 'The first Exhibition', text: 'Held on the tenth anniversary of the Great Reconnecting: a joyful celebration of a world rebuilding. The years that followed are fondly remembered as the celebration era.' },
+  { when: '2051', title: 'A generation of our own', text: 'The first generation raised wholly in the new world turned sixteen, and the Exhibition became the season that helps every young person find where they belong.' },
+  { when: '2077', title: 'A golden year', text: 'Fifty years since the Great Reconnecting, and perhaps the grandest Exhibition season yet.' },
+]} />
+
+### The season
+
+The order of the ten realm weeks is drawn by the Director himself, live in front of the whole world during the Gratitude Parade at Thanksmas. The draw is truly random, so every realm has the same chance at every week. Thanksmas sets the order, and Reconnection Day starts the season.
 
 <Timeline items={[
   { when: '7 May', title: 'Reconnection Day', text: 'Five minutes of noise, then the season opens, honouring the rebuild heroes and the Seven.' },
-  { when: 'Weeks 1–10', title: 'Ten realms, ten weeks', text: 'One week for every realm, with challenges themed on its callings, in the order the Director draws live at Thanksmas. In 2077, Cariberia opens and Neuropa takes week ten.' },
+  { when: 'Weeks 1–10', title: 'Ten realms, ten weeks', text: 'One week for every realm, with challenges themed on its callings, in the order drawn at Thanksmas. In 2077, Cariberia opens and Neuropa takes week ten.' },
   { when: 'Week 11', title: 'The Grand Final', text: 'At the Grand Academy in Neuropa, judged by a panel of every age, a public vote and each student’s band profile.' },
-  { when: 'Late July', title: 'Placement Day', text: 'Every sixteen-year-old receives an offer: a path of training in a realm hub. Accept it, or ask to be rehomed.' },
+  { when: 'Around 23 July', title: 'Placement Day', text: 'Every sixteen-year-old receives an offer: a path of training in a realm hub. Accept it, or ask to be rehomed. Rehoming is always a choice.' },
 ]} />
+
+Placement Day is where most of our careers begin. The path each young person is offered leads to a career placed through the Exhibition, matched to what a whole childhood has shown they are naturally good at.
 
 The very best become **Fellows of the Academy**: legends, and the perfect blend of their realm, their North and their house.

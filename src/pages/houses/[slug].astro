@@ -16,8 +16,11 @@ const next = houseOrder[(i + 1) % 4];
 
 const groups = [
   { title: 'Symbols', rows: [
-    ['Crest', h.crest], ['Creature', h.creature], ['Mascot', `${h.mascot.name}. ${h.mascot.description ?? ''}`],
-    ['Colours', h.colours.join(' and ')], ['Flower', h.flower], ['Gemstone', h.gemstone], ['Pin', h.pin],
+    ['Crest', h.crest], ['Heraldic creature', h.creature], ['Mascot', `${h.mascot.name}, the ${h.mascot.creature}. ${h.mascot.description ?? ''}`],
+    ['Colours', h.colours.join(' and ')],
+    ['Flower', h.flowerMeaning ? `${h.flower}. ${h.flowerMeaning}` : h.flower],
+    ['Gemstone', h.gemstoneMeaning ? `${h.gemstone}. ${h.gemstoneMeaning}` : h.gemstone],
+    h.gown ? ['Gown', h.gown] : ['Pin', h.pin],
   ] },
   { title: 'Character', rows: [
     ['At their best', h.best], ['At their worst', h.worst], ['What other houses say', h.stereotype],
@@ -43,7 +46,7 @@ const groups = [
           <h1 class="display mt-5 text-[clamp(3rem,12vw,7rem)] leading-none tracking-[0.18em]">{h.name}</h1>
           <p class="eyebrow mt-8" style="color:var(--h-accent)">{h.rule}</p>
           <p class="mt-3 font-display text-[clamp(1.6rem,4vw,2.4rem)] italic">“{h.creed}”</p>
-          <p class="mt-6"><span class="font-display text-2xl italic">{h.motto}</span><span class="opacity-75">, “{h.mottoTranslation}”</span></p>
+          <p class="mt-6"><span class="font-display text-2xl italic">{h.motto}</span><span class="opacity-75">, “{h.mottoTranslation}”</span>{h.mottoSource && <span class="opacity-60"> {h.mottoSource}</span>}</p>
           <dl class="mx-auto mt-10 grid max-w-md grid-cols-3 gap-4 text-center md:mx-0 md:text-left">
             <div><dt class="eyebrow text-[0.6rem] opacity-70">Element</dt><dd class="mt-1 font-display text-2xl">{h.element}</dd></div>
             <div><dt class="eyebrow text-[0.6rem] opacity-70">Season</dt><dd class="mt-1 font-display text-2xl">{h.season}</dd></div>
@@ -56,7 +59,38 @@ const groups = [
       </div>
     </section>
 
-    <section class="marble px-4 py-20 text-center sm:px-8">
+    {(h.essence || h.mood || h.palette) && (
+      <section class="marble px-4 py-20 sm:px-8">
+        <div class="mx-auto grid max-w-5xl gap-12 md:grid-cols-2">
+          <div>
+            <h2 class="flex items-center gap-3 text-3xl"><FourPointStar size={14} class="text-gold-deep" />The house</h2>
+            {h.essence && <p class="mt-6 text-lg">{h.essence}</p>}
+            {h.seasonWhy && <p class="mt-4"><span class="eyebrow text-[0.62rem] text-gold-deep">Its season</span><br />{h.seasonWhy}</p>}
+            {h.verdict && <p class="mt-4"><span class="eyebrow text-[0.62rem] text-gold-deep">At its worst</span><br /><span class="font-display text-xl italic">{h.verdict}</span></p>}
+          </div>
+          <div class="glass-light p-7">
+            {h.mood && <>
+              <p class="eyebrow text-[0.62rem] text-gold-deep">The mood</p>
+              <p class="mt-2 font-display text-[clamp(1.5rem,3.5vw,2rem)] italic leading-snug">{h.mood}</p>
+            </>}
+            {h.palette && <>
+              <p class="eyebrow mt-8 text-[0.62rem] text-gold-deep">The palette</p>
+              <ul class="mt-4 grid grid-cols-2 gap-4">
+                {h.palette.map((c) => (
+                  <li class="flex items-center gap-3">
+                    <span class="h-10 w-10 shrink-0 rounded-full ring-1 ring-ink/15 shadow-inner" style={`background:${c.swatch}`} aria-hidden="true"></span>
+                    <span class="text-sm">{c.name}</span>
+                  </li>
+                ))}
+              </ul>
+              {h.paletteNote && <p class="mt-4 text-sm text-ink/70">{h.paletteNote}</p>}
+            </>}
+          </div>
+        </div>
+      </section>
+    )}
+
+    <section class="bg-marble-deep px-4 py-20 text-center sm:px-8">
       <p class="eyebrow text-gold-deep">The chant</p>
       <blockquote class="mx-auto mt-6 max-w-3xl font-display text-[clamp(1.7rem,4.5vw,2.8rem)] italic leading-snug">
         {h.chant.split(' / ').map((line) => <span class="block">{line}</span>)}
@@ -64,7 +98,7 @@ const groups = [
       <p class="mx-auto mt-10 max-w-xl"><span class="eyebrow text-gold-deep">The oath</span><br /><span class="font-display text-xl italic">“{h.oath}”</span></p>
     </section>
 
-    <section class="bg-marble-deep px-4 py-20 sm:px-8">
+    <section class="marble px-4 py-20 sm:px-8">
       <div class="mx-auto max-w-5xl">
         <h2 class="eyebrow text-center text-gold-deep">Rituals</h2>
         <ul class="mt-8 grid gap-6 md:grid-cols-3">
@@ -79,7 +113,7 @@ const groups = [
       </div>
     </section>
 
-    <section class="marble px-4 py-20 sm:px-8">
+    <section class="bg-marble-deep px-4 py-20 sm:px-8">
       <div class="mx-auto grid max-w-5xl gap-14 md:grid-cols-2">
         {groups.map((g) => (
           <div>

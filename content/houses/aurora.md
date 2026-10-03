@@ -52,4 +52,15 @@ nickname: "Dawnchasers"
 merch: "Violet and emerald scarves, glowing fox pins, light-up gowns."
 youKnow: "You’ve stopped mid-sentence to stare at the sky, you cry at sunsets, and you own fairy lights for every room."
 mood: "Spring dawn, the sky catching fire, wonder and spectacle."
+essence: "Aurora is the house of awe. Not shallow beauty, but the beauty of the natural world, exaggerated and real, like the northern lights: the kind that makes you stop and look up."
+verdict: "Wonder can become a beautiful distraction."
+seasonWhy: "Spring, the dawn of the year, when Reconnection Day opens the Exhibition."
+palette:
+  - { name: "Shimmering violet", swatch: "#7b5aa6" }
+  - { name: "Aurora emerald", swatch: "#3fa98a" }
+  - { name: "Warm gold linework", swatch: "#d6b26e" }
+  - { name: "Opal sheen", swatch: "linear-gradient(135deg, #f4efe8, #9fc3e6 35%, #e6cf9a 60%, #c4917a 80%, #3fa98a)" }
+paletteNote: "Violet and emerald are the colours of a real aurora."
+flowerMeaning: "It opens at dawn."
+gown: "Violet and emerald trim and a small gold sunrise pin."
 ---

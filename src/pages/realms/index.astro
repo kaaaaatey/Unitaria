@@ -8,7 +8,7 @@ const realms = (await getCollection('realms')).sort((a, b) => a.data.order - b.d
 const groups = ['Amerope', 'Afriopia', 'Asioralia'].map((c) => ({ name: c, realms: realms.filter((r) => r.data.continuent === c) }));
 ---
 <Base title="The Realms" description="The ten realms of Unitaria, and the North each one lives by.">
-  <PageHero eyebrow="Ten realms" title="Every realm has its North" lede="Each realm was formed where cultures came together, and each lives by its own ethos. Two great callings pull against each other in every realm, and those callings are what its young people compete in at the Exhibition." />
+  <PageHero eyebrow="Ten realms" title="Every realm has its North" lede="Each realm was formed where cultures came together, and each lives by its own ethos. Two great callings pull against each other in every realm, and those callings take centre stage when the realm has its week at the Exhibition." />
 
   <div class="marble px-4 py-20 sm:px-8 sm:py-24">
     {groups.map((g) => (
@@ -30,6 +30,14 @@ const groups = ['Amerope', 'Afriopia', 'Asioralia'].map((c) => ({ name: c, realm
                     <div>
                       <dt class="eyebrow text-[0.62rem] text-gold-deep">Exhibition callings</dt>
                       <dd class="mt-1">{r.duality[0]} <span class="text-gold-deep">and</span> {r.duality[1]}</dd>
+                      {r.dualityTagline && <dd class="mt-1 font-display text-lg italic text-ink/70">{r.dualityTagline}</dd>}
+                      {r.dualityExamples && (
+                        <dd class="mt-2 grid gap-1 text-ink/60">
+                          {r.dualityExamples.map((ex, i) => ex && (
+                            <span class="block border-l border-gold/50 pl-3"><span class="text-ink/80">{r.duality[i].split(':')[0]}:</span> {ex}</span>
+                          ))}
+                        </dd>
+                      )}
                     </div>
                     <div>
                       <dt class="eyebrow text-[0.62rem] text-gold-deep">North</dt>

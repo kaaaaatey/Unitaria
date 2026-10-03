@@ -5,7 +5,9 @@ import PageHero from '../components/PageHero.astro';
 import WorldChart from '../components/WorldChart.astro';
 import Timeline from '../components/Timeline.astro';
 import Cta from '../components/Cta.astro';
-import { worldTimeline } from '../data/world';
+import CompassStar from '../components/motifs/CompassStar.astro';
+import FourPointStar from '../components/motifs/FourPointStar.astro';
+import { worldTimeline, realmFacts, howItRuns, reWords } from '../data/world';
 
 const page = (await getEntry('pages', 'world'))!;
 const { Content } = await render(page);
@@ -40,7 +42,54 @@ const continuents = ['Amerope', 'Afriopia', 'Asioralia'].map((c) => ({
         </div>
       ))}
     </div>
+    <ul class="mx-auto mt-16 grid max-w-5xl gap-6 sm:grid-cols-3">
+      {realmFacts.map((f) => (
+        <li class="glass p-7">
+          <FourPointStar size={14} class="text-gold-light" />
+          <h3 class="mt-4 text-2xl">{f.title}</h3>
+          <p class="mt-2 text-starlight/75">{f.text}</p>
+        </li>
+      ))}
+    </ul>
     <div class="mt-14 text-center"><Cta label="Visit the realms" href="/realms" variant="gold" /></div>
+  </section>
+
+  <section class="bg-marble-deep px-4 py-20 sm:px-8 sm:py-28">
+    <div class="mx-auto max-w-6xl">
+      <div class="text-center">
+        <p class="eyebrow text-gold-deep">How our world runs</p>
+        <h2 class="mt-4 text-[clamp(2rem,5vw,3.5rem)] text-balance">Everything within reach</h2>
+        <p class="mx-auto mt-6 max-w-2xl text-lg text-ink/80">One land, one network, and a great deal of quiet care behind the scenes. Here is how we get around, and who looks after it all.</p>
+      </div>
+      <ul class="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {howItRuns.map((it) => (
+          <li class="glass-light p-8">
+            <CompassStar size={22} class="text-gold-deep" />
+            <p class="eyebrow mt-4 text-gold-deep">{it.eyebrow}</p>
+            <h3 class="mt-2 text-2xl">{it.title}</h3>
+            <p class="mt-2 text-ink/80">{it.text}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="night px-4 py-20 sm:px-8 sm:py-28">
+    <div class="mx-auto max-w-4xl">
+      <div class="text-center">
+        <p class="eyebrow text-gold-light">A little glossary</p>
+        <h2 class="display mt-4 text-[clamp(2rem,6vw,3.5rem)] tracking-[0.1em]">The Re- words</h2>
+        <p class="mx-auto mt-6 max-w-2xl text-starlight/80 sm:text-lg">Listen to how we talk and you will hear it everywhere. The new world's official words are about fixing, restoring and coming back together, because that is what we have spent fifty years doing.</p>
+      </div>
+      <dl class="mt-12 grid gap-4 sm:grid-cols-2">
+        {reWords.map((w) => (
+          <div class="glass p-7">
+            <dt class="font-display text-2xl text-gold-light">{w.term}</dt>
+            <dd class="mt-2 text-starlight/75">{w.text}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
   </section>
 
   <section class="marble px-4 py-20 sm:px-8 sm:py-28">

@@ -17,13 +17,17 @@ const realms = defineCollection({
     terrain: z.string(),
     duality: z.tuple([z.string(), z.string()]),
     dualityTagline: z.string().optional(),
+    // One concrete example per calling, where the Bible gives one ('' when it doesn't).
+    dualityExamples: z.tuple([z.string(), z.string()]).optional(),
+    // Optional accent colour for image-less place cards (defaults to gold).
+    accent: z.string().optional(),
     north: z.object({ value: z.string(), motto: z.string(), translation: z.string() }),
     profile: z.boolean().default(false), // true once a full realm profile is decided
     // Optional photography for a realm profile: one wide establishing shot, an intro, and its signature places.
     hero: z.object({ image: image(), alt: z.string() }).optional(),
     intro: z.array(z.string()).optional(),
     placesHeading: z.string().optional(),
-    places: z.array(z.object({ name: z.string(), tagline: z.string().optional(), text: z.string(), image: image(), alt: z.string() })).optional(),
+    places: z.array(z.object({ name: z.string(), tagline: z.string().optional(), text: z.string(), image: image().optional(), alt: z.string().optional() })).optional(),
   }),
 });
 
@@ -73,6 +77,16 @@ const houses = defineCollection({
     nickname: z.string(),
     merch: z.string(),
     youKnow: z.string(),
+    // Deeper lore from the World Bible (house Identity, Symbols and visual briefs). All optional.
+    essence: z.string().optional(), // what the house is, in a short paragraph
+    verdict: z.string().optional(), // one-line "at its worst" summary
+    seasonWhy: z.string().optional(),
+    mottoSource: z.string().optional(),
+    palette: z.array(z.object({ name: z.string(), swatch: z.string() })).optional(), // swatch: any CSS background
+    paletteNote: z.string().optional(),
+    flowerMeaning: z.string().optional(),
+    gemstoneMeaning: z.string().optional(),
+    gown: z.string().optional(),
   }),
 });
 

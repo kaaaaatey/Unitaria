@@ -1211,7 +1211,10 @@ Every character who touches the Secret gives a different answer to the Heart Sta
 
 * **Terminology:** the ten areas are **realms** ("the Realm of Neuropa"); the three big groupings are **Continuents**. ("Reaches" was rejected.)
 
-- Full naming details live in Module 4, The Map.
+- **Why "Continuents" (decided 3 Oct 2026):** every continent merged, so although the world is now one landmass, the three groupings were renamed Continuents to honour them. A Continuent is a continuation of the continents that came before, but new.
+- **No sea in the present day (decided 3 Oct 2026):** because the continents squeezed together, there are no open seas any more. The water around the Academy and Neuropa is a great man-made lake, so present-day descriptions say "lake", never "sea". The old oceans are only mentioned when describing the time before and during the Reconnecting.
+
+* Full naming details live in Module 4, The Map.
 
 ### Era 1: The world before
 

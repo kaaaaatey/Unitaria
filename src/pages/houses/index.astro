@@ -4,7 +4,19 @@ import { Image } from 'astro:assets';
 import Base from '../../layouts/Base.astro';
 import PageHero from '../../components/PageHero.astro';
 import { banners, houseOrder } from '../../data/banners';
+import FourPointStar from '../../components/motifs/FourPointStar.astro';
+import CompassStar from '../../components/motifs/CompassStar.astro';
 const houses = (await getCollection('houses')).sort((a, b) => houseOrder.indexOf(a.data.name) - houseOrder.indexOf(b.data.name));
+// Top to bottom, every banner in the set reads the same way (World Bible, house banner brief).
+const anatomy = [
+  ['The star', 'A small four-point star crowns every banner, echoing the Academy’s eight-pointed compass.'],
+  ['The name', 'The house name in widely spaced capitals, then “House of the North”, “East”, “South” or “West”.'],
+  ['The crest', 'Drawn in fine celestial linework: compass geometry, circles, orbits and stars.'],
+  ['The rule', 'Knowledge, Wonder, Harmony or Courage, in capitals, with the house creed beneath it.'],
+  ['The element', 'Air, Light, Water or Earth, with its symbol.'],
+  ['The motto', 'The Latin motto in elegant script.'],
+  ['The bearing', 'Last of all, the house name and its bearing on the compass: 90°N, 90°E, 90°S or 90°W.'],
+];
 ---
 <Base title="The Houses" description="Polaris, Aurora, Lyra and Orion: the Academy's four rules for the world.">
   <PageHero eyebrow="The four houses" title="Four rules for the world" lede="At the Compass Ceremony, the golden compass points every student to one of four houses, set at its four cardinal points. Your realm is where you're from. Your house is who you are." />
@@ -24,5 +36,55 @@ const houses = (await getCollection('houses')).sort((a, b) => houseOrder.indexOf
         </li>
       ))}
     </ul>
+  </section>
+
+  <section class="marble px-4 py-20 sm:px-8 sm:py-24">
+    <div class="mx-auto max-w-3xl text-lg">
+      <p class="eyebrow text-center text-gold-deep">One house, ten realms</p>
+      <h2 class="mt-4 text-center text-[clamp(2rem,5vw,3rem)]">Every house holds the whole world</h2>
+      <p class="mt-6">No house belongs to any one realm. At the Grand Academy, every house holds one student from each of the ten, so every house blends all ten realms’ specialities. Collaboration and community sit at the heart of our world, and the greatest breakthroughs so often come from mixing disciplines.</p>
+      <p class="mt-4">Each house earns its points together, and the tally is shown live on the broadcast all year long.</p>
+    </div>
+  </section>
+
+  <section class="bg-marble-deep px-4 py-20 sm:px-8 sm:py-24">
+    <div class="mx-auto max-w-5xl">
+      <p class="eyebrow text-center text-gold-deep">The banners</p>
+      <h2 class="mt-4 text-center text-[clamp(2rem,5vw,3rem)]">A matching set</h2>
+      <p class="mx-auto mt-6 max-w-3xl text-center text-lg">The four banners hang side by side in the Great Hall as one set: tall, slender panels in minimal celestial linework of fine gold or silver. Each tells its house’s story in the same order, from top to bottom.</p>
+      <div class="mt-10 grid items-start gap-10 md:grid-cols-[1fr_auto]">
+        <ol class="divide-y divide-vein border-y border-vein">
+          {anatomy.map(([k, v]) => (
+            <li class="grid gap-1 py-3 sm:grid-cols-[9rem_1fr] sm:gap-4">
+              <span class="eyebrow pt-1 text-[0.62rem] text-gold-deep">{k}</span>
+              <span>{v}</span>
+            </li>
+          ))}
+        </ol>
+        <div class="glass-light flex items-center justify-center gap-8 p-8 text-gold-deep">
+          <figure class="text-center"><FourPointStar size={44} label="The house banners' four-point star" /><figcaption class="eyebrow mt-3 text-[0.55rem]">The houses</figcaption></figure>
+          <figure class="text-center"><CompassStar size={72} label="The Academy's eight-pointed compass star" /><figcaption class="eyebrow mt-3 text-[0.55rem]">The Academy</figcaption></figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="marble px-4 py-20 sm:px-8 sm:py-24">
+    <div class="mx-auto max-w-5xl">
+      <p class="eyebrow text-center text-gold-deep">Crest creatures and mascots</p>
+      <h2 class="mt-4 text-center text-[clamp(2rem,5vw,3rem)]">Two creatures for every house</h2>
+      <p class="mx-auto mt-6 max-w-3xl text-center text-lg">Every house has two creatures, and the Director designed them all. One is a grand heraldic creature, worn with pride on gowns. The other is a cute, modern mascot, made to be an app icon, a plush, a sticker and an animated friend who pops up on your band to cheer you on.</p>
+      <ul class="mt-10 grid gap-5 sm:grid-cols-2">
+        {houses.map(({ data: h }) => (
+          <li class="glass-light p-7">
+            <p class="eyebrow text-[0.62rem] text-gold-deep">{h.name} · {h.season}</p>
+            <h3 class="mt-2 text-2xl">{h.mascot.name}, the {h.mascot.creature}</h3>
+            <p class="mt-2">{h.creature}</p>
+            {h.seasonWhy && <p class="mt-3 text-sm text-ink/70">{h.seasonWhy}</p>}
+            <a href={`/houses/${h.name.toLowerCase()}`} class="mt-4 inline-block text-sm text-gold-deep underline underline-offset-4">Visit {h.name}</a>
+          </li>
+        ))}
+      </ul>
+    </div>
   </section>
 </Base>

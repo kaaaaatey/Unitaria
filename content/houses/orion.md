@@ -52,4 +52,11 @@ nickname: "Trailblazers"
 merch: "Onyx and gold scarves, Ori plushies, belt-star pins."
 youKnow: "You say yes before hearing the question, you always volunteer first, and you’ve definitely climbed something you shouldn’t have."
 mood: "Autumn dusk, mountain heights, strength and nerve."
+essence: "Orion is the house future leaders tend to come from: brave, bold, strong and willing to take the risks the world needs someone to take. In a world that puts community first, ambition is quietly frowned upon, so Orions are admired, and just a little quietly feared."
+seasonWhy: "Autumn, when Orion rises in the evening sky."
+palette:
+  - { name: "Onyx black", swatch: "#0b0b0b" }
+  - { name: "Gold", swatch: "#c6a15b" }
+flowerMeaning: "It grows on dangerous high cliffs, and Alpine climbers once picked it as proof of their courage."
+gown: "Onyx and gold trim, the three-star belt pin and edelweiss."
 ---

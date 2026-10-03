@@ -3,6 +3,7 @@ import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import PageHero from '../../components/PageHero.astro';
 import { Image } from 'astro:assets';
+import FourPointStar from '../../components/motifs/FourPointStar.astro';
 
 export async function getStaticPaths() {
   const realms = await getCollection('realms', (r) => r.data.profile);
@@ -11,6 +12,7 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const r = entry.data;
 const { Content } = await render(entry);
+const accent = r.accent ?? 'var(--color-gold)';
 ---
 <Base title={r.name} description={`The Realm of ${r.name}: ${r.terrain}.`}>
   <PageHero eyebrow={`${r.continuent} · Realm ${r.order} of 10`} title={r.name} lede={`${r.north.value}. ${r.north.motto}: “${r.north.translation}”`}>
@@ -35,8 +37,10 @@ const { Content } = await render(entry);
         <div class="glass-light p-7 text-center">
           <p class="eyebrow text-[0.62rem] text-gold-deep">Calling {i === 0 ? 'one' : 'two'}</p>
           <p class="mt-2 font-display text-2xl">{d}</p>
+          {r.dualityExamples?.[i] && <p class="mt-2 text-sm text-ink/60">{r.dualityExamples[i]}</p>}
         </div>
       ))}
+      {r.dualityTagline && <p class="text-center font-display text-xl italic text-gold-deep sm:col-span-2">{r.dualityTagline}</p>}
     </div>
     {r.places && (
       <div class="mx-auto mb-20 max-w-6xl">
@@ -45,10 +49,11 @@ const { Content } = await render(entry);
           <h2 class="mt-4 text-[clamp(2.2rem,6vw,4rem)]">{r.placesHeading ?? `Inside ${r.name}`}</h2>
         </div>
         <ul class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {r.places.map((pl) => (
+          {r.places.map((pl, idx) => (
             <li class="group glass-light glass-lift flex flex-col overflow-hidden !rounded-[1.6rem]">
+              {pl.image ? (
               <div class="relative aspect-[4/3] overflow-hidden">
-                <Image src={pl.image} alt={pl.alt} widths={[400, 700]} sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw"
+                <Image src={pl.image} alt={pl.alt ?? ''} widths={[400, 700]} sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw"
                   class="h-full w-full object-cover transition duration-[1.4s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105" />
                 <span class="absolute inset-0 bg-gradient-to-t from-midnight/80 via-midnight/10 to-transparent" aria-hidden="true"></span>
                 <div class="absolute inset-x-0 bottom-0 p-5 text-starlight">
@@ -56,6 +61,17 @@ const { Content } = await render(entry);
                   <h3 class="mt-1 font-display text-[1.7rem] leading-tight">{pl.name}</h3>
                 </div>
               </div>
+              ) : (
+              <div class="relative flex min-h-[11rem] bg-midnight flex-col justify-end overflow-hidden p-5" style={`--accent: ${accent}`}>
+                <span class="absolute inset-0 opacity-70 transition duration-[1.4s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:opacity-100" style="background: radial-gradient(80% 90% at 100% 0%, color-mix(in srgb, var(--accent) 45%, transparent), transparent 70%)" aria-hidden="true"></span>
+                <FourPointStar size={120} class="absolute -right-6 -top-6 opacity-25 transition duration-[1.4s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:rotate-45 [color:var(--accent)]" />
+                <span class="absolute left-5 top-5 font-display text-lg tabular-nums [color:var(--accent)]" aria-hidden="true">{String(idx + 1).padStart(2, '0')}</span>
+                <div class="relative">
+                  {pl.tagline && <p class="eyebrow text-[0.58rem] [color:var(--accent)]">{pl.tagline}</p>}
+                  <h3 class="mt-1 font-display text-[1.7rem] leading-tight text-starlight">{pl.name}</h3>
+                </div>
+              </div>
+              )}
               <p class="flex-1 p-5 text-[0.95rem] text-ink/75">{pl.text}</p>
             </li>
           ))}

@@ -52,4 +52,13 @@ nickname: "Songkeepers"
 merch: "Rose gold and pearl scarves, Lyr plushies, pearl pins."
 youKnow: "You remember everyone’s birthday, you mediate every group chat, and you cry at other people’s good news."
 mood: "Summer evening by the water, warmth, music, calm."
+essence: "Lyra takes its name from the lyre, and it is the heart of our community: the house that listens, keeps the peace and makes sure no one is left alone."
+verdict: "Harmony can slide into silence."
+seasonWhy: "Summer, when Lyra's brightest star, Vega, shines high in the Summer Triangle."
+palette:
+  - { name: "Pearl", swatch: "#f4efe8" }
+  - { name: "Soft marble cream", swatch: "#ebe5dc" }
+  - { name: "Rose gold", swatch: "#c4917a" }
+gemstoneMeaning: "Beauty formed gently over time."
+gown: "Rose-gold and pearl trim and a small gold lyre pin."
 ---

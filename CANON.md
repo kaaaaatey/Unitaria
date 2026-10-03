@@ -482,3 +482,6 @@ Never on public pages. Only in `/pitch`, behind a clear spoiler warning.
 - **Theme park potential:** Harry's clubhouse as a walk-through attraction; filming in real places bent by colour and light.
 - **A real song:** the kneading lullaby.
 - Precedents: *Masquerade*, *Gravity Falls* and *Journal 3*, *S.*, *Lost*'s ARG.
+
+## Points and trusts (3 Oct 2026)
+There is no children's trust. A child's 50% share goes to the Academy, paying for the Academy year, graduations, gowns and celebrations. The only trust is the adult starter trust, which unlocks at 21 and is the only store of points that does not expire.

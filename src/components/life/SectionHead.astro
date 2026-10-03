@@ -1,0 +1,13 @@
+---
+// Centred eyebrow, display heading and paragraphs (blank-line separated) for a Life section.
+interface Props { eyebrow?: string; heading: string; text?: string; dark?: boolean; size?: 'lg' | 'md' }
+const { eyebrow, heading, text, dark = false, size = 'lg' } = Astro.props;
+const paras = (text ?? '').split(/\n\s*\n/).map((p) => p.trim()).filter(Boolean);
+---
+<div class="mx-auto max-w-3xl text-center">
+  {eyebrow && <p class={`eyebrow ${dark ? 'text-gold-light' : 'text-gold-deep'}`}>{eyebrow}</p>}
+  <h2 class={`mt-4 text-balance ${size === 'lg' ? 'text-[clamp(2.2rem,6vw,3.8rem)]' : 'text-[clamp(2rem,5vw,3.2rem)]'}`}>{heading}</h2>
+  {paras.map((p, i) => (
+    <p class={`${i ? 'mt-4' : 'mt-6'} text-lg ${dark ? 'text-starlight/80' : 'text-ink/80'}`}>{p}</p>
+  ))}
+</div>

@@ -4,6 +4,8 @@ import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
 import Compass from '../components/motifs/Compass.astro';
 import FourPointStar from '../components/motifs/FourPointStar.astro';
+import CompassStar from '../components/motifs/CompassStar.astro';
+import Timeline from '../components/Timeline.astro';
 
 const page = (await getEntry('pages', 'fellows'))!;
 const d = page.data;
@@ -22,6 +24,50 @@ const paras = (t?: string) => (t ?? '').trim().split(/\n\s*\n/);
         <div class="prose-world mt-6 text-lg [&_p:first-child]:font-display [&_p:first-child]:text-3xl [&_p:first-child]:italic [&_p:first-child]:text-gold-deep">
           {paras(s.director.text).map((p) => <p>{p}</p>)}
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-marble-deep px-4 py-20 sm:px-8 sm:py-28">
+    <div class="mx-auto max-w-5xl">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="eyebrow text-gold-deep">{s.rise.eyebrow}</p>
+        <h2 class="mt-4 text-[clamp(2.2rem,6vw,3.8rem)] text-balance">{s.rise.heading}</h2>
+        <p class="mt-6 text-lg text-ink/80">{s.rise.text}</p>
+      </div>
+      <div class="mt-14">
+        <Timeline items={(s.rise.items ?? []).map((it) => ({ when: it.tag ?? '', title: it.title, text: it.text }))} />
+      </div>
+    </div>
+  </section>
+
+  <section class="night px-4 py-20 sm:px-8 sm:py-28">
+    <div class="mx-auto max-w-6xl">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="eyebrow text-gold-light">{s.designer.eyebrow}</p>
+        <h2 class="mt-4 text-[clamp(2.2rem,6vw,3.8rem)] text-balance">{s.designer.heading}</h2>
+        <div class="prose-world mx-auto mt-6 text-lg text-starlight/80 [&_p]:mx-auto">
+          {paras(s.designer.text).map((p) => <p>{p}</p>)}
+        </div>
+      </div>
+      <ul class="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {s.designer.items?.map((it) => (
+          <li class="glass p-7">
+            <CompassStar size={22} class="text-gold-light" />
+            <h3 class="mt-4 text-2xl">{it.title}</h3>
+            <p class="mt-2 text-starlight/75">{it.text}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="marble px-4 py-20 text-center sm:px-8 sm:py-28">
+    <div class="mx-auto max-w-3xl">
+      <p class="eyebrow text-gold-deep">{s.presence.eyebrow}</p>
+      <h2 class="mt-4 text-[clamp(2.2rem,6vw,3.8rem)] text-balance">{s.presence.heading}</h2>
+      <div class="prose-world mx-auto mt-6 text-lg text-ink/80 [&_p]:mx-auto">
+        {paras(s.presence.text).map((p) => <p>{p}</p>)}
       </div>
     </div>
   </section>
