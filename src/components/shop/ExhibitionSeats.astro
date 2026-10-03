@@ -1,0 +1,34 @@
+---
+// Seats for the Exhibition season: standard online access is free for everyone; points buy closeness.
+import { getEntry } from 'astro:content';
+import ShopItem from './ShopItem.astro';
+import Toast from './Toast.astro';
+import roundTable from '../../../assets/crops/academy-round-table.jpg';
+import greatHall from '../../../assets/crops/academy-great-hall.jpg';
+import seaView from '../../../assets/crops/academy-sea-view.jpg';
+import exterior from '../../../assets/crops/academy-exterior.jpg';
+import galleryHall from '../../../assets/crops/academy-gallery-hall.jpg';
+import library from '../../../assets/crops/academy-library.jpg';
+const onlineArt = [library, roundTable, seaView];
+const venueArt = [galleryHall, greatHall, exterior];
+const seats = (await getEntry('shop', 'exhibition-seats'))!.data;
+---
+<section id="seats" class="night aurora relative isolate overflow-hidden px-4 py-20 sm:px-8 sm:py-28" aria-labelledby="seats-title">
+  <div class="mx-auto max-w-6xl">
+    <div class="text-center">
+      <p class="eyebrow text-gold-light">{seats.eyebrow}</p>
+      <h2 id="seats-title" class="display text-metal mt-4 text-[clamp(2.2rem,7vw,4.6rem)] tracking-[0.1em]">{seats.heading}</h2>
+      <p class="mx-auto mt-5 max-w-2xl text-starlight/80 sm:text-lg">{seats.lede}</p>
+    </div>
+    <h3 class="eyebrow mt-14 text-center text-gold-light">Online</h3>
+    <ul class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
+      {seats.online?.map((it, i) => <ShopItem {...it} tone="dark" bg="#0e1d33" accent="#e6cf9a" image={onlineArt[i]} />)}
+    </ul>
+    <h3 class="eyebrow mt-14 text-center text-gold-light">In person</h3>
+    <ul class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-3">
+      {seats.inPerson?.map((it, i) => <ShopItem {...it} tone="dark" bg="#1d1630" accent="#c6a15b" image={venueArt[i]} />)}
+    </ul>
+    <p class="mx-auto mt-10 max-w-2xl text-center text-xs text-starlight/60">{seats.finePrint}</p>
+  </div>
+  <Toast />
+</section>

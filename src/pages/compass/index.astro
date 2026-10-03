@@ -1,5 +1,5 @@
 ---
-import { getCollection, getEntry } from 'astro:content';
+import { getCollection, getEntry, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import PageHero from '../../components/PageHero.astro';
 import Compass from '../../components/motifs/Compass.astro';
@@ -8,15 +8,29 @@ import HouseResult from '../../components/compass/HouseResult.astro';
 import { houseOrder } from '../../data/banners';
 import { houseAngle } from '../../data/compass';
 
-const quiz = (await getEntry('compass', 'questions'))!.data;
+const quizEntry = (await getEntry('compass', 'questions'))!;
+const quiz = quizEntry.data;
+const { Content: Explainer } = await render(quizEntry);
 const houses = (await getCollection('houses')).sort((a, b) => houseOrder.indexOf(a.data.name) - houseOrder.indexOf(b.data.name));
 // Rotate the answer order per question so no house always sits first.
 const questions = quiz.questions.map((q, i) => ({ ...q, answers: q.answers.map((_, j) => q.answers[(j + i) % 4]) }));
 ---
-<Base title="The Compass" description="Touch the compass. Nine questions, and it will point to your house: Polaris, Aurora, Lyra or Orion.">
-  <PageHero eyebrow="The Compass" title="What's your house?" lede={quiz.intro} />
+<Base title="The Compass" description="Ever wondered what it would be like to take part in the real Compass Ceremony? Try our digital Compass and discover your house: Polaris, Aurora, Lyra or Orion.">
+  <PageHero eyebrow="The Compass" title="What's your house?" lede={quiz.intro}>
+    <p class="mt-10"><a href="#take-the-compass" class="btn btn-gold">Take the Compass</a></p>
+  </PageHero>
 
-  <section class="night relative px-4 pb-24 sm:px-8" data-quiz data-no-reveal>
+  <section class="marble px-4 py-20 sm:px-8 sm:py-28">
+    <div class="mx-auto grid max-w-6xl items-center gap-14 lg:grid-cols-[1fr_1.2fr]">
+      <div class="flex justify-center"><Compass size="min(78vw, 400px)" class="text-gold-deep" /></div>
+      <article class="prose-world sm:text-lg [&_h2]:mb-4 [&_h2]:mt-12 [&_h2]:text-[clamp(2rem,5vw,3rem)] [&_h2:first-child]:mt-0 [&_p]:mt-4 [&_p]:text-ink/80">
+        <Explainer />
+      </article>
+    </div>
+  </section>
+
+  <section id="take-the-compass" class="night relative scroll-mt-0 px-4 py-20 sm:px-8 sm:py-28" data-quiz data-no-reveal>
+    <div class="mx-auto mb-12 max-w-6xl text-center lg:mb-16"><p class="eyebrow text-gold-light">Your turn</p><h2 class="display text-metal mt-4 text-[clamp(2rem,6vw,3.6rem)] tracking-[0.1em]">Take the Compass</h2></div>
     <div class="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:gap-16">
       <div class="relative mx-auto" style="width:min(72vw, 440px)">
         <Compass size="100%" />

@@ -1,0 +1,25 @@
+---
+// One product tile, Apple Store style: a glowing swatch, the name, a line, and the price in points.
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import CompassStar from '../motifs/CompassStar.astro';
+interface Props { name: string; points: number; text: string; digital?: boolean; bg?: string; accent?: string; tone?: 'light' | 'dark'; image?: ImageMetadata; focus?: string; zoom?: number }
+const { name, points, text, digital = false, bg = '#081727', accent = '#c6a15b', tone = 'light', image, focus = '50% 40%', zoom = 1 } = Astro.props;
+const price = points === 0 ? 'Free' : `${points.toLocaleString('en-GB')} points`;
+---
+<li class={`shop-item group flex flex-col ${tone === 'light' ? 'glass-light' : 'glass'} glass-lift overflow-hidden !rounded-[1.6rem]`}>
+  <div class="relative grid aspect-[16/9] place-items-center sm:aspect-[4/3] overflow-hidden" style={`background:radial-gradient(70% 70% at 50% 40%, ${accent}55, transparent 70%), ${bg}`} aria-hidden="true">
+    {image && <Image src={image} alt="" widths={[400, 700]} sizes="(min-width: 1024px) 300px, 100vw" class="absolute inset-0 h-full w-full object-cover transition duration-[1.4s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105" style={`object-position:${focus};transform:scale(${zoom})`} />}
+    {image && <span class="absolute inset-0" style={`background:linear-gradient(180deg, transparent 40%, ${bg}cc)`}></span>}
+    <span class="relative" style={`color:${accent}`}><CompassStar size={image ? 40 : 64} class="drop-shadow-[0_6px_24px_rgb(0_0_0/0.45)]" /></span>
+    {digital && <span class="eyebrow absolute right-3 top-3 rounded-full bg-white/80 px-2.5 py-1 text-[0.55rem] text-ink">Digital</span>}
+  </div>
+  <div class="flex flex-1 flex-col p-5">
+    <h3 class="font-display text-2xl leading-tight">{name}</h3>
+    <p class="mt-1 flex-1 text-sm opacity-75">{text}</p>
+    <div class="mt-4 flex items-center justify-between gap-3">
+      <p class="font-medium tabular-nums">{price}</p>
+      <button type="button" class="btn btn-ghost !min-h-10 !px-4 !py-2 !text-[0.6rem]" data-reserve>{points === 0 ? 'Watch free' : 'Reserve'}</button>
+    </div>
+  </div>
+</li>

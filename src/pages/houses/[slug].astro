@@ -4,6 +4,7 @@ import { Image } from 'astro:assets';
 import Base from '../../layouts/Base.astro';
 import FourPointStar from '../../components/motifs/FourPointStar.astro';
 import { banners, houseOrder } from '../../data/banners';
+import HouseShop from '../../components/shop/HouseShop.astro';
 
 export async function getStaticPaths() {
   const houses = await getCollection('houses');
@@ -96,10 +97,11 @@ const groups = [
       </div>
     </section>
 
+    <HouseShop house={h.name} bg={h.theme.bg} accent={h.theme.accent} nickname={h.nickname} />
+
     <section class="px-4 py-20 text-center sm:px-8" style="background:var(--h-bg);color:var(--h-fg)">
       <p class="eyebrow" style="color:var(--h-accent)">You know you're one of the {h.nickname} when…</p>
       <p class="mx-auto mt-6 max-w-2xl font-display text-[clamp(1.5rem,4vw,2.2rem)] italic">{h.youKnow}</p>
-      <p class="mx-auto mt-8 max-w-xl text-sm opacity-75">House merch: {h.merch}</p>
       <div class="mt-12 flex flex-wrap justify-center gap-4">
         <a href="/houses" class="btn btn-ghost">All four houses</a>
         <a href={`/houses/${next.toLowerCase()}`} class="btn btn-gold">Next: {next}</a>

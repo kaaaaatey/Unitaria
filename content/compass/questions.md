@@ -1,5 +1,5 @@
 ---
-intro: Touch the compass. Nine questions, and it will point to who you are.
+intro: Ever wondered what it would be like to take part in the real thing? Try our very own digital Compass, and discover which house you belong to.
 # Approved by Katey, 3 Oct 2026. Every answer comes straight from a house's canon (events,
 # seasons, elements, causes, traits, pins, creatures). Keep one answer per house.
 questions:
@@ -58,3 +58,14 @@ questions:
       - { text: 'A swan who never leaves its partner’s side', house: Lyra }
       - { text: 'A snow leopard on the world’s most dangerous mountains', house: Orion }
 ---
+
+## The Compass Ceremony
+
+Every Academy year opens with the Compass Ceremony. At the Grand Academy in Neuropa, each of the forty Golden Prospects steps forward and touches the giant golden compass. It spins, and comes to rest on one of four houses, each holding one of the Academy's four rules for the world: **Polaris** for Knowledge, **Aurora** for Wonder, **Lyra** for Harmony and **Orion** for Courage.
+
+It is the moment the whole world tunes in for. Your realm is where you're from. Your house is who you are.
+
+## Why the houses matter
+
+Each house holds ten Golden Prospects, one from every realm, and for the whole Academy year they rise or fall together. Houses bring students and Fellows together to celebrate innovation across every realm: every house was founded by its first Fellow, and the very best of each Exhibition join them as Fellows of the Academy.
+

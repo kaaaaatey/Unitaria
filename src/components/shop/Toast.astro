@@ -1,0 +1,18 @@
+---
+// A small confirmation that appears when you "reserve" something: purchases happen on your band, not here.
+---
+<p class="toast glass-light pointer-events-none fixed inset-x-4 bottom-6 z-[70] mx-auto max-w-sm px-5 py-4 text-center text-sm text-ink opacity-0 transition duration-500 sm:inset-x-auto sm:left-1/2 sm:-translate-x-1/2" role="status" aria-live="polite" data-toast></p>
+<script>
+  const toast = document.querySelector<HTMLElement>('[data-toast]');
+  let t = 0;
+  document.querySelectorAll<HTMLButtonElement>('[data-reserve]').forEach((b) => b.addEventListener('click', () => {
+    if (!toast) return;
+    const name = b.closest('li')?.querySelector('h3')?.textContent ?? 'It';
+    toast.textContent = b.textContent?.includes('free')
+      ? 'Standard access is already yours. Just tune in.'
+      : `${name} is waiting for you. Tap your band to confirm with points.`;
+    toast.style.opacity = '1';
+    clearTimeout(t);
+    t = window.setTimeout(() => { toast.style.opacity = '0'; }, 3200);
+  }));
+</script>

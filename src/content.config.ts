@@ -131,6 +131,7 @@ const compass = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './content/compass' }),
   schema: z.object({
     intro: z.string(),
+    lede: z.string().optional(),
     questions: z.array(z.object({
       q: z.string(),
       answers: z.array(z.object({ text: z.string(), house: houseName })).length(4),
@@ -138,4 +139,20 @@ const compass = defineCollection({
   }),
 });
 
-export const collections = { realms, houses, fellows, pages, pitch, home, compass };
+// The House Shop and Exhibition seats: points prices are drafts for Katey.
+const item = z.object({ name: z.string(), points: z.number(), text: z.string(), digital: z.boolean().optional() });
+const shop = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './content/shop' }),
+  schema: z.object({
+    heading: z.string(),
+    eyebrow: z.string().optional(),
+    lede: z.string(),
+    houses: z.record(houseName, z.array(item)).optional(),
+    academy: z.object({ heading: z.string(), items: z.array(item) }).optional(),
+    online: z.array(item).optional(),
+    inPerson: z.array(item).optional(),
+    finePrint: z.string(),
+  }),
+});
+
+export const collections = { realms, houses, fellows, pages, pitch, home, compass, shop };

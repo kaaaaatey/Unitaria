@@ -1,0 +1,35 @@
+---
+// The House Shop under each house: that house's canon merch, plus the Academy's seasonal collection.
+import { getEntry } from 'astro:content';
+import ShopItem from './ShopItem.astro';
+import Toast from './Toast.astro';
+import { banners } from '../../data/banners';
+interface Props { house: 'Polaris' | 'Aurora' | 'Lyra' | 'Orion'; bg: string; accent: string; nickname: string }
+const { house, bg, accent, nickname } = Astro.props;
+const shop = (await getEntry('shop', 'house-shop'))!.data;
+const items = shop.houses?.[house] ?? [];
+// Each tile shows a different part of the house banner, like a crop of the official artwork.
+const crops = [['50% 38%', 2.2], ['50% 18%', 2.6], ['50% 62%', 2.4], ['50% 82%', 2.6]] as const;
+---
+<section class="bg-marble-deep px-4 py-20 sm:px-8 sm:py-28" id="shop" aria-labelledby="shop-title">
+  <div class="mx-auto max-w-6xl">
+    <div class="text-center">
+      <p class="eyebrow text-gold-deep">For {nickname}</p>
+      <h2 id="shop-title" class="mt-4 text-[clamp(2.2rem,6vw,4rem)]">{shop.heading}</h2>
+      <p class="mx-auto mt-4 max-w-xl text-ink/75 sm:text-lg">{shop.lede}</p>
+    </div>
+    <ul class={`mx-auto mt-12 grid grid-cols-1 gap-4 text-ink sm:grid-cols-2 ${items.length === 3 ? 'max-w-4xl lg:grid-cols-3' : 'lg:grid-cols-4'}`}>
+      {items.map((it, i) => <ShopItem {...it} bg={bg} accent={accent} image={banners[house]} focus={crops[i % 4][0]} zoom={crops[i % 4][1]} />)}
+    </ul>
+    {shop.academy && (
+      <>
+        <h3 class="mt-16 text-center font-display text-[clamp(1.6rem,4vw,2.4rem)]">{shop.academy.heading}</h3>
+        <ul class="mx-auto mt-8 grid max-w-4xl grid-cols-1 gap-4 text-ink sm:grid-cols-3">
+          {shop.academy.items.map((it, i) => <ShopItem {...it} bg={bg} accent={accent} image={banners[house]} focus={crops[(i + 1) % 4][0]} zoom={1.6} />)}
+        </ul>
+      </>
+    )}
+    <p class="mx-auto mt-10 max-w-2xl text-center text-xs text-ink/75">{shop.finePrint}</p>
+  </div>
+  <Toast />
+</section>

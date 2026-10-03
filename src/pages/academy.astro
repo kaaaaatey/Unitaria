@@ -2,6 +2,7 @@
 import { getEntry, render } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import PageHero from '../components/PageHero.astro';
+import ExhibitionSeats from '../components/shop/ExhibitionSeats.astro';
 const page = (await getEntry('pages', 'academy'))!;
 const { Content } = await render(page);
 ---
@@ -13,4 +14,5 @@ const { Content } = await render(page);
     </article>
     <p class="mt-16 text-center"><a href="/houses" class="btn btn-gold">Meet the four houses</a></p>
   </section>
+  <ExhibitionSeats />
 </Base>
