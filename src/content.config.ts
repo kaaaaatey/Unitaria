@@ -9,7 +9,7 @@ const layer = z.enum(['public', 'pitch']);
 
 const realms = defineCollection({
   loader: glob({ pattern: '**/*.{md,mdx}', base: './content/realms' }),
-  schema: z.object({
+  schema: ({ image }) => z.object({
     name: z.string(),
     order: z.number(), // 1–10, as in the World Bible map table
     continuent: z.enum(['Amerope', 'Afriopia', 'Asioralia']),
@@ -19,6 +19,10 @@ const realms = defineCollection({
     dualityTagline: z.string().optional(),
     north: z.object({ value: z.string(), motto: z.string(), translation: z.string() }),
     profile: z.boolean().default(false), // true once a full realm profile is decided
+    // Optional photography for a realm profile: one wide establishing shot, an intro, and its signature places.
+    hero: z.object({ image: image(), alt: z.string() }).optional(),
+    intro: z.array(z.string()).optional(),
+    places: z.array(z.object({ name: z.string(), tagline: z.string().optional(), text: z.string(), image: image(), alt: z.string() })).optional(),
   }),
 });
 

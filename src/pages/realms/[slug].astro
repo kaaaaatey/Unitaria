@@ -2,6 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import PageHero from '../../components/PageHero.astro';
+import { Image } from 'astro:assets';
 
 export async function getStaticPaths() {
   const realms = await getCollection('realms', (r) => r.data.profile);
@@ -15,7 +16,20 @@ const { Content } = await render(entry);
   <PageHero eyebrow={`${r.continuent} · Realm ${r.order} of 10`} title={r.name} lede={`${r.north.value}. ${r.north.motto}: “${r.north.translation}”`}>
     <p class="mx-auto mt-4 max-w-xl text-sm text-starlight/60">Formed from {r.fused}.</p>
   </PageHero>
+  {r.hero && (
+    <figure class="relative bg-midnight px-3 pb-10 sm:px-6 sm:pb-16"><div class="relative mx-auto max-w-5xl">
+      <Image src={r.hero.image} alt={r.hero.alt} widths={[640, 1000, 1400]} sizes="100vw" loading="eager"
+        class="aspect-[4/3] w-full rounded-[1.75rem] object-cover shadow-[0_40px_100px_-40px_rgb(0_0_0/0.8)] ring-1 ring-gold/25 sm:aspect-[536/259] sm:rounded-[2.25rem]" />
+      <figcaption class="glass absolute bottom-4 left-4 rounded-full px-4 py-2 sm:bottom-6 sm:left-6"><span class="eyebrow text-[0.6rem] text-starlight">{r.name} · at golden hour</span></figcaption>
+    </div></figure>
+  )}
   <section class="marble px-4 py-20 sm:px-8 sm:py-24">
+    {r.intro && (
+      <div class="mx-auto mb-14 max-w-3xl text-center">
+        <p class="eyebrow text-gold-deep">Look and feel</p>
+        {r.intro.map((para, i) => <p class={`${i === 0 ? 'mt-6 font-display text-[clamp(1.5rem,3.4vw,2.2rem)] leading-snug text-ink' : 'mt-6 text-lg text-ink/75'}`}>{para}</p>)}
+      </div>
+    )}
     <div class="mx-auto mb-14 grid max-w-3xl gap-4 sm:grid-cols-2">
       {r.duality.map((d, i) => (
         <div class="glass-light p-7 text-center">
@@ -24,6 +38,30 @@ const { Content } = await render(entry);
         </div>
       ))}
     </div>
+    {r.places && (
+      <div class="mx-auto mb-20 max-w-6xl">
+        <div class="text-center">
+          <p class="eyebrow text-gold-deep">Signature places</p>
+          <h2 class="mt-4 text-[clamp(2.2rem,6vw,4rem)]">Where {r.name} lives</h2>
+        </div>
+        <ul class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {r.places.map((pl) => (
+            <li class="group glass-light glass-lift flex flex-col overflow-hidden !rounded-[1.6rem]">
+              <div class="relative aspect-[4/3] overflow-hidden">
+                <Image src={pl.image} alt={pl.alt} widths={[400, 700]} sizes="(min-width: 1024px) 380px, (min-width: 640px) 50vw, 100vw"
+                  class="h-full w-full object-cover transition duration-[1.4s] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105" />
+                <span class="absolute inset-0 bg-gradient-to-t from-midnight/80 via-midnight/10 to-transparent" aria-hidden="true"></span>
+                <div class="absolute inset-x-0 bottom-0 p-5 text-starlight">
+                  {pl.tagline && <p class="eyebrow text-[0.58rem] text-gold-light">{pl.tagline}</p>}
+                  <h3 class="mt-1 font-display text-[1.7rem] leading-tight">{pl.name}</h3>
+                </div>
+              </div>
+              <p class="flex-1 p-5 text-[0.95rem] text-ink/75">{pl.text}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    )}
     <article class="prose-world mx-auto max-w-3xl text-lg
       [&_h2]:mb-6 [&_h2]:mt-16 [&_h2]:text-[clamp(2rem,5vw,3rem)] [&_h2:first-child]:mt-0
       [&_ul]:mt-4 [&_ul+p]:mt-6 [&_ul]:space-y-3 [&_ul]:pl-0 [&_li]:list-none [&_li]:border-l [&_li]:border-gold/50 [&_li]:pl-4
