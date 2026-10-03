@@ -92,6 +92,13 @@ Source checked: the live World Bible doc (revision 391, exported 3 October 2026)
 - ✅ **The questions:** Claude's nine drafts from house canon, approved by Katey as they are (3 Oct 2026).
 - 🟠 Module 7 imagines a quiz sorting fans into **realms**; the brief asks for **houses**. Houses only, or a realm result too?
 
+### The House Shop and Exhibition seats (added 3 Oct 2026)
+- 🟠 **Every points price is a draft.** Claude set them so the scale reads (pin 120 to light-up gown 1,800; Grand Final seat 6,000). Katey to confirm or replace them, and to say what a typical student earns in a year.
+- 🟠 **Band skins.** Katey asked for "LiFE skins"; the brief says the band has no brand name yet, so the site says "House band skin". Is the band now officially called LiFE?
+- 🟠 **"Autumn 2077 collection"** uses UK English for Katey's "fall 2077". Is the collection's official name different?
+- 🟠 **Exhibition seat tiers** (Standard online free, Front-row stream, Season pass, Realm week seat, Realm week front row, Grand Final seat) are Claude's structure for Katey's ask. Confirm the tiers and whether point bidding for first picks is canon.
+- ⚪ The two islands that join the shore in the Settling are unnamed on the site, and the rebuild is headed "The rebuild" rather than a coined name.
+
 ## 4. Spoiler boundary questions
 
 - ✅ **Isola and Realignment on public pages.** Decided by Katey, 3 Oct 2026: they stay out of the public site for now.
