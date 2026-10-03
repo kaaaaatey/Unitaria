@@ -41,7 +41,7 @@ const houseList = (await getCollection('houses')).sort((a, b) => houseOrder.inde
 ---
 <Base nav={false} title="Unitaria" description="The Golden Jubilee: the 50th Reconnection Day, 7 May 2077.">
   <!-- Hero: the Golden Jubilee. Bright, like the opening spread of a travel brochure. -->
-  <section class="hero-sky relative isolate overflow-hidden px-4 pb-10 pt-14 text-center sm:px-8 sm:pt-20">
+  <section class="hero-sky relative isolate overflow-hidden px-4 pb-10 pt-14 text-center sm:px-8 sm:pt-20 lg:pb-32">
     <div class="mx-auto flex max-w-5xl flex-col items-center">
       <CompassStar size={44} class="text-gold drop-shadow-[0_4px_14px_rgb(198_161_91/0.55)]" />
       <p class="eyebrow mt-6 text-gold-deep">{jubilee.eyebrow}</p>
@@ -68,7 +68,8 @@ const houseList = (await getCollection('houses')).sort((a, b) => houseOrder.inde
     </figure>
   </section>
 
-  <NavBar />
+  <!-- On laptops the bar rests in the hero's cream, under the card, then floats as you scroll. -->
+  <NavBar class="!bg-[#f7f4ef] lg:!bg-transparent lg:-mt-[5.5rem] lg:mb-[5.5rem]" />
 
   <!-- Fifty years reconnected: the story, told as you scroll -->
   <ReconnectStory steps={reconnected.steps} stats={reconnected.stats} cta={reconnected.cta} />

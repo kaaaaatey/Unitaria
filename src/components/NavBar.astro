@@ -4,10 +4,11 @@
 // over the page and stays at the top as you scroll.
 import CompassStar from './motifs/CompassStar.astro';
 import { nav } from '../data/nav';
+const { class: extra = '' } = Astro.props as { class?: string };
 const path = Astro.url.pathname.replace(/\/$/, '') || '/';
 const isCurrent = (href: string) => path === href || (href !== '/' && path.startsWith(href + '/'));
 ---
-<div class="navbar relative z-50 bg-midnight px-3 py-3 lg:sticky lg:top-0 lg:h-0 lg:bg-transparent lg:p-0">
+<div class:list={["navbar relative z-50 bg-midnight px-3 py-3 lg:sticky lg:top-0 lg:h-0 lg:bg-transparent lg:p-0", extra]}>
   <nav aria-label="Main" class="nav-glass mx-auto flex items-center rounded-[1.6rem] p-1.5 text-starlight lg:absolute lg:left-1/2 lg:top-4 lg:w-max lg:-translate-x-1/2 lg:rounded-full">
     <a href="/" class="hidden shrink-0 items-center gap-2.5 rounded-full py-2 pl-4 pr-3 lg:flex" aria-label="Unitaria, home">
       <CompassStar size={20} class="text-gold" />
@@ -44,7 +45,14 @@ const isCurrent = (href: string) => path === href || (href !== '/' && path.start
   let queued = false;
   const tone = () => {
     queued = false;
-    if (!navEl || !matchMedia('(min-width: 64rem)').matches) { navEl?.removeAttribute('data-tone'); return; }
+    if (!navEl) return;
+    if (!matchMedia('(min-width: 64rem)').matches) {
+      // Below laptop width the bar sits in its own band, so it simply matches that band.
+      const c = getComputedStyle(navEl.parentElement!).backgroundColor.match(/[\d.]+/g)?.map(Number);
+      const light = c && (0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2]) / 255 > 0.6;
+      light ? navEl.setAttribute('data-tone', 'light') : navEl.removeAttribute('data-tone');
+      return;
+    }
     const r = navEl.getBoundingClientRect();
     const under = document.elementsFromPoint(r.left + 24, r.top + r.height / 2).find((e) => !e.closest('.navbar'));
     const l = lum(under ?? null);
