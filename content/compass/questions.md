@@ -26,7 +26,7 @@ questions:
       - { text: Air, house: Polaris }
       - { text: Light, house: Aurora }
       - { text: Water, house: Lyra }
-      - { text: Earth, house: Orion }
+      - { text: Fire, house: Orion }
   - q: Which cause would you give your points to?
     answers:
       - { text: 'Rebuilding libraries and literacy', house: Polaris }

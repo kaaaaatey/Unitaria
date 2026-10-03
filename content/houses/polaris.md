@@ -8,7 +8,7 @@ motto: "Quaerite et invenietis"
 mottoTranslation: "Seek, and you shall find."
 element: "Air"
 season: "Winter"
-colours: ["Midnight blue", "Silver"]
+colours: ["Midnight blue", "Sapphire blue", "Silver"]
 theme: 
   bg: "#091420"
   fg: "#eef1f6"
@@ -19,7 +19,7 @@ mascot:
   name: "Aris"
   creature: "husky"
   description: "A fluffy silver-white husky with pale-blue eyes and a tiny star on its forehead."
-campusAnimals: "Euclid, a silver tabby who lives in the library."
+campusAnimals: "Eugene, a tame house raccoon who lives in the library."
 flower: "Forget-me-not"
 gemstone: "Sapphire"
 pin: "A small silver star"
@@ -49,7 +49,7 @@ event:
 rivals: "Orion (thinkers against risk-takers) and Aurora (fact against wonder)."
 cause: "Rebuilding libraries and literacy across the realms."
 nickname: "Wayfinders"
-merch: "Midnight-blue scarves, silver star pins, husky plushies, observation logbooks."
+merch: "Sapphire blue and silver scarves, silver star pins, husky plushies, observation logbooks, stationery, hoodies and cosy study things."
 youKnow: "You’ve read the footnotes, you own more notebooks than shoes, and you’ve corrected someone’s facts at dinner."
 mood: "Clear winter night, starlight, quiet focus, frost on glass."
 essence: "Polaris is named for the North Star: true north, the one fixed point travellers have steered by for as long as there have been travellers. It is the house of Knowledge, of questions asked carefully and answers checked twice."
@@ -58,6 +58,7 @@ seasonWhy: "Winter, because winter brings the clearest skies for stargazing."
 mottoSource: "The Latin of Matthew 7:7."
 palette:
   - { name: "Deep midnight navy", swatch: "#0e1d33" }
+  - { name: "Sapphire blue", swatch: "#24519c" }
   - { name: "Frosted silver", swatch: "#c9d2de" }
   - { name: "Icy blue glints", swatch: "#9fc3e6" }
 flowerMeaning: "The flower of memory."

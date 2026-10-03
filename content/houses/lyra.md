@@ -8,7 +8,7 @@ motto: "Patientia virtus est"
 mottoTranslation: "Patience is a virtue."
 element: "Water"
 season: "Summer"
-colours: ["Rose gold", "Pearl"]
+colours: ["Rose gold", "Pearl white"]
 theme: 
   bg: "#e6dfd7"
   fg: "#1a1d2b"
@@ -37,7 +37,7 @@ welcome:
   name: "First Song"
   text: "At dusk by the lake, new members learn the house song together."
 oath: "Patientia virtus est. We hold the world in harmony."
-chant: "Loyal and relentless, united we stand, / Lyra holds the world in the palm of their hands!"
+chant: "Loyal and relentless, united here we stand, / Lyra holds the world in the palm of their hands!"
 celebration: 
   name: "The Midsummer Serenade"
   text: "A concert on the water at the summer solstice."

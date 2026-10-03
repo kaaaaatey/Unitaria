@@ -117,6 +117,12 @@ The site now draws on the whole World Bible. These points need Katey's ruling; t
 - The countdown times on the sample task board are made up for the demo.
 - The World Bible's Academy description still says "above the sea"; the site now says "above the great lake".
 
+### Houses sheet (3 Oct 2026)
+Katey's new Houses sheet is filed in the Bible and on the site. New: Polaris adds sapphire blue and Eugene the raccoon (Euclid the cat is gone); Aurora's crest is the leaping fox and its mascot Aura has a light-up tail; Orion's element is now fire, its gemstone ruby, and its campus animal Maverick the Bengal cat; Lyra is rose gold and pearl white.
+- Clash: Lyra's oath in the sheet is "Concordia parvae res crescunt", but its motto is still "Patientia virtus est". The site keeps the old oath until Katey decides.
+- The site's crest descriptions still describe the banner artwork, which for Aurora, Lyra and Orion differs from the crests in the sheet.
+- The Bible's Lyra signature space also lists a marina boathouse café, which the sheet leaves out. It stays until Katey says otherwise.
+
 ## 4. Spoiler boundary questions
 
 - ✅ **Isola and Realignment on public pages.** Decided by Katey, 3 Oct 2026: they stay out of the public site for now.
