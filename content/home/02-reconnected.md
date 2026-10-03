@@ -44,7 +44,7 @@ steps:
     when: "From loss, a new world"
     title: "One land. Three Continuents. Ten realms."
     text: |-
-      From destruction and immense loss, through courage and determination, one land, three Continuents and ten realms emerged.
+      From destruction and immense loss, through courage and determination, one land, three Continuents and ten realms emerged. We named them **Continuents** to honour the continents that merged to make them: continuations of the world that came before, made new.
 
       On the very day the world broke apart, seven children were born. We call them **the Seven**, and this spring they turn fifty, alongside the world they were born into.
   - id: map

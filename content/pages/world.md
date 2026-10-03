@@ -24,4 +24,4 @@ Faith grew stronger, and faiths grew kinder to each other. Everyone kept their o
 
 ## One world, within reach
 
-Today the oceans that once divided us are gone. One land holds **three Continuents** and **ten realms**, linked by solar monorails, so every culture is on every doorstep. Each realm is named for the cultures that came together within it, and each has its own North: the ethos it lives by.
+Today the oceans that once divided us are gone. One land holds **three Continuents** and **ten realms**, linked by solar monorails, so every culture is on every doorstep. We call them Continuents to honour the continents that merged to make them: each one is a continuation of the continents that came before, new but never forgotten. Each realm is named for the cultures that came together within it, and each has its own North: the ethos it lives by.

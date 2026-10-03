@@ -42,6 +42,7 @@ A summary of every decided fact the website can rely on. If it isn't here, it is
 - In 2077 the world is one landmass made of three **Continuents** and ten **realms**. Oceans between them are gone; travel is easy; every culture is on everyone's doorstep.
 - About 1.5 billion people live there, roughly 150 million per realm on average. Neuropa, the capital, may be larger.
 - Terminology: the ten areas are **realms** ("the Realm of Neuropa"); the three groupings are **Continuents**. "Reaches" was rejected.
+- **Why "Continuent"** (Katey, 3 Oct 2026): every continent merged, so although it is now one landmass, the three groupings were renamed Continuents to honour them: continuations of the continents that came before, but new. The site explains this on Home (the story), the World page and the map.
 - The main place in each realm simply takes the realm's name. Old cities survive as districts inside realms (Boston lives in Neuropa).
 - Names have a cheerful, committee-made, "they tried to fix it" feel.
 
