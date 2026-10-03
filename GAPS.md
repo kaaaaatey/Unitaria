@@ -82,7 +82,7 @@ Source checked: the live World Bible doc (revision 391, exported 3 October 2026)
 - ⚪ An official, kind-sounding name for single-person housing complexes, if any.
 
 ### Fellows (Sprint 3)
-- 🔴 **The Director's name.**
+- ✅ **The Director's name:** Benedict Reverington (Katey, 3 Oct 2026). Still open: is Reverington also his family's and the company's name?
 - 🔴 **The Seven's names**, and which one or two are publicly prominent.
 - 🟠 Any named Fellows of the Academy, past winners or legends.
 - 🟠 Whether the aunt (champion of rehabilitation) appears publicly, and her name. Note: her public role mentions Isola (see section 4).
@@ -94,7 +94,7 @@ Source checked: the live World Bible doc (revision 391, exported 3 October 2026)
 
 ## 4. Spoiler boundary questions
 
-- 🔴 **Isola and Realignment on public pages.** The brief bans "Isola's testing", not Isola itself. In-world, Realignment is public and presented as compassion, yet Isola "is never mentioned" in the Exhibition. Should the public site mention Realignment and Isola at all (in soft, unsettling official language), or leave them out entirely?
+- ✅ **Isola and Realignment on public pages.** Decided by Katey, 3 Oct 2026: they stay out of the public site for now.
 - 🟠 **"Infections" after 2027.** The Seven's origin mentions babies lost to infections. Is that part of the public story, or does it hint too close to the radiation?
 - 🟠 **The Director's family company.** Publicly, does anyone know the family had a company, and does it have a public name today?
 

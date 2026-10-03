@@ -5,8 +5,8 @@ export const nav = [
   { label: 'Realms', href: '/realms', live: true },
   { label: 'The Academy', href: '/academy', live: true },
   { label: 'Houses', href: '/houses', live: true },
-  { label: 'The Band', href: '/band', live: false },
-  { label: 'Life in Unitaria', href: '/life', live: false },
-  { label: 'Fellows', href: '/fellows', live: false },
+  { label: 'The Band', href: '/band', live: true },
+  { label: 'Life in Unitaria', href: '/life', live: true },
+  { label: 'Fellows', href: '/fellows', live: true },
   { label: 'The Compass', href: '/compass', live: false },
 ];

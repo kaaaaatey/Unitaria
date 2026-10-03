@@ -2,7 +2,7 @@
 
 A summary of every decided fact the website can rely on. If it isn't here, it isn't canon yet: check GAPS.md, then ask Katey.
 
-**Source used for this version:** the live World Bible doc (claude.ai artifact f463011e…, revision 391), exported on 3 October 2026 and saved as `content/world-bible.md`. The PDF in the project files is an older snapshot: it lacks the visual development briefs and the Golden Prospects, so the live doc wins. Katey's sprint brief (3 October 2026) overrides the Bible on four points, listed under "Brief overrides" below. When Katey's own export lands in `content/world-bible.md`, this file gets re-checked against it.
+**Source used for this version:** the live World Bible doc (claude.ai artifact f463011e…, revision 413), re-exported on 3 October 2026 at 19:30 and saved as `content/world-bible.md`. The PDF in the project files is an older snapshot: it lacks the visual development briefs and the Golden Prospects, so the live doc wins. Katey's sprint brief (3 October 2026) overrides the Bible on four points, listed under "Brief overrides" below. When Katey's own export lands in `content/world-bible.md`, this file gets re-checked against it.
 
 **How to read this file**
 
@@ -111,7 +111,18 @@ The backbone is Pangaea Proxima (the Atlantic and Mediterranean close), bent whe
   - *Adults' board, 9–10am:* Academy lecture assistant 120; Grand Library cataloguing 100; coffee-house debate moderator 90; crowd extra for Exhibition broadcasts 80; Central Terminal hospitality host 75; Walk of Innovation light and telescope upkeep 70; Square of the Seven memorial care 60; community pledge build (new learning hall wing) 200, boosted by pledges.
   - *Everyday tasks (15–50 points, often auto-allocated):* lawn mowing, hedge and topiary trimming, window washing, meal deliveries to elders, dog walking, bike repairs, returning library books, a 15-minute "wellbeing check-in" with a neighbour (20 points), and more.
 
-## Isola and Realignment (public face only) *(open: how much the public site shows, see GAPS.md)*
+### Cariberia (profile in progress, not yet on the site)
+
+- **Look and feel:** LA and Las Vegas had a baby with Havana, dressed for Day of the Dead. Charisma, talent and beauty are the most valued proposition; fame pays in attention, not money.
+- **Signature places so far:** the Strip of Wonders (a neon desert boulevard of knowingly fake old-world landmarks, plus four restored relics with visible seams); the Malecón (the sunset seawall promenade); the Twin Palaces (a film palace facing a great stadium across one plaza); the Avenue of Altars; the Mirror District; Union Terminal; the Undercroft (underground Havana-style bars and contraband clubs).
+- **Fashion:** athleisure and sports kit by day; sequins, flamenco ruffles and Havana silk by night.
+- **Day of the Dead:** besides the five minutes of noise, Cariberia alone holds a full, broadcast day for its dead on 1 and 2 November.
+- *Pitch-only undersides:* the replicas as unmarked memorials, the contraband clubs and the broadcast-grief bargain (a PE decision in the Director's log).
+- Only Neuropa has a "Walk of Innovation"; other realms honour old-world innovators in their own ways.
+
+## Isola and Realignment (public face only)
+
+**Site rule (Katey, 3 Oct 2026): Realignment and Isola stay out of the public site for now.** The facts below are background only.
 
 - Isola is publicly known: Realignment is official, and the Director's aunt unveiled it. It is presented as compassion, not prison: rehabilitation for those without a clear path at 16, and a humane answer to wrongdoing.
 - Rehoming is officially always a choice: people can move to the community that suits their soul.
@@ -314,7 +325,7 @@ Every point a child earns also counts towards their hidden leaderboard total, re
 
 ## People (public faces)
 
-### The Director
+### The Director: Benedict Reverington
 
 - The world's figurehead and its most non-political figure: a head of popular culture turned voice of the people. Title decided: **the Director** — not a ruler, a guide. Humility as branding.
 - Born 2006; 21 at the Reconnecting; 71 in 2077.
@@ -323,7 +334,8 @@ Every point a child earns also counts towards their hidden leaderboard total, re
 - Charming, cheeky, sometimes too honest; can sit with anyone and truly understand them. Humble and openly willing to hand over the reins; the people won't let him.
 - Shrine mentality, never dictator: elusive, not oversaturated. Rare, royal-style appearances make each one an event ("Ahhh, look, he's here!").
 - A branding genius: he designed the houses, crests, colours, mascots and the show.
-- An Aurora, and Aurora's founding Fellow. *(open: his name)*
+- An Aurora, and Aurora's founding Fellow.
+- **Name: Benedict Reverington** (Katey, 3 Oct 2026).
 
 ### The Seven
 

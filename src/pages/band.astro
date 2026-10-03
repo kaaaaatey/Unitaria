@@ -1,0 +1,109 @@
+---
+import { getEntry } from 'astro:content';
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Starfield from '../components/motifs/Starfield.astro';
+import CompassStar from '../components/motifs/CompassStar.astro';
+import Cta from '../components/Cta.astro';
+import bandArt from '../../assets/crops/band-hero.png';
+
+const page = (await getEntry('pages', 'band'))!;
+const d = page.data;
+const s = Object.fromEntries((d.sections ?? []).map((x) => [x.id, x]));
+const cardColour: Record<string, string> = { gold: '#c6a15b', green: '#3fa98a', violet: '#7b5aa6' };
+---
+<Base title={d.title} description={d.description}>
+  <!-- Hero -->
+  <section class="night relative isolate overflow-hidden px-4 pb-16 pt-32 text-center sm:px-8 sm:pt-40">
+    <Starfield count={40} seed={11} />
+    <p class="eyebrow text-gold-light">{d.eyebrow}</p>
+    <h1 class="mt-6 font-display text-[clamp(3.2rem,12vw,8rem)] font-light leading-none tracking-[0.02em]">The band.</h1>
+    <p class="mx-auto mt-6 max-w-xl text-xl text-starlight/80">{d.lede}</p>
+    <div class="relative mx-auto mt-14 max-w-5xl">
+      <div class="absolute inset-x-[10%] top-[10%] h-[70%] rounded-full bg-gold/20 blur-3xl animate-glow" aria-hidden="true"></div>
+      <Image src={bandArt} widths={[700, 1100, 1536]} sizes="(min-width: 1024px) 1024px, 100vw" loading="eager"
+        alt="A hand opens on a marble terrace above the sea. A white band with a fine gold line glows on the wrist, and translucent cards of maps and places float above the palm around a golden compass."
+        class="relative w-full rounded-sm shadow-2xl shadow-black/60 ring-1 ring-gold/20" />
+    </div>
+  </section>
+
+  <!-- Projection -->
+  <section class="marble px-4 py-24 text-center sm:px-8 sm:py-32">
+    <p class="eyebrow text-gold-deep">{s.projection.eyebrow}</p>
+    <h2 class="mx-auto mt-5 max-w-3xl text-[clamp(2.4rem,7vw,4.6rem)] text-balance">{s.projection.heading}</h2>
+    <p class="mx-auto mt-8 max-w-2xl text-lg text-ink/80">{s.projection.text}</p>
+  </section>
+
+  <!-- Everything -->
+  <section class="bg-marble-deep px-4 py-24 sm:px-8 sm:py-28">
+    <div class="mx-auto max-w-6xl">
+      <p class="eyebrow text-center text-gold-deep">{s.everything.eyebrow}</p>
+      <h2 class="mt-5 text-center text-[clamp(2.2rem,6vw,4rem)] text-balance">{s.everything.heading}</h2>
+      <ul class="mt-14 grid gap-px overflow-hidden rounded-sm border border-gold/30 bg-gold/30 sm:grid-cols-2 lg:grid-cols-3">
+        {s.everything.items?.map((it) => (
+          <li class="bg-marble p-8">
+            <CompassStar size={22} class="text-gold-deep" />
+            <h3 class="mt-4 text-2xl">{it.title}</h3>
+            <p class="mt-2 text-ink/80">{it.text}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Daily drops -->
+  <section class="night relative isolate overflow-hidden px-4 py-24 sm:px-8 sm:py-32">
+    <Starfield count={60} seed={21} />
+    <div class="mx-auto max-w-5xl text-center">
+      <p class="eyebrow text-gold-light">{s.drops.eyebrow}</p>
+      <h2 class="mx-auto mt-5 max-w-3xl text-[clamp(2.2rem,6vw,4rem)] text-balance">{s.drops.heading}</h2>
+      <p class="mx-auto mt-8 max-w-2xl text-lg text-starlight/80">{s.drops.text}</p>
+      <ul class="mt-14 grid gap-6 text-left sm:grid-cols-3">
+        {s.drops.items?.map((it) => (
+          <li class="rounded-sm border border-gold/30 bg-white/5 p-6 backdrop-blur">
+            <p class="font-display text-3xl text-gold-light tabular-nums">{it.tag}</p>
+            <h3 class="mt-3 text-2xl">{it.title}</h3>
+            <p class="mt-2 text-starlight/75">{it.text}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Card colours -->
+  <section class="marble px-4 py-24 sm:px-8 sm:py-28">
+    <div class="mx-auto max-w-5xl text-center">
+      <p class="eyebrow text-gold-deep">{s.cards.eyebrow}</p>
+      <h2 class="mt-5 text-[clamp(2.2rem,6vw,4rem)]">{s.cards.heading}</h2>
+      <ul class="mt-14 grid gap-6 sm:grid-cols-3">
+        {s.cards.items?.map((it) => (
+          <li class="rounded-xl border bg-white/60 p-6 text-left shadow-[0_10px_40px_rgb(0_0_0/0.06)] backdrop-blur" style={`border-color:${cardColour[it.tag ?? 'gold']}`}>
+            <span class="block h-1.5 w-12 rounded-full" style={`background:${cardColour[it.tag ?? 'gold']}`}></span>
+            <h3 class="mt-4 text-2xl">{it.title}</h3>
+            <p class="mt-2 text-ink/80">{it.text}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Recalibrate -->
+  <section class="night relative isolate overflow-hidden px-4 py-28 text-center sm:px-8 sm:py-36">
+    <div class="absolute left-1/2 top-1/2 -z-10 aspect-square w-[min(80vw,520px)] -translate-x-1/2 -translate-y-1/2 rounded-full recal-glow" aria-hidden="true"></div>
+    <p class="eyebrow text-gold-light">{s.recalibrate.eyebrow}</p>
+    <h2 class="mt-5 font-display text-[clamp(3rem,11vw,7rem)] font-light leading-none">{s.recalibrate.heading}</h2>
+    <p class="mx-auto mt-8 max-w-2xl text-lg text-starlight/80">{s.recalibrate.text}</p>
+    <div class="mt-10"><Cta label="Join the beta" href="#" live={false} variant="gold" /></div>
+  </section>
+</Base>
+
+<style>
+  .recal-glow {
+    background: radial-gradient(circle, rgb(123 90 166 / 0.45), rgb(63 169 138 / 0.25) 45%, transparent 70%);
+    animation: recal 12s ease-in-out infinite;
+  }
+  @keyframes recal {
+    0%, 100% { filter: hue-rotate(0deg); transform: translate(-50%, -50%) scale(1); }
+    50% { filter: hue-rotate(60deg); transform: translate(-50%, -50%) scale(1.08); }
+  }
+</style>

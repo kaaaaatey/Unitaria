@@ -87,6 +87,16 @@ const pages = defineCollection({
     title: z.string(),
     description: z.string().optional(),
     layer: layer.default('public'),
+    eyebrow: z.string().optional(),
+    lede: z.string().optional(),
+    // Structured sections for designed pages (The Band, Life in Unitaria, Fellows).
+    sections: z.array(z.object({
+      id: z.string().optional(),
+      eyebrow: z.string().optional(),
+      heading: z.string(),
+      text: z.string().optional(),
+      items: z.array(z.object({ title: z.string(), text: z.string(), tag: z.string().optional() })).optional(),
+    })).optional(),
   }),
 });
 
@@ -114,4 +124,17 @@ const home = defineCollection({
   }),
 });
 
-export const collections = { realms, houses, fellows, pages, pitch, home };
+// The Compass quiz. Every answer is drawn from house canon (CANON.md); Katey owns the wording.
+const houseName = z.enum(['Polaris', 'Aurora', 'Lyra', 'Orion']);
+const compass = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './content/compass' }),
+  schema: z.object({
+    intro: z.string(),
+    questions: z.array(z.object({
+      q: z.string(),
+      answers: z.array(z.object({ text: z.string(), house: houseName })).length(4),
+    })),
+  }),
+});
+
+export const collections = { realms, houses, fellows, pages, pitch, home, compass };

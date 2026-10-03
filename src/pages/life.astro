@@ -1,0 +1,104 @@
+---
+import { getEntry } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import FourPointStar from '../components/motifs/FourPointStar.astro';
+
+const page = (await getEntry('pages', 'life'))!;
+const d = page.data;
+const s = Object.fromEntries((d.sections ?? []).map((x) => [x.id, x]));
+const ages = [
+  { age: 'Under 16', personal: '10% allowance for treats', family: '40%, which your family may share back', trust: '50% to the Academy, for your Academy year, graduation and gown' },
+  { age: '16 to 20', personal: '50%, yours to keep', family: 'Nothing owed', trust: '50%, unlocked at 21' },
+  { age: '21 and over', personal: '100%, full autonomy', family: 'Optional', trust: 'Your starter trust unlocks' },
+];
+---
+<Base title={d.title} description={d.description}>
+  <PageHero eyebrow={d.eyebrow} title="A life well rewarded" lede={d.lede} />
+
+  {[s.rights, s.points].map((sec, i) => (
+    <section class={`${i ? 'bg-marble-deep' : 'marble'} px-4 py-20 sm:px-8 sm:py-24`}>
+      <div class="mx-auto max-w-6xl">
+        <div class="mx-auto max-w-3xl text-center">
+          <p class="eyebrow text-gold-deep">{sec.eyebrow}</p>
+          <h2 class="mt-4 text-[clamp(2.2rem,6vw,3.8rem)] text-balance">{sec.heading}</h2>
+          {sec.text && <p class="mt-6 text-lg text-ink/80">{sec.text}</p>}
+        </div>
+        <ul class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {sec.items?.map((it) => (
+            <li class="border-t border-gold/60 pt-5">
+              <h3 class="flex items-center gap-3 text-2xl"><FourPointStar size={12} class="text-gold-deep" />{it.title}</h3>
+              <p class="mt-2 text-ink/80">{it.text}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  ))}
+
+  <section class="marble px-4 py-20 sm:px-8 sm:py-24">
+    <div class="mx-auto max-w-5xl">
+      <div class="text-center">
+        <p class="eyebrow text-gold-deep">Points by age</p>
+        <h2 class="mt-4 text-[clamp(2rem,5vw,3.2rem)]">Where every point goes</h2>
+      </div>
+      <div class="mt-10 overflow-x-auto">
+        <table class="w-full min-w-[560px] text-left">
+          <caption class="sr-only">How points are shared at each age</caption>
+          <thead>
+            <tr class="border-b border-gold/60 font-display text-xl">
+              <th scope="col" class="py-3 pr-4 font-normal">Age</th><th scope="col" class="py-3 pr-4 font-normal">You</th>
+              <th scope="col" class="py-3 pr-4 font-normal">Your family</th><th scope="col" class="py-3 font-normal">Trust</th>
+            </tr>
+          </thead>
+          <tbody>
+            {ages.map((a) => (
+              <tr class="border-b border-vein align-top">
+                <th scope="row" class="py-4 pr-4 font-display text-xl font-normal">{a.age}</th>
+                <td class="py-4 pr-4">{a.personal}</td><td class="py-4 pr-4">{a.family}</td><td class="py-4">{a.trust}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-6 text-center text-ink/70">Every point a child earns also counts towards their leaderboard total, revealed when they turn sixteen.</p>
+    </div>
+  </section>
+
+  <section class="night px-4 py-20 sm:px-8 sm:py-24">
+    <div class="mx-auto max-w-5xl">
+      <div class="text-center">
+        <p class="eyebrow text-gold-light">{s.boards.eyebrow}</p>
+        <h2 class="mt-4 text-[clamp(2.2rem,6vw,3.8rem)]">{s.boards.heading}</h2>
+      </div>
+      <ol class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {s.boards.items?.map((it) => (
+          <li class="rounded-sm border border-gold/30 p-6">
+            <span class="font-display text-4xl text-gold-light" aria-hidden="true">{it.tag}</span>
+            <h3 class="mt-3 text-2xl">{it.title}</h3>
+            <p class="mt-2 text-starlight/75">{it.text}</p>
+          </li>
+        ))}
+      </ol>
+      <p class="mt-10 text-center"><a href="/realms/neuropa" class="btn btn-ghost">See a real task board in Neuropa</a></p>
+    </div>
+  </section>
+
+  <section class="marble px-4 py-20 sm:px-8 sm:py-24">
+    <div class="mx-auto max-w-5xl">
+      <div class="text-center">
+        <p class="eyebrow text-gold-deep">{s.days.eyebrow}</p>
+        <h2 class="mt-4 text-[clamp(2.2rem,6vw,3.8rem)]">{s.days.heading}</h2>
+      </div>
+      <ul class="mt-12 grid gap-8 md:grid-cols-3">
+        {s.days.items?.map((it) => (
+          <li class="text-center">
+            <p class="eyebrow text-gold-deep">{it.tag}</p>
+            <h3 class="mt-3 text-3xl">{it.title}</h3>
+            <p class="mt-3 text-ink/80">{it.text}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</Base>

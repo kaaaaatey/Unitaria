@@ -1,0 +1,60 @@
+---
+import { getEntry } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import Compass from '../components/motifs/Compass.astro';
+import FourPointStar from '../components/motifs/FourPointStar.astro';
+
+const page = (await getEntry('pages', 'fellows'))!;
+const d = page.data;
+const s = Object.fromEntries((d.sections ?? []).map((x) => [x.id, x]));
+const paras = (t?: string) => (t ?? '').trim().split(/\n\s*\n/);
+---
+<Base title={d.title} description={d.description}>
+  <PageHero eyebrow={d.eyebrow} title="Those who guide us" lede={d.lede} />
+
+  <section class="marble px-4 py-20 sm:px-8 sm:py-28">
+    <div class="mx-auto grid max-w-6xl items-center gap-14 lg:grid-cols-[1fr_1.3fr]">
+      <div class="flex justify-center"><Compass size="min(80vw, 420px)" class="text-gold-deep" houses={false} /></div>
+      <div>
+        <p class="eyebrow text-gold-deep">{s.director.eyebrow}</p>
+        <h2 class="mt-4 text-[clamp(2.4rem,6vw,4.2rem)]">{s.director.heading}</h2>
+        <div class="prose-world mt-6 text-lg [&_p:first-child]:font-display [&_p:first-child]:text-3xl [&_p:first-child]:italic [&_p:first-child]:text-gold-deep">
+          {paras(s.director.text).map((p) => <p>{p}</p>)}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="night px-4 py-20 text-center sm:px-8 sm:py-28">
+    <div class="mx-auto flex max-w-md items-end justify-center gap-[clamp(0.6rem,3vw,1.5rem)] text-gold" aria-hidden="true">
+      {[0, 1, 2, 3, 2, 1, 0].map((lift, i) => (
+        <span class="animate-glow" style={`transform:translateY(-${lift * 10}px);animation-delay:${i * 0.4}s`}><FourPointStar size={i === 3 ? 30 : 20} /></span>
+      ))}
+    </div>
+    <p class="eyebrow mt-12 text-gold-light">{s.seven.eyebrow}</p>
+    <h2 class="display mt-4 text-[clamp(2.4rem,7vw,4.5rem)] tracking-[0.12em]">{s.seven.heading}</h2>
+    <div class="prose-world mx-auto mt-8 max-w-2xl text-lg text-starlight/80 [&_p]:mx-auto">
+      {paras(s.seven.text).map((p) => <p>{p}</p>)}
+    </div>
+  </section>
+
+  <section class="marble px-4 py-20 sm:px-8 sm:py-28">
+    <div class="mx-auto max-w-5xl">
+      <div class="mx-auto max-w-3xl text-center">
+        <p class="eyebrow text-gold-deep">{s.fellows.eyebrow}</p>
+        <h2 class="mt-4 text-[clamp(2.2rem,6vw,3.8rem)]">{s.fellows.heading}</h2>
+        <p class="mt-6 text-lg text-ink/80">{s.fellows.text}</p>
+      </div>
+      <ul class="mt-12 grid gap-6 sm:grid-cols-2">
+        {s.fellows.items?.map((it) => (
+          <li class="rounded-sm border border-gold/40 bg-marble p-6">
+            <a href={`/houses/${it.tag?.toLowerCase()}`} class="eyebrow text-gold-deep underline-offset-4 hover:underline">{it.tag}</a>
+            <h3 class="mt-2 text-2xl">{it.title}</h3>
+            <p class="mt-2 text-ink/80">{it.text}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+</Base>

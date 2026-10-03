@@ -2,8 +2,9 @@
 import '../styles/global.css';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
-interface Props { title: string; description?: string; lightHero?: boolean }
-const { title, description = 'Unitaria: one world, three Continuents, ten realms.', lightHero = false } = Astro.props;
+interface Props { title: string; description?: string; lightHero?: boolean; image?: string }
+const { title, description = 'Unitaria: one world, three Continuents, ten realms.', lightHero = false, image } = Astro.props;
+const ogImage = image ? new URL(image, Astro.site ?? Astro.url).href : undefined;
 const fullTitle = title === 'Unitaria' ? title : `${title} · Unitaria`;
 ---
 <!doctype html>
@@ -16,6 +17,9 @@ const fullTitle = title === 'Unitaria' ? title : `${title} · Unitaria`;
     <meta name="description" content={description} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    {ogImage && <meta property="og:image" content={ogImage} />}
+    <meta name="twitter:card" content={ogImage ? 'summary_large_image' : 'summary'} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   </head>
   <body class="antialiased">

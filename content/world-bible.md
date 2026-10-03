@@ -678,7 +678,7 @@ Each realm gets: look and feel; signature places; culture (food, fashion, music,
 - **Becoming a legend:** broadcast across the Broadcast Quarter, a lecture on the Walk of Innovation, a place in the Grand Library's collection, and Fellowship of the Academy.
 - **Underside:** with a public vote, the most persuasive entries tend to beat the most accurate. Neuropa teaches the world that a good story matters more than a true one.
 
-**Neuropa's Walk of Innovation honours Neuropa's own:** its Fellows, plus old-world innovators from the places that formed it (the US Northeast and Midwest, the UK, Ireland, France, the Benelux countries and Germany). Other realms can have walks of their own.
+**Neuropa's Walk of Innovation honours Neuropa's own:** its Fellows, plus old-world innovators from the places that formed it (the US Northeast and Midwest, the UK, Ireland, France, the Benelux countries and Germany). Only Neuropa has a "Walk of"; other realms honour their old-world innovators in their own ways.
 
 **Possible old-world plaques (curated by the Director's values, so no tech billionaires):**
 
@@ -696,7 +696,7 @@ Each realm gets: look and feel; signature places; culture (food, fashion, music,
 - Walt Disney, born in Chicago, the dreamer of the theme park, in the realm called the Disneyland of the world
 - Paris Hilton, born in New York, the socialite who campaigned against abuses in the troubled-teen industry, the archetype the Director grew from (a dark irony next to Realignment)
 
-*Saved for other realms' walks:* Dolly Parton, Bob Ross (Cariberia); Steve Irwin (Indostralia); Tu Youyou (Shangokyo); Wangari Maathai (Safarabia); Srinivasa Ramanujan, Malala Yousafzai, Muhammad Yunus (Himalindia); Yuri Gagarin and Valentina Tereshkova (Persovia); Jennifer Doudna (Cariberia).
+*Saved for other realms' honours:* Dolly Parton, Bob Ross (Cariberia); Steve Irwin (Indostralia); Tu Youyou (Shangokyo); Wangari Maathai (Safarabia); Srinivasa Ramanujan, Malala Yousafzai, Muhammad Yunus (Himalindia); Yuri Gagarin and Valentina Tereshkova (Persovia); Jennifer Doudna (Cariberia).
 
 **Neuropa's daily task boards**
 
@@ -708,11 +708,57 @@ Each realm gets: look and feel; signature places; culture (food, fashion, music,
 
 *Everyday neighbourhood tasks (15–50 points, often auto-allocated):* lawn mowing; sign and plaque cleaning; hedge and topiary trimming; window washing; street sweeping; bin rounds; neighbourhood cooking in the community kitchen; meal deliveries to elders; grocery runs; laundry help; dog walking; childminding; bike repairs; fence painting; park bench repair; planting and composting; station cleaning; returning library books; parcel deliveries; a "wellbeing check-in" with a neighbour (15 minutes, 20 points: care turned into a tickbox).
 
+#### Cariberia
+
+*In progress.*
+
+- **Look and feel:** LA and Las Vegas had a baby with Havana, dressed for Day of the Dead. Movie-magic glamour, desert neon and knowingly fake replicas, wrapped in Havana's colour and nightlife and the marigold-and-sugar-skull spectacle of Día de Muertos.
+- **Charisma, talent and beauty are the most valued proposition.** In Cariberia, being somebody means being a celebrity, much as it does in today's world.
+- **Fame pays in attention, not money.** With no money to earn, celebrity rewards itself: attention, notoriety and a following are the prize, just as clout is for today's celebrities.
+- **Real anchor:** the attention economy. Economist Herbert Simon observed in 1971 that "a wealth of information creates a poverty of attention," making attention the scarce resource.
+- **Underside: fame never comes without sacrifice.** Cariberia's famous always have to be "on." The public persona takes over, and the private self has nowhere to live. Even the realm's grief has to be performed: the one realm allowed a full day of mourning must mourn on camera.
+- **Switching off happens underground.** Cariberians go "off" in underground Havana-style bars and contraband clubs, the realm's secret backstage.
+- **Real anchor:** Prohibition-era Havana, where Americans flocked to bars such as El Floridita and Sloppy Joe's to drink what was banned at home.
+- **What counts as contraband:** old-world products outside the Academy-approved range, such as cigarettes and tequila. Everything is provided, but only Academy-approved items, through the commissary. Not every old-world product is available to everyone all the time, so the clubs trade in what the official shelves leave out.
+- **The map stays as it is.** Hawaii (Indostralia) and Brazil (Andongo) were considered as anchors and rejected: Brazil is the seam that makes Andongo, and its samba is part of Andongo's duality. Cariberia's paradise and carnival energy come from its own places instead.
+- **Día de Muertos, evolved for the new world.** On Reconnection Day, Cariberia joins every other realm in five minutes of noise for the people lost in the Great Reconnecting. Unlike the others, it is also allowed a full day for all its dead, held on the traditional Day of the Dead dates, 1 and 2 November, rather than on Reconnection Day. It joins the world's remembrance by blending it with its own Day of the Dead, evolved into a new-world version that honours the old tradition rather than ignoring it. The catch: the day must be broadcast across the realm as a big show. That is why it is allowed. Grief that is also entertainment is grief the system can live with.
+
+**Signature places:**
+
+1. **The Strip of Wonders:** Cariberia's postcard. A neon boulevard in the desert lined with knowingly fake old-world landmarks, such as a half-size Eiffel Tower, Venetian canals and a Taj Mahal. Real anchors: the Paris and Venetian hotels in Las Vegas; Tianducheng, China's replica Paris. Underside: some originals were lost in the Great Reconnecting, so a few replicas are the only versions left, a glittering memorial nobody calls a memorial. (Depends on the parked Module 4 question of which land was lost.)
+
+**What stands on the Strip of Wonders:**
+
+- **Whole:** the Eiffel Tower, Big Ben, the Statue of Liberty, the Colosseum, the Hollywood sign, Chichén Itzá, the Burj Khalifa, the Taj Mahal and St Basil's Cathedral.
+- **Restored relics:** real pieces salvaged from lost originals, with the missing parts newly built onto them to make each one whole again. They are half of the Sphinx's face, the arm of Christ the Redeemer, a piece of the Great Wall and half of an Easter Island moai. The seam is visible: you can see exactly where the salvaged stone ends and the new build begins. On a strip of knowing fakes, these four are partly real, hiding real wreckage of the Great Reconnecting in plain sight. Real anchors: Arthur Evans's concrete reconstruction of the palace at Knossos; the 1964 Venice Charter, which says restorations must be distinguishable from the original.
+
+2. **The Malecón:** Havana's seawall promenade as the world's catwalk, where everyone parades at sunset. Underside: an evening stroll is really an audition.
+3. **The Twin Palaces:** a gilded film palace (like Grauman's Chinese Theatre) faces a great stadium (like Estadio Azteca or the Bernabéu) across one plaza: the realm's duality, scripted versus unscripted, set in stone. Underside: fans whisper that the matches are as scripted as the films.
+4. **The Avenue of Altars:** marigold arches and ofrendas all year round, and the set for the November Day of the Dead broadcast. Underside: the altar wall where thousands of faces share one death date.
+5. **The Mirror District:** Rodeo Drive meets a film studio's costume and make-up departments, where anyone can get camera-ready on points. Real anchor: "Instagram face," the homogenised look of social-media beauty. Underside: everyone leaves with the same approved face.
+6. **Union Terminal:** the grand monorail hub, LA's Union Station crossed with Seville's tiled Plaza de España. Underside: every arrival is a red carpet, and every arrival is filmed.
+7. **The Undercroft:** the warren of underground Havana-style bars and contraband clubs, Cariberia's backstage. Underside: one Recalibrate map pin and the whole thing is gone.
+
+**Culture:**
+
+- **Fashion: day to night.** By day, LA athleisure and sports kit, the unscripted half of the realm's duality. By night, sequins, flamenco ruffles and Havana silk, the scripted half, borrowing 1950s Havana silhouettes and Day of the Dead marigold colour. Every Cariberian owns two wardrobes and changes at sunset, in time for the Malecón.
+- **Loud where Neuropa is quiet:** Neuropa's quiet luxury against Cariberia's full volume.
+- **Real anchors:** the athleisure boom; the Met Gala, where clothes are performance.
+- **Underside:** nobody ever just gets dressed. Cariberians are always in costume for one role or the other.
+
+*Parked for Cariberia:*
+
+- [ ] The Academy-approved list: is all alcohol off it, or only some (hard spirits banned, wine allowed)? Affects Nonna's kitchen, Thanksmas tables and the coffee houses too.
+- [ ] Contraband clubs vs Recalibrate's location sharing, which threatens them as it threatens the clubhouse.
+- [ ] Getting caught in a contraband club can't cost points (no fines, no penalties), so the real risk is Realignment.
+
 ## Module 5: The Power
 
 **In progress.** A hierarchy with a beloved figurehead at the top, councils beneath, and power that looks fair, open and bottom-up.
 
 ### The Director (the Snow character)
+
+**Decided: the Director's name is Benedict Reverington.** (Katey, 3 Oct 2026.)
 
 - People like a figurehead, even in religion, so the world has one overall leader, the Director.
 - The main villain: the world's most non-political figure. A head of popular culture turned voice of the people.
@@ -895,6 +941,7 @@ Each realm gets: look and feel; signature places; culture (food, fashion, music,
 | Secretly testing on people with high exposure readings | PE |
 | Blocking honest research into the bleed | PE |
 | Recalibrate and its location sharing | PE |
+| Letting Cariberia turn its five minutes of noise into a full Day of the Dead, on condition that it is broadcast as a show | PE |
 
 *Draft tags; adjust as the prequel develops.*
 
