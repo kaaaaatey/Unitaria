@@ -1,0 +1,24 @@
+---
+// A pale needle laid over the great compass, long enough to reach the house names.
+// `angle` matches the house points: Polaris 0, Aurora 90, Lyra 180, Orion 270.
+interface Props { angle?: number; id?: string }
+const { angle = 0, id } = Astro.props;
+---
+<svg id={id} viewBox="-200 -200 400 400" class="needle pointer-events-none absolute inset-0 h-full w-full" aria-hidden="true"
+  style={`transform: rotate(${angle}deg)`}>
+  <defs>
+    <filter id={`${id ?? 'n'}-glow`} x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="b" /><feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
+    </filter>
+  </defs>
+  <g filter={`url(#${id ?? 'n'}-glow)`}>
+    <path d="M0 -146 L5 -8 L0 0 L-5 -8 Z" fill="#fffaf0" stroke="var(--color-midnight)" stroke-width="1.2" />
+    <path d="M0 -146 L0 0 L-5 -8 Z" fill="var(--color-gold-light)" />
+    <path d="M0 60 L4 8 L0 0 L-4 8 Z" fill="var(--color-midnight)" stroke="var(--color-gold-light)" stroke-width="1" />
+    <circle cy="-146" r="3" fill="#fffaf0" />
+  </g>
+  <circle r="6" fill="var(--color-midnight)" stroke="var(--color-gold-light)" stroke-width="1.5" />
+</svg>
+<style>
+  .needle { transition: transform 3.2s cubic-bezier(0.16, 1, 0.3, 1); transform-origin: 50% 50%; }
+</style>

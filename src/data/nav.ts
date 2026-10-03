@@ -8,5 +8,5 @@ export const nav = [
   { label: 'The Band', href: '/band', live: true },
   { label: 'Life in Unitaria', href: '/life', live: true },
   { label: 'Fellows', href: '/fellows', live: true },
-  { label: 'The Compass', href: '/compass', live: false },
+  { label: 'The Compass', href: '/compass', live: true },
 ];

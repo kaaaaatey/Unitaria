@@ -1,0 +1,36 @@
+---
+// A shareable result page for each house, so a shared link previews properly.
+import { getCollection } from 'astro:content';
+import { getImage } from 'astro:assets';
+import Base from '../../layouts/Base.astro';
+import Compass from '../../components/motifs/Compass.astro';
+import Needle from '../../components/compass/Needle.astro';
+import HouseResult from '../../components/compass/HouseResult.astro';
+import Starfield from '../../components/motifs/Starfield.astro';
+import { banners } from '../../data/banners';
+import { houseAngle } from '../../data/compass';
+
+export async function getStaticPaths() {
+  const houses = await getCollection('houses');
+  return houses.map((entry) => ({ params: { house: entry.data.name.toLowerCase() }, props: { entry } }));
+}
+const h = Astro.props.entry.data;
+const name = h.name as keyof typeof houseAngle;
+const og = await getImage({ src: banners[name], width: 447 });
+---
+<Base title={`The compass points to ${h.name}`} image={og.src}
+  description={`${h.name}, House of the ${h.direction}. ${h.rule}: “${h.creed}” What's your house?`}>
+  <section class="night relative isolate overflow-hidden px-4 pb-24 pt-32 sm:px-8 sm:pt-40">
+    <Starfield count={50} seed={h.name.length} />
+    <div class="mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-2">
+      <div class="relative mx-auto" style="width:min(70vw, 420px)">
+        <Compass size="100%" />
+        <Needle angle={houseAngle[name]} />
+      </div>
+      <HouseResult house={h}>
+        <a href="/compass" class="btn btn-gold">Find your house</a>
+        <a href={`/houses/${h.name.toLowerCase()}`} class="btn btn-ghost">Meet {h.name}</a>
+      </HouseResult>
+    </div>
+  </section>
+</Base>
