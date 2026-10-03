@@ -1,0 +1,8 @@
+---
+// Renders deck copy, turning every {{Label}} into a visible placeholder chip.
+interface Props { text: string }
+const parts = Astro.props.text.split(/(\{\{[^}]+\}\})/).filter(Boolean);
+---
+{parts.map((p) => p.startsWith('{{')
+  ? <span class="tbd"><span class="tbd-tag">To decide</span>{p.slice(2, -2)}</span>
+  : p)}

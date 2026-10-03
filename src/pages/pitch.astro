@@ -1,0 +1,294 @@
+---
+import Base from '../layouts/Base.astro';
+import Starfield from '../components/motifs/Starfield.astro';
+import StarRule from '../components/motifs/StarRule.astro';
+import FourPointStar from '../components/motifs/FourPointStar.astro';
+import CompassStar from '../components/motifs/CompassStar.astro';
+import Rich from '../components/pitch/Rich.astro';
+import { hook, worldDoors, rights, ledger, girl, machine, eras, truth, director, nonna, seven, stories, clues, ipMap, whyFirst, comps } from '../data/pitch';
+
+// Every {{placeholder}} in the deck, in reading order, so the last section can list what is still to decide.
+const missing = [...new Set([...JSON.stringify([hook, girl, machine, director, nonna, stories, '{{The cipher’s final reveal}}', ipMap, comps]).matchAll(/\{\{([^}]+)\}\}/g)].map((m) => m[1]))].filter((m) => m !== 'Genre');
+const alsoMissing = [
+  'A genre for each companion story',
+  'The Spin-off Bench (Module 9 not started)',
+  'The Launch (Module 14 not started)',
+  'The cipher’s final reveal',
+  'The company’s name, old and new',
+  'The illnesses’ official name',
+];
+const head = 'mx-auto max-w-5xl';
+---
+<Base title="The Pitch" description="Unitaria: the pitch. Contains spoilers." nav={false} noindex>
+  <!-- 00 Spoiler warning -->
+  <section class="night aurora relative isolate overflow-hidden px-4 py-16 text-center sm:px-8 sm:py-20">
+    <Starfield count={40} seed={7} />
+    <p class="eyebrow text-gold-light">For agents, editors and producers</p>
+    <p class="mx-auto mt-5 max-w-xl text-starlight/80">This is the pitch, not the brochure. It shows the world’s secrets, so please don’t share it with readers. Dashed boxes mark what is still to be decided.</p>
+    <p class="no-print mt-8 flex flex-wrap justify-center gap-3">
+      <a href="#hook" class="btn btn-gold">Open the pitch</a>
+      <a href="/unitaria-pitch.pdf" class="btn btn-ghost" download>Download the PDF</a>
+      <a href="/" class="btn btn-ghost">Explore the world</a>
+    </p>
+  </section>
+
+  <!-- 01 The hook -->
+  <section id="hook" class="night relative isolate flex min-h-[92vh] flex-col items-center justify-center overflow-hidden px-4 py-24 text-center sm:px-8">
+    <Starfield count={70} seed={2077} />
+    <p class="pitch-num text-gold-light">01 · The hook</p>
+    <h1 class="display text-metal mt-6 text-[clamp(3.2rem,13vw,8rem)] leading-none tracking-[0.12em]">Unitaria</h1>
+    <StarRule class="mx-auto mt-8 max-w-56" />
+    <p class="mx-auto mt-10 max-w-3xl font-display text-[clamp(1.8rem,4.6vw,3.2rem)] leading-tight text-balance">{hook.heart}</p>
+    <p class="mx-auto mt-10 max-w-2xl text-lg text-starlight/85"><Rich text={hook.logline} /></p>
+    <p class="eyebrow mt-10 text-gold-light"><Rich text={hook.book} /></p>
+    <p class="mt-4 text-sm text-starlight/70"><Rich text={hook.series} /></p>
+  </section>
+
+  <!-- 02 The world -->
+  <section class="marble px-4 py-20 sm:px-8 sm:py-28">
+    <div class={head}>
+      <p class="pitch-num text-gold-deep">02 · The world</p>
+      <h2 class="mt-4 text-[clamp(2.4rem,6vw,4rem)] leading-tight">2077. Fifty years after the Great Reconnecting.</h2>
+      <p class="mt-4 max-w-2xl text-lg text-ink/75">Our world, fused into one landmass within living memory. Familiar, but not where it’s supposed to be.</p>
+      <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {worldDoors.map((d) => (
+          <details class="layer glass-light p-6">
+            <summary class="flex items-center justify-between gap-4"><span class="font-display text-2xl">{d.title}</span><span class="layer-plus text-2xl text-gold-deep transition" aria-hidden="true">+</span></summary>
+            <p class="mt-3 text-ink/80">{d.text}</p>
+          </details>
+        ))}
+      </div>
+      <p class="mt-14 text-center font-display text-[clamp(2rem,5vw,3.2rem)] italic text-gold-deep">Everything works.</p>
+    </div>
+  </section>
+
+  <!-- 03 The contradiction -->
+  <section class="night px-4 py-20 sm:px-8 sm:py-28">
+    <div class={head}>
+      <p class="pitch-num text-gold-light">03 · The contradiction</p>
+      <div class="mt-8 grid gap-12 lg:grid-cols-2">
+        <div>
+          <h2 class="display text-metal text-[clamp(2rem,5vw,3.2rem)] tracking-[0.08em]">The utopia is real.</h2>
+          <p class="mt-4 text-starlight/80">No grey dystopia, no starving districts, no obvious tyrant. Every right is free:</p>
+          <ul class="mt-6 flex flex-wrap gap-2">{rights.map((r) => <li class="glass rounded-full px-4 py-2 text-sm">{r}</li>)}</ul>
+        </div>
+        <div>
+          <h2 class="display text-metal text-[clamp(2rem,5vw,3.2rem)] tracking-[0.08em]">The control is real too.</h2>
+          <p class="mt-4 text-starlight/80">Control through comfort, not force. Every gift has a cost.</p>
+          <dl class="mt-6 space-y-3">
+            {ledger.map((l) => (
+              <div class="glass p-4"><dt class="text-starlight">{l.gift}</dt><dd class="mt-1 font-sans text-sm text-gold-light">{l.cost}</dd></div>
+            ))}
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 The girl -->
+  <section class="marble px-4 py-20 sm:px-8 sm:py-28">
+    <div class={head}>
+      <p class="pitch-num text-gold-deep">04 · The girl</p>
+      <h2 class="mt-4 text-[clamp(2.2rem,5.5vw,3.6rem)] leading-tight">The first story belongs to one girl. The universe doesn’t.</h2>
+      <p class="mt-6 font-display text-3xl"><Rich text={girl.name} /></p>
+      <dl class="mt-10 grid gap-x-12 gap-y-8 md:grid-cols-2">
+        {girl.facts.map((f) => (
+          <div><dt class="eyebrow text-gold-deep">{f.label}</dt><dd class="mt-2 font-sans text-lg text-ink/85"><Rich text={f.text} /></dd></div>
+        ))}
+      </dl>
+      <h3 class="mt-20 text-[clamp(1.8rem,4vw,2.6rem)]">Book One</h3>
+      <ol class="mt-8 grid gap-4 md:grid-cols-2">
+        {girl.bookOne.map((b) => (
+          <li class="glass-light p-6"><p class="eyebrow text-gold-deep">{b.label}</p><p class="mt-2 text-ink/85"><Rich text={b.text} /></p></li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- 05 The machine -->
+  <section class="night px-4 py-20 sm:px-8 sm:py-28">
+    <div class={head}>
+      <p class="pitch-num text-gold-light">05 · The machine</p>
+      <h2 class="mt-4 text-[clamp(2.2rem,5.5vw,3.6rem)] leading-tight">Open any part of the system.</h2>
+      <p class="mt-4 max-w-2xl text-starlight/80">Each one is what the world believes, and what is actually underneath.</p>
+      <div class="mt-12 grid gap-4 md:grid-cols-2">
+        {machine.map((m) => (
+          <details class="layer glass p-6">
+            <summary class="flex items-center justify-between gap-4"><span class="font-display text-2xl">{m.title}</span><span class="layer-plus text-2xl text-gold-light transition" aria-hidden="true">+</span></summary>
+            <p class="eyebrow mt-5 text-starlight/60">What everyone knows</p>
+            <p class="mt-1 text-starlight/85">{m.official}</p>
+            <p class="eyebrow mt-5 text-gold-light">What’s underneath</p>
+            <p class="mt-1 text-starlight/85">{m.actual}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 The history -->
+  <section class="marble px-4 py-20 sm:px-8 sm:py-28">
+    <div class={head}>
+      <p class="pitch-num text-gold-deep">06 · The history</p>
+      <h2 class="mt-4 text-[clamp(2.2rem,5.5vw,3.6rem)] leading-tight">Seven eras, from the world before to the jubilee.</h2>
+      <ol class="pitch-timeline mt-12 flex snap-x gap-4 overflow-x-auto pb-6" tabindex="0" aria-label="Timeline of the seven eras">
+        {eras.map((e, i) => (
+          <li class="glass-light w-64 shrink-0 snap-start p-6">
+            <p class="pitch-num text-gold-deep">{String(i + 1).padStart(2, '0')}</p>
+            <p class="eyebrow mt-3 text-ink/60">{e.when}</p>
+            <h3 class="mt-2 text-2xl">{e.title}</h3>
+            <p class="mt-2 text-sm text-ink/80">{e.text}</p>
+          </li>
+        ))}
+      </ol>
+      <p class="mt-12 text-center font-display text-[clamp(1.8rem,4.5vw,2.8rem)] italic text-gold-deep">But this is only the history the world remembers.</p>
+      <details class="layer mx-auto mt-8 max-w-3xl">
+        <summary class="btn btn-gold mx-auto flex w-fit">What really happened</summary>
+        <div class="mt-8 grid gap-4 sm:grid-cols-2">
+          {truth.map((t) => <div class="glass-light p-6"><h3 class="text-2xl">{t.title}</h3><p class="mt-2 text-ink/80">{t.text}</p></div>)}
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <!-- 07 The Director -->
+  <section class="night px-4 py-20 sm:px-8 sm:py-28">
+    <div class={head}>
+      <p class="pitch-num text-gold-light">07 · The man who built the world</p>
+      <h2 class="display text-metal mt-4 text-[clamp(2.2rem,6vw,4rem)] tracking-[0.08em]">{director.name}</h2>
+      <ol class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {director.stages.map((s, i) => (
+          <li class="glass p-6"><p class="pitch-num text-gold-light">{String(i + 1).padStart(2, '0')}</p><h3 class="mt-2 text-2xl">{s.title}</h3><p class="mt-2 text-starlight/80">{s.text}</p></li>
+        ))}
+      </ol>
+      <div class="mt-12 glass p-6 sm:p-8">
+        <p class="eyebrow text-gold-light">From the decision log: BE (Before Evil) and PE (Post Evil)</p>
+        <ul class="mt-4 divide-y divide-starlight/10">
+          {director.log.map((l) => <li class="flex items-baseline justify-between gap-6 py-3"><span>{l.decision}</span><span class={`pitch-num ${l.era === 'PE' ? 'text-gold-light' : 'text-starlight/60'}`}>{l.era}</span></li>)}
+        </ul>
+      </div>
+      <p class="mt-14 text-center font-display text-[clamp(1.8rem,4.5vw,2.8rem)] italic">His story exists before hers.</p>
+      <p class="mx-auto mt-4 max-w-2xl text-center text-starlight/85"><Rich text={director.prequel} /></p>
+    </div>
+  </section>
+
+  <!-- 08 Nonna -->
+  <section class="marble px-4 py-20 sm:px-8 sm:py-28">
+    <div class={head}>
+      <p class="pitch-num text-gold-deep">08 · The grandmother who remembers</p>
+      <h2 class="mt-4 text-[clamp(2.2rem,5.5vw,3.6rem)] leading-tight"><Rich text={nonna.name} /></h2>
+      <ol class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {nonna.phases.map((p) => <li class="glass-light p-6"><p class="eyebrow text-gold-deep">{p.title}</p><p class="mt-3 text-ink/85">{p.text}</p></li>)}
+      </ol>
+      <p class="mt-14 text-center font-display text-[clamp(1.8rem,4.5vw,2.8rem)] italic text-gold-deep">Her story is another doorway into the same secret.</p>
+      <p class="mx-auto mt-4 max-w-2xl text-center text-ink/80">{nonna.companion}</p>
+    </div>
+  </section>
+
+  <!-- 09 The Seven -->
+  <section class="night aurora relative isolate overflow-hidden px-4 py-24 text-center sm:px-8 sm:py-32" data-seven data-no-reveal>
+    <Starfield count={7} seed={7} />
+    <p class="pitch-num text-gold-light">09 · The Seven</p>
+    <ol class="mx-auto mt-10 max-w-3xl space-y-8">
+      {seven.map((line, i) => (
+        <li data-step={i} class={`font-display text-[clamp(1.7rem,4.5vw,2.8rem)] leading-tight transition duration-700 ${i === seven.length - 1 ? 'text-metal' : ''}`}>{line}</li>
+      ))}
+    </ol>
+    <button type="button" class="no-print btn btn-ghost mt-12" data-next hidden>Next</button>
+  </section>
+
+  <!-- 10 The other stories -->
+  <section class="marble px-4 py-20 sm:px-8 sm:py-28">
+    <div class={head}>
+      <p class="pitch-num text-gold-deep">10 · The other stories</p>
+      <h2 class="mt-4 text-[clamp(2.2rem,5.5vw,3.6rem)] leading-tight">Every story reveals another piece of the same world.</h2>
+      <ul class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {stories.map((s) => (
+          <li class="glass-light p-6">
+            <FourPointStar size={14} class="text-gold-deep" />
+            <h3 class="mt-3 text-2xl">{s.title}</h3>
+            <p class="mt-2 text-sm text-ink/80"><Rich text={s.text} /></p>
+            <p class="eyebrow mt-4 text-gold-deep"><Rich text={s.genre} /></p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- 11 The long con -->
+  <section class="night px-4 py-20 sm:px-8 sm:py-28">
+    <div class={head}>
+      <p class="pitch-num text-gold-light">11 · The long con</p>
+      <h2 class="display text-metal mt-4 text-[clamp(2.2rem,6vw,4rem)] tracking-[0.08em]">Nothing is incidental.</h2>
+      <p class="mt-4 max-w-2xl text-starlight/80">A secret code runs through everything from the first page. Casual fans get Easter eggs, hardcore fans get ciphers, and nobody needs to solve anything to enjoy the story.</p>
+      <ul class="mt-12 grid gap-4 md:grid-cols-2">
+        {clues.map((c) => (
+          <li class="glass p-6"><p class="eyebrow text-starlight/60">First read</p><p class="mt-1">{c.first}</p><p class="eyebrow mt-4 text-gold-light">Later</p><p class="mt-1 font-display text-2xl text-gold-light">{c.later}</p></li>
+        ))}
+      </ul>
+      <p class="mt-14 text-center font-display text-[clamp(1.6rem,4vw,2.4rem)] italic">The first story contains the clues to stories that haven’t happened yet.</p>
+      <p class="mt-4 text-center text-starlight/80">Where the trail ends: <Rich text="{{The cipher’s final reveal}}" /></p>
+    </div>
+  </section>
+
+  <!-- 12 The IP map -->
+  <section class="marble px-4 py-20 sm:px-8 sm:py-28">
+    <div class={head}>
+      <p class="pitch-num text-gold-deep">12 · The IP map</p>
+      <div class="mt-6 flex flex-col items-center text-center"><CompassStar size={64} class="text-gold" /><h2 class="display mt-4 text-[clamp(2.2rem,6vw,4rem)] tracking-[0.1em]">Unitaria</h2></div>
+      <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+        {ipMap.map((g) => (
+          <div class="glass-light p-6"><h3 class="text-2xl">{g.title}</h3><ul class="mt-3 space-y-2 text-sm text-ink/80">{g.items.map((it) => <li><Rich text={it} /></li>)}</ul></div>
+        ))}
+      </div>
+      <p class="mt-12 text-center font-display text-[clamp(1.6rem,4vw,2.4rem)] italic text-gold-deep">None of it is required to understand Book One. The universe rewards obsession; it never demands homework.</p>
+    </div>
+  </section>
+
+  <!-- 13 Why this story first -->
+  <section class="night px-4 py-20 sm:px-8 sm:py-28">
+    <div class="mx-auto max-w-3xl">
+      <p class="pitch-num text-gold-light">13 · Why this story first</p>
+      <h2 class="mt-4 text-[clamp(2.2rem,5.5vw,3.6rem)] leading-tight">She is the perfect way in.</h2>
+      <ul class="mt-10 space-y-6">{whyFirst.map((w) => <li class="flex gap-4 text-lg text-starlight/85"><FourPointStar size={14} class="mt-2 shrink-0 text-gold-light" />{w}</li>)}</ul>
+      <p class="mt-10 text-starlight/80">Comparable titles: <Rich text={comps} /></p>
+    </div>
+  </section>
+
+  <!-- 14 The final slide -->
+  <section class="night aurora relative isolate flex min-h-[80vh] flex-col items-center justify-center overflow-hidden px-4 py-24 text-center sm:px-8">
+    <Starfield count={60} seed={1994} />
+    <p class="pitch-num text-gold-light">14</p>
+    <h2 class="display text-metal mt-6 text-[clamp(2.4rem,8vw,5.4rem)] leading-none tracking-[0.1em]">This is only the beginning.</h2>
+    <p class="mt-12 font-display text-[clamp(1.6rem,4.5vw,2.8rem)] tracking-[0.12em] text-gold-light">1994 · 2027 · 2077 · ?</p>
+    <p class="mx-auto mt-10 max-w-xl text-lg text-starlight/85">The world existed before her. It will continue after her.</p>
+  </section>
+
+  <!-- Still to decide: built from every placeholder above -->
+  <section class="marble px-4 py-20 sm:px-8 sm:py-24">
+    <div class="mx-auto max-w-4xl">
+      <p class="eyebrow text-gold-deep">For Katey</p>
+      <h2 class="mt-4 text-[clamp(2rem,5vw,3rem)]">Still to decide</h2>
+      <p class="mt-3 text-ink/75">Every dashed box in this deck, in the order it appears, plus the gaps behind them.</p>
+      <ul class="mt-8 grid gap-x-10 gap-y-2 sm:grid-cols-2">
+        {[...missing, ...alsoMissing].map((m) => <li class="flex gap-3 border-b border-ink/10 py-2"><span class="text-gold-deep" aria-hidden="true">○</span>{m}</li>)}
+      </ul>
+    </div>
+  </section>
+</Base>
+
+<script>
+  // The Seven: one line at a time, on click. Without JS, or in print, every line shows.
+  const root = document.querySelector<HTMLElement>('[data-seven]');
+  if (root) {
+    const steps = [...root.querySelectorAll<HTMLElement>('[data-step]')];
+    const next = root.querySelector<HTMLButtonElement>('[data-next]')!;
+    let shown = 1;
+    const paint = () => {
+      steps.forEach((s, i) => { s.style.opacity = i < shown ? '1' : '0'; s.setAttribute('aria-hidden', String(i >= shown)); });
+      next.hidden = shown >= steps.length;
+    };
+    next.addEventListener('click', () => { shown += 1; paint(); });
+    window.addEventListener('beforeprint', () => { shown = steps.length; paint(); document.querySelectorAll('details').forEach((d) => (d.open = true)); });
+    paint();
+  }
+</script>

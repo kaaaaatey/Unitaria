@@ -3,8 +3,8 @@ import '../styles/global.css';
 import NavBar from '../components/NavBar.astro';
 import SiteFooter from '../components/SiteFooter.astro';
 // `nav={false}` lets a page place <NavBar /> itself (Home puts it under the hero).
-interface Props { title: string; description?: string; image?: string; nav?: boolean }
-const { title, description = 'Unitaria: one world, three Continuents, ten realms.', image, nav = true } = Astro.props;
+interface Props { title: string; description?: string; image?: string; nav?: boolean; noindex?: boolean }
+const { title, description = 'Unitaria: one world, three Continuents, ten realms.', image, nav = true, noindex = false } = Astro.props;
 const ogImage = image ? new URL(image, Astro.site ?? Astro.url).href : undefined;
 const fullTitle = title === 'Unitaria' ? title : `${title} · Unitaria`;
 ---
@@ -16,6 +16,7 @@ const fullTitle = title === 'Unitaria' ? title : `${title} · Unitaria`;
     <meta name="theme-color" content="#081727" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />

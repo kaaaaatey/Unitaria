@@ -255,3 +255,30 @@ html.js [data-reveal].is-in { opacity: 1; transform: none; filter: none; }
   html.js [data-reveal] { opacity: 1; transform: none; filter: none; }
   @view-transition { navigation: none; }
 }
+
+/* Pitch deck: anything not yet canon shows as a dashed placeholder chip. */
+@layer components {
+  .tbd {
+    display: inline-flex; align-items: baseline; gap: 0.5em; flex-wrap: wrap;
+    border: 1.5px dashed currentColor; border-radius: 0.6em;
+    padding: 0.05em 0.55em; background: rgb(198 161 91 / 0.12);
+    font-style: normal; line-height: 1.35;
+  }
+  .tbd-tag { font-family: var(--font-sans); font-size: 0.55rem; letter-spacing: 0.22em; text-transform: uppercase; opacity: 0.75; }
+  .pitch-num { font-family: var(--font-sans); font-size: 0.7rem; letter-spacing: 0.3em; }
+  .layer > summary { list-style: none; cursor: pointer; }
+  .layer > summary::-webkit-details-marker { display: none; }
+  .layer[open] .layer-plus { transform: rotate(45deg); }
+  @media print {
+    .no-print { display: none !important; }
+    .night { background: #081727 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    section { break-inside: avoid-page; }
+    [data-reveal] { opacity: 1 !important; transform: none !important; filter: none !important; }
+    html, body { background: #081727 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .text-metal { background: none !important; color: #d9b977 !important; -webkit-text-fill-color: currentColor !important; }
+    section { break-before: page; }
+    .pitch-timeline { flex-wrap: wrap; overflow: visible; }
+    .pitch-timeline > li { width: 23%; }
+    [data-seven] [data-step] { opacity: 1 !important; }
+  }
+}
