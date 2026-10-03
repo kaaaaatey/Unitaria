@@ -157,3 +157,22 @@ export const whyFirst = [
 ];
 
 export const comps = '{{Comps}}';
+
+// Section 02: what Unitaria is. Katey, 3 Oct 2026: "the most important part of the story".
+export const essence = {
+  line: 'Unitaria is not “the future”. It’s our world, if our culture had fifty more years to evolve.',
+  made: [
+    { title: 'The Academy', isNot: 'Hogwarts', is: 'Oxford + Stanford + the Olympics + TikTok + a royal institution + reality television + the world’s most prestigious university.' },
+    { title: 'The Houses', isNot: 'Hogwarts houses', is: 'College sports teams + Greek life + fandom + varsity culture + social identity.' },
+    { title: 'The Exhibition', isNot: 'A dystopian death tournament', is: 'The Olympics + Eurovision + a World’s Fair + America’s Got Talent + university admissions + the Met Gala + reality TV.' },
+    { title: 'The Director', isNot: 'A dictator', is: 'A head of state who is also the world’s biggest celebrity. Nobody thinks “God, I hate him.” They think “OH MY GOD, THE DIRECTOR IS HERE.”' },
+    { title: 'The LiFE Band', isNot: 'A surveillance ankle monitor', is: 'Apple Watch + the TikTok algorithm + Spotify Wrapped + Google Maps + LinkedIn + Duolingo + your entire digital identity. You wear it voluntarily. You like it. It tells you “You’re doing great.” Until one day: wait, who taught it what great means?' },
+    { title: 'The Points', isNot: 'Prison points', is: 'Loyalty points + university applications + social credit + gamification + Uber ratings + achievement badges. People compete for them and show them off: “She’s got 14,000 points, babe, obviously she’s getting into Neuropa.”' },
+  ],
+  silliness: 'Technology doesn’t remove silliness. It gives silliness a production budget.',
+  scene: 'The Director isn’t in a dark throne room. He’s walking through the Academy in sunglasses, in something insanely expensive but somehow effortless. His band flashes, the cameras turn, someone screams “DIRECTOR!” He laughs and waves, the snow leopard mascot appears behind him, and the whole stadium erupts while millions watch at home. Somewhere beneath all of it is a truth that could destroy everything he’s built.',
+  want: ['I’d love to go to the Academy.', 'I want to know my house.', 'I want the band.', 'I want to meet the Director.', 'I want to be a Fellow.'],
+  turn: 'Gradually: oh. Oh no. I actually understand why everyone stays.',
+  rule: 'So the world is never obviously sinister. The romance is romantic, the houses are genuinely exciting, the Exhibition is genuinely spectacular, and Unitaria is genuinely better than our world in some ways. When the cracks appear, the reader doesn’t think “get out!” They think “but I don’t want this world to disappear either.”',
+  implicated: 'The reader has to answer the same question as the characters, and stops watching Unitaria. They’re implicated in it.',
+};
