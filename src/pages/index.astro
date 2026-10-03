@@ -46,9 +46,9 @@ const houseList = (await getCollection('houses')).sort((a, b) => houseOrder.inde
       <Image src={academyExterior} widths={[800, 1312]} sizes="(min-width: 1600px) 1600px, 100vw" loading="eager" fetchpriority="high"
         alt="The Academy in Neuropa: a white marble and gold palace with a glass dome, slender towers, waterfalls and a long reflecting pool, above the sea at golden hour."
         class="aspect-[4/3] w-full rounded-[1.75rem] object-cover object-[50%_40%] shadow-[0_40px_100px_-40px_rgb(26_29_43/0.5)] sm:aspect-[1312/500] sm:rounded-[2.25rem]" />
-      <div class="hero-card glass-light mx-3 -mt-16 sm:mx-auto max-w-2xl px-6 py-7 text-left sm:-mt-24 sm:px-10 sm:py-9">
+      <div class="hero-card glass-light relative -mt-12 sm:mx-auto sm:-mt-24 max-w-2xl px-6 py-7 text-left sm:px-10 sm:py-9">
         <div class="prose-world text-ink/80 sm:text-lg"><jubilee.Content /></div>
-        <div class="mt-7 flex flex-wrap gap-3">
+        <div class="mt-7 grid gap-3 sm:flex sm:flex-wrap">
           <a href="#reconnected" class="btn btn-gold">Enter the Jubilee</a>
           {jubilee.cta && <Cta {...jubilee.cta} />}
         </div>
@@ -57,7 +57,7 @@ const houseList = (await getCollection('houses')).sort((a, b) => houseOrder.inde
   </section>
 
   <!-- On laptops the bar rests in the hero's cream, under the card, then floats as you scroll. -->
-  <NavBar class="!bg-[#f7f4ef] lg:!bg-transparent lg:-mt-[5.5rem] lg:mb-[5.5rem]" />
+  <NavBar class="!bg-[#f7f4ef] px-4 lg:!bg-transparent lg:-mt-[5.5rem] lg:mb-[5.5rem]" />
 
   <!-- Fifty years reconnected: the story, told as you scroll -->
   <ReconnectStory steps={reconnected.steps} stats={reconnected.stats} cta={reconnected.cta} />
