@@ -47,11 +47,11 @@ export const girl = {
   ],
   bookOne: [
     { label: 'Where it opens', text: 'The end of August 2076, just before her Academy year begins, with the reveal that her points are the fourth highest in the realm: the last of the four places, so the girl with no passion only just makes it in.' },
-    { label: 'The clock', text: 'The Academy year from September 2076, then eleven weeks of Exhibition season from the 50th Reconnection Day on 7 May 2077, her dad’s fiftieth birthday. The book ends during the Grand Final.' },
-    { label: 'The threat, hidden as an advert', text: 'Recalibrate, a gentle mood-ring update, is announced in passing at the start. It quietly adds mapping and location sharing.' },
-    { label: 'The climax', text: 'Recalibrate rolls out to every band at once during the Grand Final, at the moment her difference is most likely to be exposed.' },
-    { label: 'The structure', text: '{{Book One structure}}' },
-    { label: 'The ending', text: '{{Book One ending}}' },
+    { label: 'The clock', text: 'The Academy year, from September 2076 to the opening of the Exhibition season on 7 May 2077: the 50th Reconnection Day and her dad’s fiftieth birthday. The World’s Fair Grand Final is Book Two’s big show.' },
+    { label: 'The threat, hidden as an advert', text: 'Recalibrate, a gentle mood-ring update, is announced in passing on 7 May. It quietly adds mapping and location sharing.' },
+    { label: 'The climax', text: 'The opening of the Exhibition, the most dazzling moment of the year, lands on top of grief: the life where she belongs, or the truth that proves why she never did.' },
+    { label: 'The structure', text: 'Arrival, discovery, exploration and panic as she tries everything at the Academy, then the pressure of needing an innovation for the Exhibition, which leads her somewhere she was never meant to look.' },
+    { label: 'The ending', text: 'Nonna dies. In her grief, Ro remembers the family safe, and the book ends the moment she has read what Nonna kept inside it.' },
     { label: 'The feeling on the last page', text: 'Enraged, awakened, needing to know more, satisfied but shaken, and “it’s ON.”' },
   ],
 };
