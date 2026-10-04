@@ -31,8 +31,9 @@ export const ledger: { gift: string; cost: string }[] = [
 ];
 
 export const girl = {
-  name: '{{Her name}}',
+  name: 'Ro',
   facts: [
+    { label: 'Her name', text: 'Ro, short for Rosalia. She hates her full name, and nobody uses it except the Director, who always calls her Rosalia.' },
     { label: 'Who', text: 'Sixteen in 2077, born in 2061, after the world was remade. She lives on the crescents in Neuropa, the capital.' },
     { label: 'Her family', text: 'Nonna, who remembers the world before. A mum who knows the family safe exists and has no interest in what’s inside. A younger brother. A dad who is mostly absent, because he works for the Director and is one of the Seven. Grandpapa Harry died recently.' },
     { label: 'Her wound', text: 'Everyone around her seems so happy and content, except her. Parentified by an absent dad and a checked-out mum, she wonders whether she isn’t just unhappy, but bad.' },
