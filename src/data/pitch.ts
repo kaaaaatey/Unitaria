@@ -5,7 +5,7 @@ export type Layer = { title: string; official: string; actual: string; safe?: st
 
 export const hook = {
   heart: 'If you had everything you ever wanted, would you still want the truth?',
-  logline: '{{Logline}}',
+  logline: 'In a world where phones have become LiFE wristbands that know everything about you before you do, Ro’s has never found her passion. Named the last Golden Prospect of the jubilee year, she glitches the Compass live in front of millions and becomes the most-watched mystery at the most-watched school in the world. She has one year to prove there’s something inside her. But the system can’t actually see her, and finding out why could cost her the only place she’s ever belonged.',
   book: 'Book One: {{Book One title}}',
   series: 'Series title: {{Series title (Unitaria?)}}',
 };

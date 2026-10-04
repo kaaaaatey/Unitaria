@@ -52,9 +52,9 @@ const tbd = (t: string) => t.includes('{{');
     <h1 class="display text-metal mt-6 text-[clamp(3.2rem,13vw,8rem)] leading-none tracking-[0.12em]">Unitaria</h1>
     <StarRule class="mx-auto mt-8 max-w-56" />
     <p class="mx-auto mt-10 max-w-3xl font-display text-[clamp(1.8rem,4.6vw,3.2rem)] leading-tight text-balance">{hook.heart}</p>
-    <p class="mx-auto mt-10 max-w-2xl text-lg text-starlight/85" data-has-tbd><Rich text={hook.logline} /></p>
-    <p class="eyebrow mt-10 text-gold-light" data-has-tbd><Rich text={hook.book} /></p>
-    <p class="mt-4 text-sm text-starlight/70" data-has-tbd><Rich text={hook.series} /></p>
+    <p class="mx-auto mt-10 max-w-2xl text-lg text-starlight/85" data-has-tbd={tbd(hook.logline) || undefined}><Rich text={hook.logline} /></p>
+    <p class="eyebrow mt-10 text-gold-light" data-has-tbd={tbd(hook.book) || undefined}><Rich text={hook.book} /></p>
+    <p class="mt-4 text-sm text-starlight/70" data-has-tbd={tbd(hook.series) || undefined}><Rich text={hook.series} /></p>
   </section>
 
 
@@ -176,7 +176,7 @@ const tbd = (t: string) => t.includes('{{');
     <div class={head}>
       <p class="pitch-num text-gold-deep">06 · The girl</p>
       <h2 class="mt-4 text-[clamp(2.2rem,5.5vw,3.6rem)] leading-tight">The first story belongs to one girl. The universe doesn’t.</h2>
-      <p class="mt-6 font-display text-3xl" data-has-tbd><Rich text={girl.name} /></p>
+      <p class="mt-6 font-display text-3xl" data-has-tbd={tbd(girl.name) || undefined}><Rich text={girl.name} /></p>
       <dl class="mt-10 grid gap-x-12 gap-y-8 md:grid-cols-2">
         {girl.facts.map((f) => (
           <div data-has-tbd={tbd(f.text) || undefined}><dt class="eyebrow text-gold-deep">{f.label}</dt><dd class="mt-2 font-sans text-lg text-ink/85"><Rich text={f.text} /></dd></div>
