@@ -5,7 +5,7 @@ export type Layer = { title: string; official: string; actual: string; safe?: st
 
 export const hook = {
   heart: 'If you had everything you ever wanted, would you still want the truth?',
-  logline: 'In a world where phones have become LiFE wristbands that know everything about you before you do, Ro’s has never found her passion. Named the last Golden Prospect of the jubilee year, she glitches the Compass live in front of millions and becomes the most-watched mystery at the most-watched school in the world. She has one year to prove there’s something inside her. But the system can’t actually see her, and finding out why could cost her the only place she’s ever belonged.',
+  logline: 'Sixteen-year-old Ro has spent her life wondering if there’s something wrong with her. When the golden Compass glitches as it places her into a House at the Academy, the system that tells everyone else who they are has no answer for her. Determined to prove there is something inside her, Ro sets out to find her purpose — only to discover that the truth about the system could cost her the first place she’s ever felt she belongs.',
   book: 'Book One: {{Book One title}}',
   series: 'Series title: {{Series title (Unitaria?)}}',
 };
