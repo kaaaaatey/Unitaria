@@ -41,8 +41,8 @@ export const girl = {
     { label: 'What makes her different', text: 'Her band was quietly altered by Harry, so it lags and can’t read her excitement. The system that serves everyone their passion can’t see hers. When she touches the golden Compass, it goes haywire for one second, live, in front of the world. It has never happened before.' },
     { label: 'Her danger', text: 'Her readings are normal. Her curiosity is not.' },
     { label: 'Her house', text: '{{Her house}}' },
-    { label: 'The people around her', text: 'Mum: {{Mum’s name}}. Dad: {{Dad’s name}}. Brother: {{Brother’s name}}. Best friends: Nell (Renella) and Sammy (Samson). Chosen family: {{Her chosen family}}.' },
-    { label: 'The romance', text: 'Team Spark or Team Anchor, both genuinely right for her. The Anchor is Sammy, her loyal best friend. The Spark is Jase, a rival from Orion.' },
+    { label: 'The people around her', text: 'Mum: {{Mum’s name}}. Dad: {{Dad’s name}}. Brother: {{Brother’s name}}. Best friends: Nell (Renella) and Sam (Samson, always Sammy to her). Chosen family: {{Her chosen family}}.' },
+    { label: 'The romance', text: 'Team Spark or Team Anchor, both genuinely right for her. The Spark is Jase, her Orion nemesis, who meets the girl she is becoming and makes her feel alive. The Anchor is Sam, her oldest friend, who knew her before she had to prove herself and makes her feel known.' },
     { label: 'The choice she has to make', text: '{{Her choice in Book One}}' },
   ],
   bookOne: [
