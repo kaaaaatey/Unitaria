@@ -282,3 +282,21 @@ html.js [data-reveal].is-in { opacity: 1; transform: none; filter: none; }
     [data-seven] [data-step] { opacity: 1 !important; }
   }
 }
+
+/* Pitch deck modes and the loud modern layer (Edit 2). */
+@layer components {
+  html:not(.secret) [data-secret] { display: none !important; }
+  html.secret [data-safe] { display: none !important; }
+  html.buyer .tbd, html.buyer [data-has-tbd], html.buyer [data-working] { display: none !important; }
+  [data-toggle][aria-pressed='true'] { background: var(--color-gold); color: var(--color-midnight); }
+  .feed-account { font-family: var(--font-sans); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+  .feed-card { font-family: var(--font-sans); background: #fff; color: #111; border-radius: 1.25rem; padding: 1rem 1.15rem; box-shadow: 0 10px 30px -12px rgb(0 0 0 / 0.5); }
+  .feed-card .feed-account { color: #6b5aa6; }
+  .band-screen { font-family: var(--font-sans); background: linear-gradient(160deg, #111827, #1f2a44); color: #fff; border-radius: 2rem; padding: 1.5rem; box-shadow: 0 30px 60px -30px rgb(8 23 39 / 0.8); }
+  .ping { display: flex; gap: 0.9rem; align-items: baseline; background: rgb(255 255 255 / 0.08); border-radius: 1rem; padding: 0.75rem 0.9rem; font-size: 0.95rem; }
+  .ping-time { font-variant-numeric: tabular-nums; font-size: 0.75rem; color: rgb(255 255 255 / 0.55); }
+  .orion-panel { font-family: var(--font-sans); background: radial-gradient(120% 90% at 100% 0%, rgb(198 161 91 / 0.35), transparent 60%), #0b0b0b; border-radius: 2rem; padding: 1.75rem; }
+  .team-card { font-family: var(--font-sans); border-radius: 1.5rem; padding: 1.25rem 1.35rem; box-shadow: 0 16px 40px -24px rgb(0 0 0 / 0.6); }
+  .hidden-star { color: rgb(230 207 154 / 0.35); padding: 0.75rem; border-radius: 999px; transition: color 0.3s, transform 0.3s; }
+  .hidden-star:hover, .hidden-star:focus-visible { color: var(--color-gold-light); transform: scale(1.4) rotate(45deg); }
+}

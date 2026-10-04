@@ -1,7 +1,7 @@
 // The pitch deck. Every fact comes from the World Bible; the section framing comes from Katey's deck notes (3 Oct 2026).
 // Anything not yet canon is written as {{Placeholder label}} and renders as a visible gap (see components/pitch/Rich.astro).
 
-export type Layer = { title: string; official: string; actual: string };
+export type Layer = { title: string; official: string; actual: string; safe?: string };
 
 export const hook = {
   heart: 'If you had everything you ever wanted, would you still want the truth?',
@@ -58,11 +58,11 @@ export const machine: Layer[] = [
   { title: 'The Academy', official: 'Where the world is governed and the Academy year is broadcast. One guaranteed year of education for every sixteen-year-old.', actual: 'The greatest show on Earth, designed by a man who understands branding better than anyone alive. Bread and circuses, with houses and merch.' },
   { title: 'The Houses', official: 'Polaris, Aurora, Lyra and Orion: the Academy’s four rules for the whole world, chosen by the Compass.', actual: 'Teams to root for and a show nobody can stop watching. The institution decides your direction.' },
   { title: 'The Exhibition', official: 'The World’s Fairs, brought back. “Only this time, there would be no nations. There would be children.” A celebration of youth that finds every child’s potential.', actual: 'A festival that hardened into a judgement in 2051, and a hunt for the young genius who can cure what no one can name.' },
-  { title: 'The LiFE Band', official: 'Convenience, no screens, a life assistant that knows you.', actual: 'Secretly a radiation exposure meter, like a nuclear worker’s dosimeter: a number, not a diagnosis. And surveillance built in.' },
+  { title: 'The LiFE Band', official: 'Convenience, no screens, a life assistant that knows you.', actual: 'Secretly a radiation exposure meter, like a nuclear worker’s dosimeter: a number, not a diagnosis. And surveillance built in.', safe: 'Constant surveillance and emotional nudging. And Recalibrate is coming.' },
   { title: 'The Points', official: 'No money, no fines. Every right free; points for doing good.', actual: 'The basics are grey, and colour, flavour and wonder are paid upgrades. The economy parentifies children by design.' },
-  { title: 'Realignment', official: 'Compassion, not prison: help for people who are unhappy with their circumstances.', actual: 'People whose readings climb too high are quietly removed to Isola, where new fixes are tested on them.' },
-  { title: 'Rehoming', official: 'A permanent fresh start in the realm that suits your soul. Always a choice.', actual: 'Those who respond well are returned to a different realm, so they never tell loved ones anything strange. Nobody seems to come home.' },
-  { title: 'The Director', official: 'The humble, beloved leader who keeps offering to step down.', actual: 'The keeper of the noble lie, sitting on top of the very company that broke the world.' },
+  { title: 'Realignment', official: 'Compassion, not prison: help for people who are unhappy with their circumstances.', actual: 'People whose readings climb too high are quietly removed to Isola, where new fixes are tested on them.', safe: 'People who seem “not themselves” have a way of disappearing there, so everyone learns to smile.' },
+  { title: 'Rehoming', official: 'A permanent fresh start in the realm that suits your soul. Always a choice.', actual: 'Those who respond well are returned to a different realm, so they never tell loved ones anything strange. Nobody seems to come home.', safe: 'Nudged by points, stigma and recommendations. And nobody seems to come home.' },
+  { title: 'The Director', official: 'The humble, beloved leader who keeps offering to step down.', actual: 'The keeper of the noble lie, sitting on top of the very company that broke the world.', safe: 'The keeper of a lie at the foundation of the world.' },
 ];
 
 export const eras: { when: string; title: string; text: string }[] = [
@@ -90,7 +90,7 @@ export const director = {
     { title: 'The world’s darling', text: 'He had been speaking out about the old system failing. When the dust settled, the public cried out for a leader like him.' },
     { title: 'Reformer', text: 'He abolished money, built the points, and created the Exhibition out of his love of the World’s Fairs. He actually does a good job.' },
     { title: 'Director', text: 'Seventy-one in 2077. Humble, cheeky, sometimes too honest, and always ready to hand over the reins. The people won’t let him.' },
-    { title: 'The turn', text: 'He starts hiding the damage the illnesses do, and chooses to let people suffer rather than tell the truth. Bit by bit, until his own sister disappears.' },
+    { title: 'The turn', text: 'He starts hiding the damage the illnesses do, and chooses to let people suffer rather than tell the truth. Bit by bit, until his own sister disappears.', safe: 'To protect the lie, he starts choosing it over people. Bit by bit, until his own sister disappears.' },
   ],
   log: [
     { decision: 'Naming the show and the seat of government The Academy', era: 'BE' },
@@ -104,7 +104,8 @@ export const director = {
 };
 
 export const nonna = {
-  name: 'Nonna (real name: {{Nonna’s real name}})',
+  name: 'Nonna',
+  realName: '(real name: {{Nonna’s real name}})',
   phases: [
     { title: 'Before', text: 'Born 1994. Left Italy for the UK at seven, where she met Harry, her lifelong best friend. A few months into a job as PA to the Director’s father.' },
     { title: 'During', text: 'As it happened, the father asked her to back everything up. He died; his directive stayed with her, on an old hard drive. Soon after, she found out she was four months pregnant.' },
@@ -116,7 +117,7 @@ export const nonna = {
 
 export const seven = [
   'They were born with the new world, on 7 May 2027.',
-  'Orphaned by the infections, they were raised by the Academy, part wards, part siblings, part inner circle.',
+  'Orphaned as babies, they were raised by the Academy, part wards, part siblings, part inner circle.',
   'Now they are fifty, living symbols at the centre of the jubilee.',
   'And one of them is her father.',
 ];
@@ -176,3 +177,35 @@ export const essence = {
   rule: 'So the world is never obviously sinister. The romance is romantic, the houses are genuinely exciting, the Exhibition is genuinely spectacular, and Unitaria is genuinely better than our world in some ways. When the cracks appear, the reader doesn’t think “get out!” They think “but I don’t want this world to disappear either.”',
   implicated: 'The reader has to answer the same question as the characters, and stops watching Unitaria. They’re implicated in it.',
 };
+
+// The loud modern layer (Edit 2, from Katey's notes on 3 Oct 2026): what living in Unitaria feels like.
+export const sightings: { account: string; post: string }[] = [
+  { account: 'Director sightings', post: 'He’s doing his community task in Shangokyo today.' },
+  { account: 'Academy network', post: 'Director spotted at the Academy.' },
+  { account: 'Outfit breakdowns', post: 'Is that the jacket from the 2059 Exhibition?' },
+  { account: 'Reaction account', post: 'He offered to resign again. The public said no.' },
+  { account: 'The Director', post: 'Happy Reconnection Day!' },
+];
+
+export const bandPings: { time: string; text: string }[] = [
+  { time: '07:00', text: 'The under-16s daily drop is live. Community tasks near you.' },
+  { time: '08:15', text: 'Your one automatic task today: the community kitchen.' },
+  { time: '12:30', text: '1,000 points unlocks Italian week on your family menu.' },
+  { time: '17:45', text: 'Recalibrate beta: find the underlying issues and tackle them with clarity.' },
+  { time: '21:00', text: 'You’re doing great.' },
+];
+
+export const teams = [
+  { name: 'Polaris', fans: 'Wayfinders', mascot: 'Aris the husky', chant: 'Curious and wise, the ultimate sleuth, / Polaris is the true guiding star of the truth!', bg: '#0e1d33', fg: '#c9d2de' },
+  { name: 'Aurora', fans: 'Dawnchasers', mascot: 'Aura the fox, with a light-up tail', chant: 'Cunning like a fox, the spark and the flame, / Aurora’s the wildfire nobody can tame!', bg: '#3b2a5c', fg: '#9fe0c8' },
+  { name: 'Lyra', fans: 'Songkeepers', mascot: 'Lyr the swan', chant: 'Loyal and relentless, united here we stand, / Lyra holds the world in the palm of their hands!', bg: '#f4efe8', fg: '#6e4636' },
+  { name: 'Orion', fans: 'Trailblazers', mascot: 'Ori the snow leopard', chant: 'Bold, daring and fearless are we, / Orion pushes further than the eye can see!', bg: '#0b0b0b', fg: '#e6cf9a' },
+];
+
+export const orion = [
+  { label: 'The mascot', text: 'Ori, in an absurdly expensive arena suit, cannonballing onto the stage to music and pyrotechnics. He has his own social account, and nobody knows who’s inside.' },
+  { label: 'The kit', text: 'Onyx black hoodies and jackets with flecks of gold, Ori plushies, belt-star pins.' },
+  { label: 'The rivals', text: 'Lyra, bold against gentle. Polaris, doers against thinkers.' },
+  { label: 'The legends', text: 'The Ascent, a race up the outside of the Academy’s tower. The Climb, the bell rung at midnight by every new member.' },
+  { label: 'The alumni', text: 'Leaders, explorers, Restoration Corp commanders and Persovia’s space pioneers.' },
+];

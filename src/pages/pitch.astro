@@ -5,7 +5,7 @@ import StarRule from '../components/motifs/StarRule.astro';
 import FourPointStar from '../components/motifs/FourPointStar.astro';
 import CompassStar from '../components/motifs/CompassStar.astro';
 import Rich from '../components/pitch/Rich.astro';
-import { essence, hook, worldDoors, rights, ledger, girl, machine, eras, truth, director, nonna, seven, stories, clues, ipMap, whyFirst, comps } from '../data/pitch';
+import { sightings, bandPings, teams, orion, essence, hook, worldDoors, rights, ledger, girl, machine, eras, truth, director, nonna, seven, stories, clues, ipMap, whyFirst, comps } from '../data/pitch';
 
 // Every {{placeholder}} in the deck, in reading order, so the last section can list what is still to decide.
 const missing = [...new Set([...JSON.stringify([hook, girl, machine, director, nonna, stories, '{{The cipher’s final reveal}}', ipMap, comps]).matchAll(/\{\{([^}]+)\}\}/g)].map((m) => m[1]))].filter((m) => m !== 'Genre');
@@ -18,18 +18,30 @@ const alsoMissing = [
   'The illnesses’ official name',
 ];
 const head = 'mx-auto max-w-5xl';
+const tbd = (t: string) => t.includes('{{');
 ---
 <Base title="The Pitch" description="Unitaria: the pitch. Contains spoilers." nav={false} noindex>
+  <script is:inline>
+    // Set the deck's mode before it paints: ?view=buyer hides placeholders; the full secret shows in the working copy unless ?secret=0.
+    (function () { var q = new URLSearchParams(location.search), c = document.documentElement.classList, b = q.get('view') === 'buyer';
+      if (b) c.add('buyer'); if (q.get('secret') === '1' || (!b && q.get('secret') !== '0')) c.add('secret'); })();
+  </script>
   <!-- 00 Spoiler warning -->
   <section class="night aurora relative isolate overflow-hidden px-4 py-16 text-center sm:px-8 sm:py-20">
     <Starfield count={40} seed={7} />
     <p class="eyebrow text-gold-light">For agents, editors and producers</p>
-    <p class="mx-auto mt-5 max-w-xl text-starlight/80">This is the pitch, not the brochure. It shows the world’s secrets, so please don’t share it with readers. Dashed boxes mark what is still to be decided.</p>
+    <p class="mx-auto mt-5 max-w-xl text-starlight/80">This is the pitch, not the brochure. The world’s full secret stays hidden until you choose to reveal it.</p>
+    <p class="mx-auto mt-3 max-w-xl text-sm text-starlight/60" data-working>Working copy: dashed boxes mark what is still to be decided. Switch to the buyer view to see the deck as an agent or editor will.</p>
     <p class="no-print mt-8 flex flex-wrap justify-center gap-3">
       <a href="#hook" class="btn btn-gold">Open the pitch</a>
       <a href="/unitaria-pitch.pdf" class="btn btn-ghost" download>Download the PDF</a>
+      <a href="/unitaria-pitch-full.pdf" class="btn btn-ghost" download data-working>Full working PDF</a>
       <a href="/" class="btn btn-ghost">Explore the world</a>
     </p>
+    <div class="no-print mt-8 flex flex-wrap justify-center gap-2 text-sm" role="group" aria-label="Deck settings">
+      <button type="button" class="glass rounded-full px-4 py-2" data-toggle="buyer" aria-pressed="false">Buyer view</button>
+      <button type="button" class="glass rounded-full px-4 py-2" data-toggle="secret" aria-pressed="false">Show the full secret</button>
+    </div>
   </section>
 
   <!-- 01 The hook -->
@@ -39,9 +51,9 @@ const head = 'mx-auto max-w-5xl';
     <h1 class="display text-metal mt-6 text-[clamp(3.2rem,13vw,8rem)] leading-none tracking-[0.12em]">Unitaria</h1>
     <StarRule class="mx-auto mt-8 max-w-56" />
     <p class="mx-auto mt-10 max-w-3xl font-display text-[clamp(1.8rem,4.6vw,3.2rem)] leading-tight text-balance">{hook.heart}</p>
-    <p class="mx-auto mt-10 max-w-2xl text-lg text-starlight/85"><Rich text={hook.logline} /></p>
-    <p class="eyebrow mt-10 text-gold-light"><Rich text={hook.book} /></p>
-    <p class="mt-4 text-sm text-starlight/70"><Rich text={hook.series} /></p>
+    <p class="mx-auto mt-10 max-w-2xl text-lg text-starlight/85" data-has-tbd><Rich text={hook.logline} /></p>
+    <p class="eyebrow mt-10 text-gold-light" data-has-tbd><Rich text={hook.book} /></p>
+    <p class="mt-4 text-sm text-starlight/70" data-has-tbd><Rich text={hook.series} /></p>
   </section>
 
 
@@ -84,10 +96,43 @@ const head = 'mx-auto max-w-5xl';
     </div>
   </section>
 
+  <!-- 03 Live from Unitaria -->
+  <section class="bg-[#f6f3ee] px-4 py-20 sm:px-8 sm:py-28">
+    <div class={head}>
+      <p class="pitch-num text-gold-deep">03 · Live from Unitaria</p>
+      <h2 class="mt-4 text-[clamp(2.4rem,6vw,4rem)] leading-tight">What it feels like to live there.</h2>
+      <div class="mt-12 grid gap-8 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
+        <div class="band-screen">
+          <p class="feed-account text-white/60">Your LiFE band today</p>
+          <ul class="mt-4 space-y-3">
+            {bandPings.map((n) => <li class="ping"><span class="ping-time">{n.time}</span><span>{n.text}</span></li>)}
+          </ul>
+        </div>
+        <div class="orion-panel">
+          <p class="feed-account text-[#e6cf9a]">Trailblazers, this is your house</p>
+          <p class="mt-3 font-sans text-[clamp(2.6rem,7vw,4.6rem)] font-black uppercase leading-none tracking-tight text-white">I’m an Orion.</p>
+          <dl class="mt-6 grid gap-4 sm:grid-cols-2">
+            {orion.map((o) => <div><dt class="feed-account text-[#e6cf9a]">{o.label}</dt><dd class="mt-1 text-sm text-white/85">{o.text}</dd></div>)}
+          </dl>
+        </div>
+      </div>
+      <ul class="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        {teams.map((t) => (
+          <li class="team-card" style={`background:${t.bg};color:${t.fg}`}>
+            <p class="font-sans text-3xl font-black uppercase tracking-tight">{t.name}</p>
+            <p class="feed-account mt-1">{t.fans} · {t.mascot}</p>
+            <p class="mt-4 text-sm font-medium italic">“{t.chant}”</p>
+          </li>
+        ))}
+      </ul>
+      <p class="mt-12 text-center font-display text-[clamp(1.6rem,4vw,2.4rem)] italic text-gold-deep">Every mascot is a full arena suit, with its own social account. Ori is the most famous of all.</p>
+    </div>
+  </section>
+
   <!-- 02 The world -->
   <section class="marble px-4 py-20 sm:px-8 sm:py-28">
     <div class={head}>
-      <p class="pitch-num text-gold-deep">03 · The world</p>
+      <p class="pitch-num text-gold-deep">04 · The world</p>
       <h2 class="mt-4 text-[clamp(2.4rem,6vw,4rem)] leading-tight">2077. Fifty years after the Great Reconnecting.</h2>
       <p class="mt-4 max-w-2xl text-lg text-ink/75">Our world, fused into one landmass within living memory. Familiar, but not where it’s supposed to be.</p>
       <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -105,7 +150,7 @@ const head = 'mx-auto max-w-5xl';
   <!-- 03 The contradiction -->
   <section class="night px-4 py-20 sm:px-8 sm:py-28">
     <div class={head}>
-      <p class="pitch-num text-gold-light">04 · The contradiction</p>
+      <p class="pitch-num text-gold-light">05 · The contradiction</p>
       <div class="mt-8 grid gap-12 lg:grid-cols-2">
         <div>
           <h2 class="display text-metal text-[clamp(2rem,5vw,3.2rem)] tracking-[0.08em]">The utopia is real.</h2>
@@ -128,18 +173,18 @@ const head = 'mx-auto max-w-5xl';
   <!-- 04 The girl -->
   <section class="marble px-4 py-20 sm:px-8 sm:py-28">
     <div class={head}>
-      <p class="pitch-num text-gold-deep">05 · The girl</p>
+      <p class="pitch-num text-gold-deep">06 · The girl</p>
       <h2 class="mt-4 text-[clamp(2.2rem,5.5vw,3.6rem)] leading-tight">The first story belongs to one girl. The universe doesn’t.</h2>
-      <p class="mt-6 font-display text-3xl"><Rich text={girl.name} /></p>
+      <p class="mt-6 font-display text-3xl" data-has-tbd><Rich text={girl.name} /></p>
       <dl class="mt-10 grid gap-x-12 gap-y-8 md:grid-cols-2">
         {girl.facts.map((f) => (
-          <div><dt class="eyebrow text-gold-deep">{f.label}</dt><dd class="mt-2 font-sans text-lg text-ink/85"><Rich text={f.text} /></dd></div>
+          <div data-has-tbd={tbd(f.text) || undefined}><dt class="eyebrow text-gold-deep">{f.label}</dt><dd class="mt-2 font-sans text-lg text-ink/85"><Rich text={f.text} /></dd></div>
         ))}
       </dl>
       <h3 class="mt-20 text-[clamp(1.8rem,4vw,2.6rem)]">Book One</h3>
       <ol class="mt-8 grid gap-4 md:grid-cols-2">
         {girl.bookOne.map((b) => (
-          <li class="glass-light p-6"><p class="eyebrow text-gold-deep">{b.label}</p><p class="mt-2 text-ink/85"><Rich text={b.text} /></p></li>
+          <li class="glass-light p-6" data-has-tbd={tbd(b.text) || undefined}><p class="eyebrow text-gold-deep">{b.label}</p><p class="mt-2 text-ink/85"><Rich text={b.text} /></p></li>
         ))}
       </ol>
     </div>
@@ -148,7 +193,7 @@ const head = 'mx-auto max-w-5xl';
   <!-- 05 The machine -->
   <section class="night px-4 py-20 sm:px-8 sm:py-28">
     <div class={head}>
-      <p class="pitch-num text-gold-light">06 · The machine</p>
+      <p class="pitch-num text-gold-light">07 · The machine</p>
       <h2 class="mt-4 text-[clamp(2.2rem,5.5vw,3.6rem)] leading-tight">Open any part of the system.</h2>
       <p class="mt-4 max-w-2xl text-starlight/80">Each one is what the world believes, and what is actually underneath.</p>
       <div class="mt-12 grid gap-4 md:grid-cols-2">
@@ -158,7 +203,7 @@ const head = 'mx-auto max-w-5xl';
             <p class="eyebrow mt-5 text-starlight/60">What everyone knows</p>
             <p class="mt-1 text-starlight/85">{m.official}</p>
             <p class="eyebrow mt-5 text-gold-light">What’s underneath</p>
-            <p class="mt-1 text-starlight/85">{m.actual}</p>
+            {m.safe ? <><p class="mt-1 text-starlight/85" data-secret>{m.actual}</p><p class="mt-1 text-starlight/85" data-safe>{m.safe}</p></> : <p class="mt-1 text-starlight/85">{m.actual}</p>}
           </details>
         ))}
       </div>
@@ -168,7 +213,7 @@ const head = 'mx-auto max-w-5xl';
   <!-- 06 The history -->
   <section class="marble px-4 py-20 sm:px-8 sm:py-28">
     <div class={head}>
-      <p class="pitch-num text-gold-deep">07 · The history</p>
+      <p class="pitch-num text-gold-deep">08 · The history</p>
       <h2 class="mt-4 text-[clamp(2.2rem,5.5vw,3.6rem)] leading-tight">Seven eras, from the world before to the jubilee.</h2>
       <ol class="pitch-timeline mt-12 flex snap-x gap-4 overflow-x-auto pb-6" tabindex="0" aria-label="Timeline of the seven eras">
         {eras.map((e, i) => (
@@ -181,23 +226,32 @@ const head = 'mx-auto max-w-5xl';
         ))}
       </ol>
       <p class="mt-12 text-center font-display text-[clamp(1.8rem,4.5vw,2.8rem)] italic text-gold-deep">But this is only the history the world remembers.</p>
-      <details class="layer mx-auto mt-8 max-w-3xl">
-        <summary class="btn btn-gold mx-auto flex w-fit">What really happened</summary>
+      <div class="mx-auto mt-8 max-w-3xl">
+        <p class="no-print text-center"><button type="button" class="btn btn-gold" data-toggle="secret" data-safe>Reveal the full secret</button></p>
+        <p class="mt-2 text-center text-ink/70" data-safe>A catastrophic lie sits at the foundation of Unitaria. The Director knows it, the system is built partly to protect it, and her curiosity begins to pull at it.</p>
+        <div data-secret>
         <div class="mt-8 grid gap-4 sm:grid-cols-2">
           {truth.map((t) => <div class="glass-light p-6"><h3 class="text-2xl">{t.title}</h3><p class="mt-2 text-ink/80">{t.text}</p></div>)}
         </div>
-      </details>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- 07 The Director -->
   <section class="night px-4 py-20 sm:px-8 sm:py-28">
     <div class={head}>
-      <p class="pitch-num text-gold-light">08 · The man who built the world</p>
+      <p class="pitch-num text-gold-light">09 · The man who built the world</p>
       <h2 class="display text-metal mt-4 text-[clamp(2.2rem,6vw,4rem)] tracking-[0.08em]">{director.name}</h2>
+      <p class="mt-4 font-display text-2xl italic text-starlight/85">The biggest celebrity on Earth, and the man everyone thinks they know.</p>
+      <ul class="mt-10 flex snap-x gap-3 overflow-x-auto pb-4" tabindex="0" aria-label="What the feeds are saying">
+        {sightings.map((f) => (
+          <li class="feed-card w-64 shrink-0 snap-start"><p class="feed-account">{f.account}</p><p class="mt-2">{f.post}</p></li>
+        ))}
+      </ul>
       <ol class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {director.stages.map((s, i) => (
-          <li class="glass p-6"><p class="pitch-num text-gold-light">{String(i + 1).padStart(2, '0')}</p><h3 class="mt-2 text-2xl">{s.title}</h3><p class="mt-2 text-starlight/80">{s.text}</p></li>
+          <li class="glass p-6"><p class="pitch-num text-gold-light">{String(i + 1).padStart(2, '0')}</p><h3 class="mt-2 text-2xl">{s.title}</h3>{s.safe ? <><p class="mt-2 text-starlight/80" data-secret>{s.text}</p><p class="mt-2 text-starlight/80" data-safe>{s.safe}</p></> : <p class="mt-2 text-starlight/80">{s.text}</p>}</li>
         ))}
       </ol>
       <div class="mt-12 glass p-6 sm:p-8">
@@ -207,15 +261,15 @@ const head = 'mx-auto max-w-5xl';
         </ul>
       </div>
       <p class="mt-14 text-center font-display text-[clamp(1.8rem,4.5vw,2.8rem)] italic">His story exists before hers.</p>
-      <p class="mx-auto mt-4 max-w-2xl text-center text-starlight/85"><Rich text={director.prequel} /></p>
+      <p class="mx-auto mt-4 max-w-2xl text-center text-starlight/85" data-has-tbd><Rich text={director.prequel} /></p>
     </div>
   </section>
 
   <!-- 08 Nonna -->
   <section class="marble px-4 py-20 sm:px-8 sm:py-28">
     <div class={head}>
-      <p class="pitch-num text-gold-deep">09 · The grandmother who remembers</p>
-      <h2 class="mt-4 text-[clamp(2.2rem,5.5vw,3.6rem)] leading-tight"><Rich text={nonna.name} /></h2>
+      <p class="pitch-num text-gold-deep">10 · The grandmother who remembers</p>
+      <h2 class="mt-4 text-[clamp(2.2rem,5.5vw,3.6rem)] leading-tight">{nonna.name} <span data-has-tbd><Rich text={nonna.realName} /></span></h2>
       <ol class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {nonna.phases.map((p) => <li class="glass-light p-6"><p class="eyebrow text-gold-deep">{p.title}</p><p class="mt-3 text-ink/85">{p.text}</p></li>)}
       </ol>
@@ -227,7 +281,7 @@ const head = 'mx-auto max-w-5xl';
   <!-- 09 The Seven -->
   <section class="night aurora relative isolate overflow-hidden px-4 py-24 text-center sm:px-8 sm:py-32" data-seven data-no-reveal>
     <Starfield count={7} seed={7} />
-    <p class="pitch-num text-gold-light">10 · The Seven</p>
+    <p class="pitch-num text-gold-light">11 · The Seven</p>
     <ol class="mx-auto mt-10 max-w-3xl space-y-8">
       {seven.map((line, i) => (
         <li data-step={i} class={`font-display text-[clamp(1.7rem,4.5vw,2.8rem)] leading-tight transition duration-700 ${i === seven.length - 1 ? 'text-metal' : ''}`}>{line}</li>
@@ -239,11 +293,11 @@ const head = 'mx-auto max-w-5xl';
   <!-- 10 The other stories -->
   <section class="marble px-4 py-20 sm:px-8 sm:py-28">
     <div class={head}>
-      <p class="pitch-num text-gold-deep">11 · The other stories</p>
+      <p class="pitch-num text-gold-deep">12 · The other stories</p>
       <h2 class="mt-4 text-[clamp(2.2rem,5.5vw,3.6rem)] leading-tight">Every story reveals another piece of the same world.</h2>
       <ul class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {stories.map((s) => (
-          <li class="glass-light p-6">
+          <li class="glass-light p-6" data-has-tbd={tbd(s.text) || undefined}>
             <FourPointStar size={14} class="text-gold-deep" />
             <h3 class="mt-3 text-2xl">{s.title}</h3>
             <p class="mt-2 text-sm text-ink/80"><Rich text={s.text} /></p>
@@ -257,7 +311,7 @@ const head = 'mx-auto max-w-5xl';
   <!-- 11 The long con -->
   <section class="night px-4 py-20 sm:px-8 sm:py-28">
     <div class={head}>
-      <p class="pitch-num text-gold-light">12 · The long con</p>
+      <p class="pitch-num text-gold-light">13 · The long con</p>
       <h2 class="display text-metal mt-4 text-[clamp(2.2rem,6vw,4rem)] tracking-[0.08em]">Nothing is incidental.</h2>
       <p class="mt-4 max-w-2xl text-starlight/80">A secret code runs through everything from the first page. Casual fans get Easter eggs, hardcore fans get ciphers, and nobody needs to solve anything to enjoy the story.</p>
       <ul class="mt-12 grid gap-4 md:grid-cols-2">
@@ -266,18 +320,20 @@ const head = 'mx-auto max-w-5xl';
         ))}
       </ul>
       <p class="mt-14 text-center font-display text-[clamp(1.6rem,4vw,2.4rem)] italic">The first story contains the clues to stories that haven’t happened yet.</p>
-      <p class="mt-4 text-center text-starlight/80">Where the trail ends: <Rich text="{{The cipher’s final reveal}}" /></p>
+      <p class="mt-4 text-center text-starlight/80" data-has-tbd>Where the trail ends: <Rich text="{{The cipher’s final reveal}}" /></p>
+      <p class="mt-10 text-center"><button type="button" class="hidden-star" aria-label="A small star" data-star><FourPointStar size={10} /></button></p>
+      <p class="mt-3 text-center font-display text-2xl italic text-gold-light" data-star-text hidden>Quaerite et invenietis. Seek, and you shall find.</p>
     </div>
   </section>
 
   <!-- 12 The IP map -->
   <section class="marble px-4 py-20 sm:px-8 sm:py-28">
     <div class={head}>
-      <p class="pitch-num text-gold-deep">13 · The IP map</p>
+      <p class="pitch-num text-gold-deep">14 · The IP map</p>
       <div class="mt-6 flex flex-col items-center text-center"><CompassStar size={64} class="text-gold" /><h2 class="display mt-4 text-[clamp(2.2rem,6vw,4rem)] tracking-[0.1em]">Unitaria</h2></div>
       <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
         {ipMap.map((g) => (
-          <div class="glass-light p-6"><h3 class="text-2xl">{g.title}</h3><ul class="mt-3 space-y-2 text-sm text-ink/80">{g.items.map((it) => <li><Rich text={it} /></li>)}</ul></div>
+          <div class="glass-light p-6"><h3 class="text-2xl">{g.title}</h3><ul class="mt-3 space-y-2 text-sm text-ink/80">{g.items.map((it) => <li data-has-tbd={tbd(it) || undefined}><Rich text={it} /></li>)}</ul></div>
         ))}
       </div>
       <p class="mt-12 text-center font-display text-[clamp(1.6rem,4vw,2.4rem)] italic text-gold-deep">None of it is required to understand Book One. The universe rewards obsession; it never demands homework.</p>
@@ -287,7 +343,7 @@ const head = 'mx-auto max-w-5xl';
   <!-- 13 Why this story first -->
   <section class="night px-4 py-20 sm:px-8 sm:py-28">
     <div class="mx-auto max-w-3xl">
-      <p class="pitch-num text-gold-light">14 · Why this story first</p>
+      <p class="pitch-num text-gold-light">15 · Why this story first</p>
       <h2 class="mt-4 text-[clamp(2.2rem,5.5vw,3.6rem)] leading-tight">She is the perfect way in.</h2>
       <ul class="mt-10 space-y-6">{whyFirst.map((w) => <li class="flex gap-4 text-lg text-starlight/85"><FourPointStar size={14} class="mt-2 shrink-0 text-gold-light" />{w}</li>)}</ul>
       <div class="mt-12 glass p-6 sm:p-8">
@@ -295,21 +351,21 @@ const head = 'mx-auto max-w-5xl';
         <p class="mt-3 font-display text-2xl leading-snug"><em>The Hunger Games</em> asks what happens when entertainment becomes violence. Unitaria asks what happens when entertainment becomes governance.</p>
         <p class="mt-4 text-starlight/80"><em>Black Mirror</em> asks what technology reveals about us. Unitaria asks what happens when technology makes a genuinely better world, and therefore makes giving it up almost impossible.</p>
       </div>
-      <p class="mt-10 text-starlight/80">Comparable titles: <Rich text={comps} /></p>
+      <p class="mt-10 text-starlight/80" data-has-tbd>Comparable titles: <Rich text={comps} /></p>
     </div>
   </section>
 
   <!-- 14 The final slide -->
   <section class="night aurora relative isolate flex min-h-[80vh] flex-col items-center justify-center overflow-hidden px-4 py-24 text-center sm:px-8">
     <Starfield count={60} seed={1994} />
-    <p class="pitch-num text-gold-light">15</p>
+    <p class="pitch-num text-gold-light">16</p>
     <h2 class="display text-metal mt-6 text-[clamp(2.4rem,8vw,5.4rem)] leading-none tracking-[0.1em]">This is only the beginning.</h2>
     <p class="mt-12 font-display text-[clamp(1.6rem,4.5vw,2.8rem)] tracking-[0.12em] text-gold-light">1994 · 2027 · 2077 · ?</p>
     <p class="mx-auto mt-10 max-w-xl text-lg text-starlight/85">The world existed before her. It will continue after her.</p>
   </section>
 
   <!-- Still to decide: built from every placeholder above -->
-  <section class="marble px-4 py-20 sm:px-8 sm:py-24">
+  <section data-working class="marble px-4 py-20 sm:px-8 sm:py-24">
     <div class="mx-auto max-w-4xl">
       <p class="eyebrow text-gold-deep">For Katey</p>
       <h2 class="mt-4 text-[clamp(2rem,5vw,3rem)]">Still to decide</h2>
@@ -322,6 +378,25 @@ const head = 'mx-auto max-w-5xl';
 </Base>
 
 <script>
+  // Deck settings: buyer view and the full secret, kept in the URL so a link carries its mode.
+  const root_ = document.documentElement;
+  const sync = () => {
+    document.querySelectorAll<HTMLButtonElement>('[data-toggle]').forEach((b) => {
+      const on = root_.classList.contains(b.dataset.toggle!);
+      if (b.closest('[role=group]')) b.setAttribute('aria-pressed', String(on));
+    });
+    const q = new URLSearchParams(location.search);
+    root_.classList.contains('buyer') ? q.set('view', 'buyer') : q.delete('view');
+    q.set('secret', root_.classList.contains('secret') ? '1' : '0');
+    history.replaceState(null, '', `${location.pathname}?${q}${location.hash}`);
+  };
+  document.querySelectorAll<HTMLButtonElement>('[data-toggle]').forEach((b) => b.addEventListener('click', () => { root_.classList.toggle(b.dataset.toggle!); sync(); }));
+  sync();
+
+  // A hidden star for the obsessive reader.
+  const star = document.querySelector<HTMLButtonElement>('[data-star]');
+  star?.addEventListener('click', () => { document.querySelector<HTMLElement>('[data-star-text]')!.hidden = false; star.setAttribute('aria-expanded', 'true'); });
+
   // The Seven: one line at a time, on click. Without JS, or in print, every line shows.
   const root = document.querySelector<HTMLElement>('[data-seven]');
   if (root) {
