@@ -42,7 +42,7 @@ export const girl = {
     { label: 'Her danger', text: 'Her readings are normal. Her curiosity is not.' },
     { label: 'Her house', text: '{{Her house}}' },
     { label: 'The people around her', text: 'Mum: {{Mum’s name}}. Dad: {{Dad’s name}}. Brother: {{Brother’s name}}. Best friends: Nell (Renella) and Sammy (Samson). Chosen family: {{Her chosen family}}.' },
-    { label: 'The romance', text: 'Team Spark or Team Anchor, both genuinely right for her. The Anchor is Sammy, her loyal best friend. The Spark is a rival from Orion: {{The Orion rival’s name}}.' },
+    { label: 'The romance', text: 'Team Spark or Team Anchor, both genuinely right for her. The Anchor is Sammy, her loyal best friend. The Spark is Jase, a rival from Orion.' },
     { label: 'The choice she has to make', text: '{{Her choice in Book One}}' },
   ],
   bookOne: [
