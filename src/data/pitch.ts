@@ -51,7 +51,7 @@ export const girl = {
     { label: 'The threat, hidden as an advert', text: 'Recalibrate, a gentle mood-ring update, is announced in passing on 7 May. It quietly adds mapping and location sharing.' },
     { label: 'The climax', text: 'The opening of the Exhibition, the most dazzling moment of the year, lands on top of grief: the life where she belongs, or the truth that proves why she never did.' },
     { label: 'The structure', text: 'Arrival, discovery, exploration and panic as she tries everything at the Academy, then the pressure of needing an innovation for the Exhibition, which leads her somewhere she was never meant to look.' },
-    { label: 'The ending', text: 'Nonna dies. In her grief, Ro remembers the family safe. The last scene is her reading the letter her grandparents left inside, last updated when she was five: they hoped she would never need to read it.' },
+    { label: 'The ending', text: 'Nonna dies just before Reconnection Day. On the morning the Exhibition begins, while the world celebrates, Ro opens the family safe and reads the first line of the letter her grandparents left inside. The final scene pans to the Director on a balcony above the Academy, coffee in hand: “Let the show begin.”' },
     { label: 'The feeling on the last page', text: 'Enraged, awakened, needing to know more, satisfied but shaken, and “it’s ON.”' },
   ],
 };
