@@ -46,7 +46,8 @@ export const girl = {
     { label: 'The choice she has to make', text: '{{Her choice in Book One}}' },
   ],
   bookOne: [
-    { label: 'The clock', text: 'Eleven weeks, from the 50th Reconnection Day on 7 May 2077, her dad’s fiftieth birthday, to the Grand Final.' },
+    { label: 'Where it opens', text: 'Just before her Academy year begins, with the reveal that her points are the fourth highest in the realm: the last of the four places, so the girl with no passion only just makes it in.' },
+    { label: 'The clock', text: 'The Academy year, then eleven weeks of Exhibition season from the 50th Reconnection Day on 7 May 2077, her dad’s fiftieth birthday, to the Grand Final.' },
     { label: 'The threat, hidden as an advert', text: 'Recalibrate, a gentle mood-ring update, is announced in passing at the start. It quietly adds mapping and location sharing.' },
     { label: 'The climax', text: 'Recalibrate rolls out to every band at once during the Grand Final, at the moment her difference is most likely to be exposed.' },
     { label: 'The structure', text: '{{Book One structure}}' },
